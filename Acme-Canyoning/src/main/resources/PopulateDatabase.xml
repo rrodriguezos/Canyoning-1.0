@@ -1,0 +1,620 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- * PopulateDatabase.xml * * Copyright (C) 2014 Universidad de Sevilla 
+	* * The use of this project is hereby constrained to the conditions of the 
+	* TDG Licence, a copy of which you may download from * http://www.tdg-seville.info/License.html -->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	">
+
+	<!-- User accounts -->
+
+	<bean id="userAccount1" class="security.UserAccount">
+		<property name="username" value="admin" />
+		<property name="password" value="21232f297a57a5a743894a0e4a801fc3" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="ADMINISTRATOR" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="userAccount2" class="security.UserAccount">
+		<property name="username" value="organiser1" />
+		<property name="password" value="66f7546a22eb4c13c4a78d58b0a00194" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="ORGANISER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="userAccount3" class="security.UserAccount">
+		<property name="username" value="organiser2" />
+		<property name="password" value="22ef0e5c643538df4e980eb206a10dd3" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="ORGANISER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="userAccount4" class="security.UserAccount">
+		<property name="username" value="organiser3" />
+		<property name="password" value="a9a46245fe6ce15429f419eb96aa1289" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="ORGANISER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="userAccount5" class="security.UserAccount">
+		<property name="username" value="customer1" />
+		<property name="password" value="ffbc4675f864e0e9aab8bdf7a0437010" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="CUSTOMER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="userAccount6" class="security.UserAccount">
+		<property name="username" value="customer2" />
+		<property name="password" value="5ce4d191fd14ac85a1469fb8c29b7a7b" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="CUSTOMER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="userAccount7" class="security.UserAccount">
+		<property name="username" value="customer3" />
+		<property name="password" value="033f7f6121501ae98285ad77f216d5e7" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="CUSTOMER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<!-- Administrators -->
+
+	<bean class="domain.Administrator" id="administrator">
+		<property value="chrisf@mail.es" name="email" />
+		<property value="+34(732)7216" name="phone" />
+		<property name="userAccount" ref="userAccount1" />
+		<property name="comments">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<!-- Organisers -->
+
+	<bean class="domain.Organiser" id="organiser1">
+		<property value="manolo@mail.es" name="email" />
+		<property name="userAccount" ref="userAccount2" />
+		<property value="+34(732)7218" name="phone" />
+		<property name="about" value="Este es el organiser 1" />
+		<property name="activities">
+			<list>
+			<ref bean="activity1" />
+			<ref bean="activity4" />
+			</list>
+		</property>
+		<property name="comments">
+			<list>
+				<ref bean="comment1" />
+				<ref bean="comment2" />
+				<ref bean="comment19" />
+			</list>
+		</property>
+		<property name="organiserComment" ref="organiserComment1" />
+	</bean>
+
+	<bean class="domain.Organiser" id="organiser2">
+		<property value="charro@gmail.com" name="email" />
+		<property name="userAccount" ref="userAccount3" />
+		<property value="+34(788)7218" name="phone" />
+		<property name="about" value="Este es el organiser 2" />
+		<property name="activities">
+			<list>
+			<ref bean="activity2" />
+			<ref bean="activity5" />
+			</list>
+		</property>
+		<property name="comments">
+			<list>
+				<ref bean="comment3" />
+				<ref bean="comment4" />
+				<ref bean="comment20" />
+			</list>
+		</property>
+		<property name="organiserComment" ref="organiserComment2" />
+	</bean>
+
+	<bean class="domain.Organiser" id="organiser3">
+		<property value="Doming@gmail.com" name="email" />
+		<property name="userAccount" ref="userAccount4" />
+		<property name="about" value="Este es el organiser 3" />
+		<property value="+34(788)1234" name="phone" />
+		<property name="activities">
+			<list>
+			<ref bean="activity3" />
+			<ref bean="activity6" />
+			</list>
+		</property>
+		<property name="comments">
+			<list>
+			<ref bean="comment11" />
+			<ref bean="comment12" />
+			<ref bean="comment21" />
+			</list>
+		</property>
+		<property name="organiserComment" ref="organiserComment3" />
+	</bean>
+
+	<!-- Customers -->
+
+	<bean class="domain.Customer" id="customer1">
+		<property value="eijude@gmail.com" name="email" />
+		<property name="userAccount" ref="userAccount5" />
+		<property value="+34(788)1888" name="phone" />
+		<property name="comments">
+			<list>
+			<ref bean="comment5" />
+			<ref bean="comment6" />
+			<ref bean="comment16" />
+			</list>
+		</property>
+		<property name="customerComment" ref="customerComment1" />
+	</bean>
+
+
+
+	<bean class="domain.Customer" id="customer2">
+		<property value="antflores@hotmail.com" name="email" />
+		<property name="userAccount" ref="userAccount6" />
+		<property value="+33(722)1888" name="phone" />
+		<property name="comments">
+			<list>
+			<ref bean="comment7" />
+			<ref bean="comment8" />
+			<ref bean="comment17" />
+			</list>
+		</property>
+		<property name="customerComment" ref="customerComment2" />
+	</bean>
+
+	<bean class="domain.Customer" id="customer3">
+		<property value="rafitaNadal@gmail.com" name="email" />
+		<property name="userAccount" ref="userAccount7" />
+		<property value="+33(722)1245" name="phone" />
+		<property name="comments">
+			<list>
+			<ref bean="comment9" />
+			<ref bean="comment10" />
+			<ref bean="comment18" />
+			</list>
+		</property>
+		<property name="customerComment" ref="customerComment3" />
+	</bean>
+
+	<!-- Canyons -->
+	<bean class="domain.Canyon" id="canyon1">
+		<property name="title" value="title1" />
+		<property name="difficultyLevel" value="2" />
+		<property name="route" value="https://www.google.es/maps/place/Can%C3%B3n+do+Sil,+27460,+Lugo/@42.4096622,-7.6321641,18z/data=!4m2!3m1!1s0xd30056b4a5bf867:0xc27f74853f84e20c" />
+		<property name="description" value="description1" />
+		<property name="gpsLatitude" value="42.40976" />
+		<property name="gpsLongitude" value="-7.632183" />
+		<property name="administrator" ref="administrator1" />
+		<property name="activities">
+			<list>
+				<ref bean="activity1" />
+				<ref bean="activity4" />
+			</list>
+		</property>
+		<property name="pictures">
+			<list>
+				<value>http://www.turismo.gal/imaxes/mdaw/mday/~edisp/~extract/TG058024~1~staticrendition/tg_carrusel_cabecera_grande.jpg
+				</value>
+				<value>https://upload.wikimedia.org/wikipedia/commons/2/2c/Mirador_de_Cabezoas_Ca%C3%B1on_del_Sil.jpg
+				</value>
+			</list>
+		</property>
+		<property name="comments">
+			<list>
+				<ref bean="comment7" />
+				<ref bean="comment8" />
+			</list>
+		</property>
+	</bean>
+
+	<bean class="domain.Canyon" id="canyon2">
+		<property name="title" value="title2" />
+		<property name="difficultyLevel" value="4" />
+		<property name="route" value="https://www.google.es/maps/place/Grand+Canyon,+Arizona+86444,+EE.+UU./@36.1574057,-113.9734103,12z/data=!4m2!3m1!1s0x80cc0654bd27e08d:0xb1c2554442d42e8d" />
+		<property name="description" value="description2" />
+		<property name="gpsLatitude" value="36.1159275" />
+		<property name="gpsLongitude" value="-113.9954581" />
+		<property name="administrator" ref="administrator1" />
+		<property name="activities">
+			<list>
+				<ref bean="activity2" />
+				<ref bean="activity5" />
+			</list>
+		</property>
+		<property name="pictures">
+			<list>
+				<value>https://cdn.civitatis.com/guias/lasvegas/fotos/toroweap-point.jpg
+				</value>
+				<value>http://www.hogarus.com/uploads/img/images/que-hacer-canon.jpg
+				</value>
+			</list>
+		</property>
+		<property name="comments">
+			<list>
+				<ref bean="comment9" />
+				<ref bean="comment10" />
+			</list>
+		</property>
+	</bean>
+	
+	<bean class="domain.Canyon" id="canyon3">
+		<property name="title" value="title3" />
+		<property name="difficultyLevel" value="5" />
+		<property name="route" value="https://www.google.es/maps/place/Canyon+Lake,+Texas,+EE.+UU./@29.8729421,-98.2588144,12z/data=!4m2!3m1!1s0x865c9bbea40ad011:0xba6571b88cb898b1" />
+		<property name="description" value="description1" />
+		<property name="gpsLatitude" value="29.8729421" />
+		<property name="gpsLongitude" value="-98.2588144" />
+		<property name="administrator" ref="administrator1" />
+		<property name="activities">
+			<list>
+				<ref bean="activity3" />
+				<ref bean="activity6" />
+			</list>
+		</property>
+		<property name="pictures">
+			<list>
+				<value>https://upload.wikimedia.org/wikipedia/commons/9/9d/USACE_Canyon_Lake_and_Dam_Texas.jpg
+				</value>
+				<value>http://www.baylor.edu/content/imglib/1/5/2/15287.jpg
+				</value>
+			</list>
+		</property>
+		<property name="comments">
+			<list>
+				<ref bean="comment11" />
+				<ref bean="comment12" />
+			</list>
+		</property>
+	</bean>
+
+
+	<!-- Activities -->
+	<bean class="domain.Activity" id="activity1">
+		<property name="title" value="Picnic en un precipicio" />
+		<property name="description" value="Nos gusta el riesgo" />
+		<property name="numberSeats" value="4" />
+		<property name="organiser" ref="organiser1" />
+		<property name="moment" value="09/11/2017 16:00" />
+		<property name="canyon" ref="canyon1" />
+		<property name="comments">
+			<list>
+				<ref bean="comment1" />
+				<ref bean="comment2" />
+			</list>
+		</property>
+	</bean>
+
+	<bean class="domain.Activity" id="activity2">
+		<property name="title" value="Andar por el parque" />
+		<property name="description" value="Echar el día en el parque" />
+		<property name="numberSeats" value="4" />
+		<property name="organiser" ref="organiser2" />
+		<property name="moment" value="09/11/2018 16:00" />
+		<property name="canyon" ref="canyon2" />
+		<property name="comments">
+			<list>
+				<ref bean="comment3" />
+				<ref bean="comment4" />
+			</list>
+		</property>
+	</bean>
+
+	<bean class="domain.Activity" id="activity3">
+		<property name="title" value="Cenita con la pareja" />
+		<property name="description" value="Cena en el campo" />
+		<property name="numberSeats" value="2" />
+		<property name="organiser" ref="organiser3" />
+		<property name="moment" value="09/05/2017 14:00" />
+		<property name="canyon" ref="canyon3" />
+		<property name="comments">
+			<list>
+				<ref bean="comment5" />
+				<ref bean="comment6" />
+			</list>
+		</property>
+	</bean>
+	
+	<bean class="domain.Activity" id="activity4">
+		<property name="title" value="Cenar fuera" />
+		<property name="description" value="Cena en el campo" />
+		<property name="numberSeats" value="2" />
+		<property name="organiser" ref="organiser1" />
+		<property name="moment" value="09/02/2017 18:00" />
+		<property name="canyon" ref="canyon1" />
+		<property name="comments">
+			<list>
+			</list>
+		</property>
+	</bean>
+	
+	<bean class="domain.Activity" id="activity5">
+		<property name="title" value="Puenting" />
+		<property name="description" value="Tirarnos desde un puente" />
+		<property name="numberSeats" value="2" />
+		<property name="organiser" ref="organiser2" />
+		<property name="moment" value="09/12/2017 09:00" />
+		<property name="canyon" ref="canyon2" />
+		<property name="comments">
+			<list>
+			</list>
+		</property>
+	</bean>
+	
+	<bean class="domain.Activity" id="activity6">
+		<property name="title" value="Isla Magica" />
+		<property name="description" value="Todos a Isla Magica" />
+		<property name="numberSeats" value="8" />
+		<property name="organiser" ref="organiser3" />
+		<property name="moment" value="09/07/2017 10:00" />
+		<property name="canyon" ref="canyon3" />
+		<property name="comments">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+
+	<!-- Comments -->
+
+	<bean id="comment1" class="domain.Comment">
+		<property name="title" value="Comentario 1" />
+		<property name="body" value="Texto 1" />
+		<property name="moment" value="02/02/2016" />
+		<property name="commentable" ref="activity1" />
+		<property name="actor" ref="organiser1" />
+		<property name="stars" value="1" />
+	</bean>
+
+	<bean id="comment2" class="domain.Comment">
+		<property name="title" value="Comentario 2" />
+		<property name="body" value="Texto 2" />
+		<property name="moment" value="03/02/2016" />
+		<property name="commentable" ref="activity1" />
+		<property name="actor" ref="organiser1" />
+		<property name="stars" value="2" />
+	</bean>
+
+	<bean id="comment3" class="domain.Comment">
+		<property name="title" value="Comentario 3" />
+		<property name="body" value="Texto 3" />
+		<property name="moment" value="03/03/2015" />
+		<property name="commentable" ref="activity2" />
+		<property name="actor" ref="organiser2" />
+		<property name="stars" value="10" />
+	</bean>
+
+	<bean id="comment4" class="domain.Comment">
+		<property name="title" value="Comentario 4" />
+		<property name="body" value="Texto 4" />
+		<property name="moment" value="02/03/2015" />
+		<property name="commentable" ref="activity2" />
+		<property name="actor" ref="organiser2" />
+		<property name="stars" value="5" />
+	</bean>
+
+	<bean id="comment5" class="domain.Comment">
+		<property name="title" value="Comentario 2" />
+		<property name="body" value="Texto 2" />
+		<property name="moment" value="04/04/2016" />
+		<property name="commentable" ref="activity3" />
+		<property name="actor" ref="customer1" />
+		<property name="stars" value="6" />
+	</bean>
+
+	<bean id="comment6" class="domain.Comment">
+		<property name="title" value="Comentario 3" />
+		<property name="body" value="Texto 3" />
+		<property name="moment" value="06/04/2016" />
+		<property name="commentable" ref="activity3" />
+		<property name="actor" ref="customer1" />
+		<property name="stars" value="6" />
+	</bean>
+
+	<bean id="comment7" class="domain.Comment">
+		<property name="title" value="Comentario 7" />
+		<property name="body" value="Texto 7" />
+		<property name="moment" value="05/04/2016" />
+		<property name="commentable" ref="canyon1" />
+		<property name="actor" ref="customer2" />
+		<property name="stars" value="8" />
+	</bean>
+
+	<bean id="comment8" class="domain.Comment">
+		<property name="title" value="Comentario 8" />
+		<property name="body" value="Texto 8" />
+		<property name="moment" value="04/07/2015" />
+		<property name="commentable" ref="canyon1" />
+		<property name="actor" ref="customer2" />
+		<property name="stars" value="7" />
+	</bean>
+
+	<bean id="comment9" class="domain.Comment">
+		<property name="title" value="Comentario 9" />
+		<property name="body" value="Texto 9" />
+		<property name="moment" value="05/04/2016" />
+		<property name="commentable" ref="canyon2" />
+		<property name="actor" ref="customer3" />
+		<property name="stars" value="0" />
+	</bean>
+
+	<bean id="comment10" class="domain.Comment">
+		<property name="title" value="Comentario 10" />
+		<property name="body" value="Texto 10" />
+		<property name="moment" value="05/04/2016" />
+		<property name="commentable" ref="canyon2" />
+		<property name="actor" ref="customer3" />
+		<property name="stars" value="10" />
+	</bean>
+
+	<bean id="comment11" class="domain.Comment">
+		<property name="title" value="Comentario 11" />
+		<property name="body" value="Texto 11" />
+		<property name="moment" value="05/04/2016" />
+		<property name="commentable" ref="canyon3" />
+		<property name="actor" ref="organiser3" />
+		<property name="stars" value="6" />
+	</bean>
+
+	<bean id="comment12" class="domain.Comment">
+		<property name="title" value="Comentario 12" />
+		<property name="body" value="Texto 12" />
+		<property name="moment" value="05/10/2015" />
+		<property name="commentable" ref="canyon3" />
+		<property name="actor" ref="organiser3" />
+		<property name="stars" value="5" />
+	</bean>
+
+	<!-- Organiser Comments -->
+
+	<bean id="organiserComment1" class="domain.OrganiserComment">
+		<property name="organiser" ref="organiser1" />
+		<property name="comments">
+			<list>
+				<ref bean="comment16" />
+			</list>
+		</property>
+	</bean>
+
+	<bean id="organiserComment2" class="domain.OrganiserComment">
+		<property name="organiser" ref="organiser2" />
+		<property name="comments">
+			<list>
+				<ref bean="comment17" />
+			</list>
+		</property>
+	</bean>
+
+	<bean id="organiserComment3" class="domain.OrganiserComment">
+		<property name="organiser" ref="organiser3" />
+		<property name="comments">
+			<list>
+				<ref bean="comment18" />
+			</list>
+		</property>
+	</bean>
+
+	<!-- Customer Comments -->
+
+	<bean id="customerComment1" class="domain.CustomerComment">
+		<property name="customer" ref="customer1" />
+		<property name="comments">
+			<list>
+				<ref bean="comment19" />
+			</list>
+		</property>
+	</bean>
+
+	<bean id="customerComment2" class="domain.CustomerComment">
+		<property name="customer" ref="customer2" />
+		<property name="comments">
+			<list>
+				<ref bean="comment20" />
+			</list>
+		</property>
+	</bean>
+
+	<bean id="customerComment3" class="domain.CustomerComment">
+		<property name="customer" ref="customer3" />
+		<property name="comments">
+			<list>
+				<ref bean="comment21" />
+			</list>
+		</property>
+	</bean>
+
+	<!-- Comments (for organisers) -->
+
+	<bean id="comment16" class="domain.Comment">
+		<property name="moment" value="09/11/2015 16:00" />
+		<property name="body" value="Worst organiser in the world" />
+		<property name="commentable" ref="organiserComment1" />
+		<property name="actor" ref="customer1" />
+		<property name="stars" value="1" />
+	</bean>
+
+	<bean id="comment17" class="domain.Comment">
+		<property name="moment" value="11/08/2015 15:44" />
+		<property name="body" value="Nice to meet him" />
+		<property name="commentable" ref="organiserComment2" />
+		<property name="actor" ref="customer2" />
+		<property name="stars" value="10" />
+	</bean>
+
+	<bean id="comment18" class="domain.Comment">
+		<property name="moment" value="09/08/2015 16:00" />
+		<property name="body" value="The nicest organiser" />
+		<property name="commentable" ref="organiserComment3" />
+		<property name="actor" ref="customer3" />
+		<property name="stars" value="1" />
+	</bean>
+
+	<!-- Comments (for customers) -->
+
+	<bean id="comment19" class="domain.Comment">
+		<property name="moment" value="09/11/2015 16:00" />
+		<property name="body" value="Body 2" />
+		<property name="commentable" ref="customerComment1" />
+		<property name="actor" ref="organiser1" />
+		<property name="stars" value="1" />
+	</bean>
+
+	<bean id="comment20" class="domain.Comment">
+		<property name="moment" value="11/08/2015 15:44" />
+		<property name="body" value="Nice to meet him" />
+		<property name="commentable" ref="customerComment2" />
+		<property name="actor" ref="organiser2" />
+		<property name="stars" value="2" />
+	</bean>
+
+	<bean id="comment21" class="domain.Comment">
+		<property name="moment" value="09/08/2015 16:00" />
+		<property name="body" value="The nicest customer" />
+		<property name="commentable" ref="customerComment3" />
+		<property name="actor" ref="organiser3" />
+		<property name="stars" value="8" />
+	</bean>
+
+</beans>
