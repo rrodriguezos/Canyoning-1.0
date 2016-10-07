@@ -43,7 +43,7 @@ public class DailyPlanServiceTest extends AbstractTest {
 		DailyPlan dplan = dailyPlanService.create();
 		Canyon trip = tripService.findOne(76);
 		dplan.setTrip(trip);
-		dplan.setTitle("titulo 1");
+		dplan.setName("titulo 1");
 		String weekDayString = "05/04/2016";
 		Date weekDay = helpService.formatStringToDateWithoutHour(weekDayString);
 		dplan.setWeekDay(weekDay);
@@ -66,7 +66,7 @@ public class DailyPlanServiceTest extends AbstractTest {
 		DailyPlan dplan = dailyPlanService.create();
 		Canyon trip = tripService.findOne(76);
 		dplan.setTrip(trip);
-		dplan.setTitle("");
+		dplan.setName("");
 		Date weekDay = new Date(04 / 04 / 2016);
 		dplan.setWeekDay(weekDay);
 		dplan.setDescription("Descripcion 1");
@@ -85,7 +85,7 @@ public class DailyPlanServiceTest extends AbstractTest {
 		DailyPlan dplan = dailyPlanService.create();
 		Canyon trip = tripService.findOne(76);
 		dplan.setTrip(trip);
-		dplan.setTitle("Titulo 1");
+		dplan.setName("Titulo 1");
 		Date weekDay = new Date(04 / 04 / 2016);
 		dplan.setWeekDay(weekDay);
 		dplan.setDescription("Descripcion 1");

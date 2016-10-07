@@ -10,12 +10,17 @@ import domain.Activity;
 
 @Repository 
 public interface ActivityRepository extends JpaRepository<Activity, Integer>{ 
-	@Query("select a from Activity a where a.appropriated is true")
-	Collection<Activity> findAllAppropriated();
 
-	@Query("select a.activities from ActivityType a where a.id = ?1")
-	public Collection<Activity> activitiesByActivityType(int activitytypeId);
+	@Query("select d from DailyPlan d where d.trip.id = ?1")
+	Collection<Activity> activityByCanyon(int canyonId);
 
-	@Query("select s.activity from Slot s where s.id = ?1 and s.activity.appropriated is true")
-	Activity activityBySlot(int slotId);
+	
+	@Query("select a from Activity a where a.title like CONCAT(?1, '%') or a.description like CONCAT(?1, '%')")
+	Collection<Activity> findActivityByKeyword(String text);
+
+
+	
+	
+	@Query("select c.activity from Canyon c where c.name like CONCAT(?1, '%') or c.description like CONCAT(?1, '%')")
+	Collection<Activity> findActivityByCanyonKeyword(String text);
 } 

@@ -52,7 +52,7 @@ public class SlotServiceTest extends AbstractTest {
 		Date endTimeDate = helpService.formatFromStringToDate(endTimeString);
 
 		slot.setDailyPlan(dailyPlan);
-		slot.setTitle("titulo 1");
+		slot.setName("titulo 1");
 		slot.setDescription("Descripcion 1");
 		slot.setStartTime(startTimeDate);
 		slot.setEndTime(endTimeDate);
@@ -83,7 +83,7 @@ public class SlotServiceTest extends AbstractTest {
 		Date endTimeDate = helpService.formatFromStringToDate(endTimeString);
 
 		slot.setDailyPlan(dailyPlan);
-		slot.setTitle(" ");
+		slot.setName(" ");
 		slot.setDescription(" ");
 		slot.setStartTime(startTimeDate);
 		slot.setEndTime(endTimeDate);
@@ -111,7 +111,7 @@ public class SlotServiceTest extends AbstractTest {
 		Date endTimeDate = helpService.formatFromStringToDate(endTimeString);
 
 		slot.setDailyPlan(dailyPlan);
-		slot.setTitle("titulo 1");
+		slot.setName("titulo 1");
 		slot.setDescription("Descripcion 1");
 		slot.setStartTime(startTimeDate);
 		slot.setEndTime(endTimeDate);

@@ -25,8 +25,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import security.UserAccount;
 import services.AdministratorService;
-import services.ManagerService;
-import services.UserService;
+import services.CustomerService;
+import services.OrganiserService;
 import domain.Actor;
 
 @Controller
@@ -37,9 +37,9 @@ public class WelcomeController extends AbstractController {
 	@Autowired
 	private AdministratorService administratorService;
 	@Autowired
-	private UserService userService;
+	private OrganiserService organiserService;
 	@Autowired
-	private ManagerService managerService;
+	private CustomerService customerService;
 
 	// Constructors -----------------------------------------------------------
 
@@ -68,14 +68,14 @@ public class WelcomeController extends AbstractController {
 		if (ua != null) {
 			actor = administratorService.findByUserAccount(ua);
 			if (actor == null) {
-				actor = userService.findByUserAccount(ua);
+				actor = organiserService.findByUserAccount(ua);
 				if (actor == null) {
-					actor = managerService.findByUserAccount(ua);
+					actor = customerService.findByUserAccount(ua);
 				}
 			}
 		}
-		name = actor == null ? name : actor.getName() + " "
-				+ actor.getSurname();
+		name = actor == null ? name : actor.getUserAccount().getUsername() + " "
+				+ actor.getEmail();
 		name = name.equals("") ? name : ", " + name;
 
 		formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm");

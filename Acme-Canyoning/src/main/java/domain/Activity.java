@@ -1,5 +1,6 @@
 package domain;
 
+import java.util.Collection;
 import java.util.Date;
 
 import javax.persistence.Access;
@@ -7,6 +8,7 @@ import javax.persistence.AccessType;
 import javax.persistence.Entity;
 import javax.persistence.Index;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -19,7 +21,9 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Access(AccessType.PROPERTY)
-@Table(indexes = { @Index(columnList="moment"),  @Index(columnList="numberSeats"), @Index(columnList="title"), @Index(columnList="description")})
+@Table(indexes = { @Index(columnList = "moment"),
+		@Index(columnList = "numberSeats"), @Index(columnList = "title"),
+		@Index(columnList = "description") })
 public class Activity extends Commentable {
 
 	// Constructor ----------------------------------------------
@@ -96,6 +100,19 @@ public class Activity extends Commentable {
 
 	public void setOrganiser(Organiser organiser) {
 		this.organiser = organiser;
+	}
+
+	private Collection<Request> requests;
+
+	@Valid
+	@NotNull
+	@OneToMany(mappedBy = "activity")
+	public Collection<Request> getRequests() {
+		return requests;
+	}
+
+	public void setRequests(Collection<Request> requests) {
+		this.requests = requests;
 	}
 
 }

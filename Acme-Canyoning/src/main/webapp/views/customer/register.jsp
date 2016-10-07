@@ -33,27 +33,25 @@
 
 <security:authorize access="isAnonymous()">
 
-	<form:form action="user/register.do" modelAttribute="userRegisterForm">
+	<form:form action="customer/register.do"
+		modelAttribute="customerRegisterForm">
 
 
-		<acme:textbox code="user.username" path="username" />
+		<acme:textbox code="customer.username" path="username" />
 
-		<acme:password code="user.password" path="password" />
-		<acme:password code="user.confirmPassword" path="confirmPassword" />
+		<acme:password code="customer.password" path="password" />
+		<acme:password code="customer.confirmPassword" path="confirmPassword" />
 
-		<acme:textbox code="user.name" path="name" />
 
-		<acme:textbox code="user.surname" path="surname" />
+		<acme:textbox code="customer.email" path="email" />
 
-		<acme:textbox code="user.emailAddress" path="emailAddress" />
+		<acme:textbox code="customer.phone" path="phone" />
 
-		<acme:textbox code="user.phone" path="phone" />
-
-		<acme:checkbox code="user.accept" path="accept"
+		<acme:checkbox code="customer.accept" path="accept"
 			url="welcome/conditions.do" />
 
-		<acme:submit name="save" code="user.save" />
-		<acme:cancel url="welcome/index.do" code="user.cancel" />
+		<acme:submit name="save" code="customer.save" />
+		<acme:cancel url="welcome/index.do" code="customer.cancel" />
 
 	</form:form>
 

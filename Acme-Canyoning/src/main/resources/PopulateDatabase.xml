@@ -106,6 +106,13 @@
 			<list>
 			</list>
 		</property>
+		<property name="canyons">
+			<list>
+				<ref bean="canyon1" />
+				<ref bean="canyon2" />
+				<ref bean="canyon3" />
+			</list>
+		</property>
 	</bean>
 
 	<!-- Organisers -->
@@ -113,12 +120,12 @@
 	<bean class="domain.Organiser" id="organiser1">
 		<property value="manolo@mail.es" name="email" />
 		<property name="userAccount" ref="userAccount2" />
+		<property name="about" ref="about1" />
 		<property value="+34(732)7218" name="phone" />
-		<property name="about" value="Este es el organiser 1" />
 		<property name="activities">
 			<list>
-			<ref bean="activity1" />
-			<ref bean="activity4" />
+				<ref bean="activity1" />
+				<ref bean="activity4" />
 			</list>
 		</property>
 		<property name="comments">
@@ -134,12 +141,12 @@
 	<bean class="domain.Organiser" id="organiser2">
 		<property value="charro@gmail.com" name="email" />
 		<property name="userAccount" ref="userAccount3" />
+		<property name="about" ref="about2" />
 		<property value="+34(788)7218" name="phone" />
-		<property name="about" value="Este es el organiser 2" />
 		<property name="activities">
 			<list>
-			<ref bean="activity2" />
-			<ref bean="activity5" />
+				<ref bean="activity2" />
+				<ref bean="activity5" />
 			</list>
 		</property>
 		<property name="comments">
@@ -155,19 +162,19 @@
 	<bean class="domain.Organiser" id="organiser3">
 		<property value="Doming@gmail.com" name="email" />
 		<property name="userAccount" ref="userAccount4" />
-		<property name="about" value="Este es el organiser 3" />
+		<property name="about" ref="about3" />
 		<property value="+34(788)1234" name="phone" />
 		<property name="activities">
 			<list>
-			<ref bean="activity3" />
-			<ref bean="activity6" />
+				<ref bean="activity3" />
+				<ref bean="activity6" />
 			</list>
 		</property>
 		<property name="comments">
 			<list>
-			<ref bean="comment11" />
-			<ref bean="comment12" />
-			<ref bean="comment21" />
+				<ref bean="comment11" />
+				<ref bean="comment12" />
+				<ref bean="comment21" />
 			</list>
 		</property>
 		<property name="organiserComment" ref="organiserComment3" />
@@ -181,9 +188,14 @@
 		<property value="+34(788)1888" name="phone" />
 		<property name="comments">
 			<list>
-			<ref bean="comment5" />
-			<ref bean="comment6" />
-			<ref bean="comment16" />
+				<ref bean="comment5" />
+				<ref bean="comment6" />
+				<ref bean="comment16" />
+			</list>
+		</property>
+		<property name="requests">
+			<list>
+				<ref bean="request1" />
 			</list>
 		</property>
 		<property name="customerComment" ref="customerComment1" />
@@ -197,9 +209,14 @@
 		<property value="+33(722)1888" name="phone" />
 		<property name="comments">
 			<list>
-			<ref bean="comment7" />
-			<ref bean="comment8" />
-			<ref bean="comment17" />
+				<ref bean="comment7" />
+				<ref bean="comment8" />
+				<ref bean="comment17" />
+			</list>
+		</property>
+		<property name="requests">
+			<list>
+				<ref bean="request2" />
 			</list>
 		</property>
 		<property name="customerComment" ref="customerComment2" />
@@ -211,23 +228,64 @@
 		<property value="+33(722)1245" name="phone" />
 		<property name="comments">
 			<list>
-			<ref bean="comment9" />
-			<ref bean="comment10" />
-			<ref bean="comment18" />
+				<ref bean="comment9" />
+				<ref bean="comment10" />
+				<ref bean="comment18" />
+			</list>
+		</property>
+		<property name="requests">
+			<list>
+				<ref bean="request3" />
 			</list>
 		</property>
 		<property name="customerComment" ref="customerComment3" />
 	</bean>
 
+	<!-- GPSCoordinates -->
+	<bean id="gps1" class="domain.GPSCoordinates">
+		<property name="latitude" value="6.01" />
+		<property name="longitude" value="37.375" />
+		<property name="altitude" value="0.0" />
+	</bean>
+
+	<bean id="gps2" class="domain.GPSCoordinates">
+		<property name="latitude" value="-12.00" />
+		<property name="longitude" value="20.375" />
+		<property name="altitude" value="-15.005" />
+	</bean>
+
+	<bean id="gps3" class="domain.GPSCoordinates">
+		<property name="latitude" value="-48.00" />
+		<property name="longitude" value="15.020" />
+		<property name="altitude" value="30.005" />
+	</bean>
+
+	<!-- Abouts -->
+
+	<bean class="domain.About" id="about1">
+		<property value="Este es el acerca de del organiser 1" name="message" />
+		<property name="organiser" ref="organiser1" />
+	</bean>
+
+	<bean class="domain.About" id="about2">
+		<property value="Este es el acerca de del organiser 2" name="message" />
+		<property name="organiser" ref="organiser2" />
+	</bean>
+
+	<bean class="domain.About" id="about3">
+		<property value="Este es el acerca de del organiser 3" name="message" />
+		<property name="organiser" ref="organiser3" />
+	</bean>
+
 	<!-- Canyons -->
 	<bean class="domain.Canyon" id="canyon1">
-		<property name="title" value="title1" />
+		<property name="name" value="name1" />
 		<property name="difficultyLevel" value="2" />
-		<property name="route" value="https://www.google.es/maps/place/Can%C3%B3n+do+Sil,+27460,+Lugo/@42.4096622,-7.6321641,18z/data=!4m2!3m1!1s0xd30056b4a5bf867:0xc27f74853f84e20c" />
+		<property name="route"
+			value="https://www.google.es/maps/place/Can%C3%B3n+do+Sil,+27460,+Lugo/@42.4096622,-7.6321641,18z/data=!4m2!3m1!1s0xd30056b4a5bf867:0xc27f74853f84e20c" />
 		<property name="description" value="description1" />
-		<property name="gpsLatitude" value="42.40976" />
-		<property name="gpsLongitude" value="-7.632183" />
-		<property name="administrator" ref="administrator1" />
+		<property name="gpsCoordinates" ref="gps1" />
+		<property name="administrator" ref="administrator" />
 		<property name="activities">
 			<list>
 				<ref bean="activity1" />
@@ -251,13 +309,13 @@
 	</bean>
 
 	<bean class="domain.Canyon" id="canyon2">
-		<property name="title" value="title2" />
+		<property name="name" value="name2" />
 		<property name="difficultyLevel" value="4" />
-		<property name="route" value="https://www.google.es/maps/place/Grand+Canyon,+Arizona+86444,+EE.+UU./@36.1574057,-113.9734103,12z/data=!4m2!3m1!1s0x80cc0654bd27e08d:0xb1c2554442d42e8d" />
+		<property name="route"
+			value="https://www.google.es/maps/place/Grand+Canyon,+Arizona+86444,+EE.+UU./@36.1574057,-113.9734103,12z/data=!4m2!3m1!1s0x80cc0654bd27e08d:0xb1c2554442d42e8d" />
 		<property name="description" value="description2" />
-		<property name="gpsLatitude" value="36.1159275" />
-		<property name="gpsLongitude" value="-113.9954581" />
-		<property name="administrator" ref="administrator1" />
+		<property name="gpsCoordinates" ref="gps2" />
+		<property name="administrator" ref="administrator" />
 		<property name="activities">
 			<list>
 				<ref bean="activity2" />
@@ -279,15 +337,15 @@
 			</list>
 		</property>
 	</bean>
-	
+
 	<bean class="domain.Canyon" id="canyon3">
-		<property name="title" value="title3" />
+		<property name="name" value="name3" />
 		<property name="difficultyLevel" value="5" />
-		<property name="route" value="https://www.google.es/maps/place/Canyon+Lake,+Texas,+EE.+UU./@29.8729421,-98.2588144,12z/data=!4m2!3m1!1s0x865c9bbea40ad011:0xba6571b88cb898b1" />
+		<property name="route"
+			value="https://www.google.es/maps/place/Canyon+Lake,+Texas,+EE.+UU./@29.8729421,-98.2588144,12z/data=!4m2!3m1!1s0x865c9bbea40ad011:0xba6571b88cb898b1" />
 		<property name="description" value="description1" />
-		<property name="gpsLatitude" value="29.8729421" />
-		<property name="gpsLongitude" value="-98.2588144" />
-		<property name="administrator" ref="administrator1" />
+		<property name="gpsCoordinates" ref="gps3" />
+		<property name="administrator" ref="administrator" />
 		<property name="activities">
 			<list>
 				<ref bean="activity3" />
@@ -311,6 +369,9 @@
 	</bean>
 
 
+
+
+
 	<!-- Activities -->
 	<bean class="domain.Activity" id="activity1">
 		<property name="title" value="Picnic en un precipicio" />
@@ -323,6 +384,11 @@
 			<list>
 				<ref bean="comment1" />
 				<ref bean="comment2" />
+			</list>
+		</property>
+		<property name="requests">
+			<list>
+				<ref bean="request1" />
 			</list>
 		</property>
 	</bean>
@@ -340,6 +406,11 @@
 				<ref bean="comment4" />
 			</list>
 		</property>
+		<property name="requests">
+			<list>
+				<ref bean="request2" />
+			</list>
+		</property>
 	</bean>
 
 	<bean class="domain.Activity" id="activity3">
@@ -355,8 +426,13 @@
 				<ref bean="comment6" />
 			</list>
 		</property>
+		<property name="requests">
+			<list>
+				<ref bean="request3" />
+			</list>
+		</property>
 	</bean>
-	
+
 	<bean class="domain.Activity" id="activity4">
 		<property name="title" value="Cenar fuera" />
 		<property name="description" value="Cena en el campo" />
@@ -368,8 +444,13 @@
 			<list>
 			</list>
 		</property>
+		<property name="requests">
+			<list>
+
+			</list>
+		</property>
 	</bean>
-	
+
 	<bean class="domain.Activity" id="activity5">
 		<property name="title" value="Puenting" />
 		<property name="description" value="Tirarnos desde un puente" />
@@ -381,8 +462,12 @@
 			<list>
 			</list>
 		</property>
+		<property name="requests">
+			<list>
+			</list>
+		</property>
 	</bean>
-	
+
 	<bean class="domain.Activity" id="activity6">
 		<property name="title" value="Isla Magica" />
 		<property name="description" value="Todos a Isla Magica" />
@@ -394,7 +479,41 @@
 			<list>
 			</list>
 		</property>
+		<property name="requests">
+			<list>
+
+			</list>
+		</property>
 	</bean>
+
+	<!-- Requests -->
+
+	<bean class="domain.Request" id="request1">
+		<property value="09/11/2014 16:00" name="momentPending" />
+		<property name="requestState" value="PENDING" />
+		<property name="customer" ref="customer1" />
+		<property name="activity" ref="activity1" />
+	</bean>
+
+	<bean class="domain.Request" id="request2">
+		<property value="09/11/2015 16:00" name="momentPending" />
+		<property value="09/12/2015 16:00" name="momentAccepted" />
+		<property name="requestState" value="ACCEPTED" />
+		<property name="customer" ref="customer2" />
+		<property name="activity" ref="activity2" />
+	</bean>
+
+	<bean class="domain.Request" id="request3">
+		<property value="09/11/2014 16:00" name="momentPending" />
+		<property name="requestState" value="PENDING" />
+		<property name="customer" ref="customer3" />
+		<property name="activity" ref="activity3" />
+	</bean>
+
+
+
+
+
 
 
 	<!-- Comments -->
@@ -568,6 +687,7 @@
 	<!-- Comments (for organisers) -->
 
 	<bean id="comment16" class="domain.Comment">
+		<property name="title" value="Comentario 16" />
 		<property name="moment" value="09/11/2015 16:00" />
 		<property name="body" value="Worst organiser in the world" />
 		<property name="commentable" ref="organiserComment1" />
@@ -576,6 +696,7 @@
 	</bean>
 
 	<bean id="comment17" class="domain.Comment">
+		<property name="title" value="Comentario 17" />
 		<property name="moment" value="11/08/2015 15:44" />
 		<property name="body" value="Nice to meet him" />
 		<property name="commentable" ref="organiserComment2" />
@@ -584,6 +705,7 @@
 	</bean>
 
 	<bean id="comment18" class="domain.Comment">
+		<property name="title" value="Comentario 18" />
 		<property name="moment" value="09/08/2015 16:00" />
 		<property name="body" value="The nicest organiser" />
 		<property name="commentable" ref="organiserComment3" />
@@ -594,6 +716,7 @@
 	<!-- Comments (for customers) -->
 
 	<bean id="comment19" class="domain.Comment">
+		<property name="title" value="Comentario 19" />
 		<property name="moment" value="09/11/2015 16:00" />
 		<property name="body" value="Body 2" />
 		<property name="commentable" ref="customerComment1" />
@@ -602,6 +725,7 @@
 	</bean>
 
 	<bean id="comment20" class="domain.Comment">
+		<property name="title" value="Comentario 20" />
 		<property name="moment" value="11/08/2015 15:44" />
 		<property name="body" value="Nice to meet him" />
 		<property name="commentable" ref="customerComment2" />
@@ -610,6 +734,7 @@
 	</bean>
 
 	<bean id="comment21" class="domain.Comment">
+		<property name="title" value="Comentario 21" />
 		<property name="moment" value="09/08/2015 16:00" />
 		<property name="body" value="The nicest customer" />
 		<property name="commentable" ref="customerComment3" />

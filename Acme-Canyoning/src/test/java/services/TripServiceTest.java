@@ -44,7 +44,7 @@ public class TripServiceTest extends AbstractTest {
 	public void testCreateTripAsUser() {
 		authenticate("user1");
 		Canyon trip = tripService.create();
-		trip.setTitle("titulo 1");
+		trip.setName("titulo 1");
 
 		String startDateString = "04/04/2016 02:00";
 		String endDateString = "04/05/2016 02:00";
@@ -66,7 +66,7 @@ public class TripServiceTest extends AbstractTest {
 	public void testCreateTripAsUserNegative1() {
 		authenticate("user1");
 		Canyon trip = tripService.create();
-		trip.setTitle("");
+		trip.setName("");
 
 		String startDateString = "";
 		String endDateString = "";
@@ -85,7 +85,7 @@ public class TripServiceTest extends AbstractTest {
 	public void testCreateTripAsUserNegative2() {
 		authenticate("manager1");
 		Canyon trip = tripService.create();
-		trip.setTitle("Titulo 1");
+		trip.setName("Titulo 1");
 
 		String startDateString = "04/04/2016 02:00";
 		String endDateString = "04/05/2016 02:00";
@@ -104,7 +104,7 @@ public class TripServiceTest extends AbstractTest {
 	public void testCreateTripAsUserNegative3() {
 		authenticate("");
 		Canyon trip = tripService.create();
-		trip.setTitle("titulo 1");
+		trip.setName("titulo 1");
 
 		String startDateString = "04/04/2016 02:00";
 		String endDateString = "04/05/2016 02:00";
@@ -170,7 +170,7 @@ public class TripServiceTest extends AbstractTest {
 		trip.setStartDate(startDate);
 		trip.setEndDate(endDate);
 
-		trip.setTitle("title edit");
+		trip.setName("title edit");
 		trip.setDescription("Description edit");
 
 		tripService.save(trip);
@@ -196,7 +196,7 @@ public class TripServiceTest extends AbstractTest {
 		trip.setStartDate(startDate);
 		trip.setEndDate(endDate);
 
-		trip.setTitle("");
+		trip.setName("");
 		trip.setDescription("Description edit");
 
 		tripService.save(trip);
@@ -219,7 +219,7 @@ public class TripServiceTest extends AbstractTest {
 		trip.setStartDate(startDate);
 		trip.setEndDate(endDate);
 
-		trip.setTitle("Titulo 1");
+		trip.setName("Titulo 1");
 		trip.setDescription("Description edit");
 
 		tripService.save(trip);
@@ -362,7 +362,7 @@ public class TripServiceTest extends AbstractTest {
 		trip.setStartDate(startDate);
 		trip.setEndDate(endDate);
 
-		trip.setTitle("title edition 1");
+		trip.setName("title edition 1");
 		trip.setDescription("Description edition 1");
 
 		tripService.save(trip);
@@ -386,7 +386,7 @@ public class TripServiceTest extends AbstractTest {
 			trip.setStartDate(startDate);
 			trip.setEndDate(endDate);
 
-			trip.setTitle("title edition 2");
+			trip.setName("title edition 2");
 			trip.setDescription("Description edition 2");
 
 			tripService.save(trip);

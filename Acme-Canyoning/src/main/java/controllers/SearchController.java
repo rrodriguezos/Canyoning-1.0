@@ -14,7 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import services.TripService;
+import services.ActivityService;
+import domain.Activity;
 import domain.Canyon;
 import forms.SearchForm;
 
@@ -23,7 +24,7 @@ import forms.SearchForm;
 public class SearchController extends AbstractController  {
 	
 	@Autowired
-	private TripService tripService;
+	private ActivityService activityService;
 
 	@RequestMapping(value = "/buscar", method = RequestMethod.GET)
 	public ModelAndView buscar() {
@@ -47,11 +48,11 @@ public class SearchController extends AbstractController  {
 		
 		Assert.notNull(searchForm);
 		String text = searchForm.getText();
-		Collection<Canyon> trips = new HashSet<Canyon>();
-		trips = tripService.findTripByKeyword(text);
+		Collection<Activity> activities = new HashSet<Activity>();
+		activities = activityService.findActivityByKeyword(text);
 
 		result = new ModelAndView("search/buscando");
-		result.addObject("trips", trips);
+		result.addObject("activities", activities);
 		result.addObject("searchForm", searchForm);
 		result.addObject("requestUri", "search/buscando.do");
 			} catch (Throwable oops) {
@@ -70,11 +71,11 @@ public class SearchController extends AbstractController  {
 
 		Assert.notNull(searchForm);
 		String text = searchForm.getText();
-		Collection<Canyon> trips = new HashSet<Canyon>();
-		trips = tripService.findTripByKeyword(text);
+		Collection<Activity> activities = new HashSet<Activity>();
+		activities = activityService.findActivityByKeyword(text);
 
 		result = new ModelAndView("search/buscando");
-		result.addObject("trips", trips);
+		result.addObject("activities", activities);
 		result.addObject("searchForm", searchForm);
 		result.addObject("requestUri", "search/buscando.do");
 

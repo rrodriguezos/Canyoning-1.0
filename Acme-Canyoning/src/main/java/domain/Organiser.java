@@ -11,8 +11,6 @@ import javax.persistence.OneToOne;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
-import org.hibernate.validator.constraints.NotBlank;
-
 @Entity
 @Access(AccessType.PROPERTY)
 public class Organiser extends Actor {
@@ -23,17 +21,6 @@ public class Organiser extends Actor {
 	}
 
 	// Attributes ----------------------------------------------------------
-
-	private String about;
-
-	@NotBlank
-	public String getAbout() {
-		return about;
-	}
-
-	public void setAbout(String about) {
-		this.about = about;
-	}
 
 	// Relationships --------------------------------------------------------
 	private Collection<Activity> activities;
@@ -58,6 +45,19 @@ public class Organiser extends Actor {
 
 	public void setOrganiserComment(OrganiserComment organiserComment) {
 		this.organiserComment = organiserComment;
+	}
+
+	
+	private About about;
+
+	@Valid
+	@OneToOne(optional = true, cascade = CascadeType.ALL, mappedBy = "organiser")
+	public About getAbout() {
+		return about;
+	}
+
+	public void setAbout(About about) {
+		this.about = about;
 	}
 
 }
