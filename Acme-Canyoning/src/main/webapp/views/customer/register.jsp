@@ -31,6 +31,15 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@taglib prefix="acme" tagdir="/WEB-INF/tags"%>
 
+<script>
+	function myFunction(str) {
+     var patt = new RegExp("^([+][0-9]{1,2})?([0-9]{3})?(?:[0-9]{4,})");
+     if(patt.test(str)==false){
+    	 window.alert("<spring:message code="customer.phone.confirm"/>");
+     }	  
+ 	}
+</script>
+
 <security:authorize access="isAnonymous()">
 
 	<form:form action="customer/register.do"
@@ -50,7 +59,8 @@
 		<acme:checkbox code="customer.accept" path="accept"
 			url="welcome/conditions.do" />
 
-		<acme:submit name="save" code="customer.save" />
+		<!--<acme:submit name="save" code="customer.save" />-->
+			<input type="submit" name="save" value="<spring:message code="customer.save"/>" onclick="javascript: myFunction(this.form.phone.value) " />
 		<acme:cancel url="welcome/index.do" code="customer.cancel" />
 
 	</form:form>

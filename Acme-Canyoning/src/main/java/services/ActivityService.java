@@ -103,19 +103,19 @@ public class ActivityService {
 		return result;
 	}
 
-	public Collection<Activity> findActivityByKeyword(String text) {
-		Collection<Activity> result;
-		result = activityRepository.findActivityByKeyword(text);
-		Collection<Activity> result1;
-		result1 = activityRepository.findActivityByCanyonKeyword(text);
-		
-
-		for (Activity t : result1) {
-			if (!result.contains(t)) {
-				result.add(t);
-			}
-		}
-		return result;
-	}
+//	public Collection<Activity> findActivityByKeyword(String text) {
+//		Collection<Activity> result;
+//		result = activityRepository.findActivityByKeyword(text);
+//		Collection<Activity> result1;
+//		result1 = activityRepository.findActivityByCanyonKeyword(text);
+//		
+//
+//		for (Activity t : result1) {
+//			if (!result.contains(t)) {
+//				result.add(t);
+//			}
+//		}
+//		return result;
+//	}
 
 }

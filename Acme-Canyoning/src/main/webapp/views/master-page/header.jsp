@@ -27,76 +27,62 @@
 				<spring:message code="master.page.home" />
 		</a></li>
 
-		<li><a href="trip/list.do"><spring:message
-					code="master.page.public.catalogueTrip" /></a>
+		<li><a href="canyon/list.do"><spring:message
+					code="master.page.public.catalogueCanyon" /></a>
+					<li><a href="activity/list.do"><spring:message
+					code="master.page.public.catalogueActivity" /></a>
 		<li><a class="fNiv" href="search/buscar.do"><spring:message
-					code="master.page.search.trip" /></a></li>
-		<li><a href="user/list.do"><spring:message
-					code="master.page.public.usersList" /></a>
-		<li><a href="activitytype/activitytypes.do"><spring:message
-					code="master.page.public.activitytypeList" /></a> <security:authorize
+					code="master.page.search.activities" /></a></li>
+				<security:authorize
 				access="isAnonymous()">
 				<li><a class="fNiv" href="customer/register.do"> <spring:message
 							code="master.page.register" /></a></li>
 				<li><a class="fNiv" href="security/login.do"> <spring:message
 							code="master.page.login" /></a></li>
-			</security:authorize> <security:authorize access="hasRole('ADMINISTRATOR')">
+			</security:authorize> 
+			
+			<security:authorize access="hasRole('ADMINISTRATOR')">
 				<li><a class="fNiv" href="dashboard/administrator/list.do">
 						<spring:message code="master.page.administrator.dashboard" />
 				</a></li>
 
-			</security:authorize> <security:authorize access="isAuthenticated()">
+			</security:authorize> 
+			
+			<security:authorize access="isAuthenticated()">
 				<li><a class="fNiv"> <spring:message
 							code="master.page.profile" /> (<security:authentication
 							property="principal.username" />)
 				</a>
 					<ul>
 						<li class="arrow"></li>
+									<li><a href="actor/list.do"><spring:message
+					code="master.page.auth.actorsList" /></a>
 
-						<security:authorize access="hasRole('USER')">
-							<li><a href="user/edit.do"><spring:message
-										code="master.page.user.profile" /></a></li>
-							<li><a href="trip/user/mylist.do"><spring:message
-										code="master.page.user.trips" /></a></li>
-							<li><a href="trip/user/create.do"><spring:message
-										code="master.page.user.createTrips" /></a></li>
-							<li><a href="activity/user/create.do"><spring:message
-										code="master.page.user.createActivities" /></a></li>
-							<li><a href="trip/user/subscribed.do"><spring:message
-										code="master.page.user.tripsSubscribed" /></a></li>
+						<security:authorize access="hasRole('CUSTOMER')">
+							<li><a href="activity/customer/mylist.do"><spring:message
+										code="master.page.customer.activities" /></a></li>
+										
 						</security:authorize>
 
-						<security:authorize access="hasRole('MANAGER')">
-							<li><a href="activitytype/manager/list.do"><spring:message
-										code="master.page.manager.activitytpes" /></a></li>
-							<li><a href="campaign/manager/list.do"><spring:message
-										code="master.page.manager.listCamp" /></a></li>
-							<li><a href="campaign/manager/create.do"><spring:message
-										code="master.page.manager.createCamp" /></a></li>
-							<li><a href="creditcard/manager/list.do"><spring:message
-										code="master.page.manager.listCCard" /></a></li>
-							<li><a href="creditcard/manager/create.do"><spring:message
-										code="master.page.manager.createCCard" /></a></li>
-							<li><a href="chargerecord/manager/list.do"><spring:message
-										code="master.page.manager.charge" /></a></li>
+						<security:authorize access="hasRole('ORGANISER')">
+							<li><a href="activity/organiser/list.do"><spring:message
+										code="master.page.organiser.activities" /></a></li>
+
+							<li><a href="activity/organiser/create.do"><spring:message
+										code="master.page.organiser.createActivity" /></a></li>
+
 						</security:authorize>
 
 						<security:authorize access="hasRole('ADMINISTRATOR')">
-							<li><a href="managger/administrator/list.do"><spring:message
-										code="master.page.administrator.register.manager" /></a></li>
-							<li><a href="administrator/administrator/list.do"><spring:message
-										code="master.page.administrator.register.administrator" /></a></li>
-							<li><a href="tax/administrator/list.do"><spring:message
-										code="master.page.manager.tax" /></a></li>
-							<li><a href="tax/administrator/create.do"><spring:message
-										code="master.page.manager.createTax" /></a></li>
-							<li><a href="banner/administrator/list.do"><spring:message
-										code="master.page.manager.listBanner" /></a></li>
-							<li><a href="chargerecord/administrator/generate.do"><spring:message
-										code="master.page.manager.generate" /></a></li>			
+							<li><a href="organiser/administrator/list.do"><spring:message
+										code="master.page.administrator.register.organiser" /></a></li>
+							
+							<li><a href="canyon/administrator/list.do"><spring:message
+										code="master.page.manager.canyon" /></a></li>
+										<li><a href="canyon/administrator/create.do"><spring:message
+										code="master.page.organiser.createCanyon" /></a></li>
+	
 						</security:authorize>
-						<li><a href="folder/actor/list.do"> <spring:message
-									code="master.page.user.mail" /></a></li>
 
 					</ul></li>
 				<li><a href="j_spring_security_logout"> <spring:message

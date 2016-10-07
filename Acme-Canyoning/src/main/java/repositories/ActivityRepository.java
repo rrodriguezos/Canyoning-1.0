@@ -11,7 +11,7 @@ import domain.Activity;
 @Repository 
 public interface ActivityRepository extends JpaRepository<Activity, Integer>{ 
 
-	@Query("select d from DailyPlan d where d.trip.id = ?1")
+	@Query("select a from Activity a where a.canyon.id = ?1")
 	Collection<Activity> activityByCanyon(int canyonId);
 
 	
@@ -20,7 +20,5 @@ public interface ActivityRepository extends JpaRepository<Activity, Integer>{
 
 
 	
-	
-	@Query("select c.activity from Canyon c where c.name like CONCAT(?1, '%') or c.description like CONCAT(?1, '%')")
-	Collection<Activity> findActivityByCanyonKeyword(String text);
+
 } 

@@ -49,7 +49,7 @@ public class SearchController extends AbstractController  {
 		Assert.notNull(searchForm);
 		String text = searchForm.getText();
 		Collection<Activity> activities = new HashSet<Activity>();
-		activities = activityService.findActivityByKeyword(text);
+//		activities = activityService.findActivityByKeyword(text);
 
 		result = new ModelAndView("search/buscando");
 		result.addObject("activities", activities);
@@ -72,7 +72,7 @@ public class SearchController extends AbstractController  {
 		Assert.notNull(searchForm);
 		String text = searchForm.getText();
 		Collection<Activity> activities = new HashSet<Activity>();
-		activities = activityService.findActivityByKeyword(text);
+//		activities = activityService.findActivityByKeyword(text);
 
 		result = new ModelAndView("search/buscando");
 		result.addObject("activities", activities);

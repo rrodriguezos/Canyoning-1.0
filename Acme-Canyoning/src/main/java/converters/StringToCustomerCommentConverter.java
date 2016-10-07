@@ -6,19 +6,20 @@ import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-import repositories.OrganiserRepository;
-import domain.Organiser;
+import repositories.CustomerCommentRepository;
+import domain.CustomerComment;
 
 @Component
 @Transactional
-public class StringToOrganiserConverter implements Converter<String, Organiser> {
+public class StringToCustomerCommentConverter implements
+		Converter<String, CustomerComment> {
 
 	@Autowired
-	OrganiserRepository organiserRepository;
+	CustomerCommentRepository customerCommentRepository;
 
 	@Override
-	public Organiser convert(String text) {
-		Organiser result;
+	public CustomerComment convert(String text) {
+		CustomerComment result;
 		int id;
 
 		try {
@@ -26,7 +27,7 @@ public class StringToOrganiserConverter implements Converter<String, Organiser> 
 				result = null;
 			} else {
 				id = Integer.valueOf(text);
-				result = organiserRepository.findOne(id);
+				result = customerCommentRepository.findOne(id);
 			}
 		} catch (Throwable oops) {
 			throw new IllegalArgumentException(oops);
@@ -34,4 +35,5 @@ public class StringToOrganiserConverter implements Converter<String, Organiser> 
 
 		return result;
 	}
+
 }

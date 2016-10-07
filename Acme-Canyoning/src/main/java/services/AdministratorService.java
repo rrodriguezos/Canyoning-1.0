@@ -28,8 +28,6 @@ public class AdministratorService {
 	private AdministratorRepository administratorRepository;
 
 	// Supporting Services -------------------------
-	@Autowired
-	private FolderService folderService;
 
 	@Autowired
 	private UserAccountService userAccountService;

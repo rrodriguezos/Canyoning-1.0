@@ -13,20 +13,27 @@
 
 	<util:list id="converters">
 
-		<bean class="converters.StringToUserConverter" />
-		<bean class="converters.UserToStringConverter" />
 
-		<bean class="converters.StringToTripConverter" />
-		<bean class="converters.TripToStringConverter" />
+		<bean class="converters.StringToCanyonConverter" />
+		<bean class="converters.CanyonToStringConverter" />
+		
+		<bean class="converters.StringToOrganiserCommentConverter" />
+		<bean class="converters.OrganiserCommentToStringConverter" />
+		
+		<bean class="converters.StringToCustomerCommentConverter" />
+		<bean class="converters.CustomerCommentToStringConverter" />
+		
+		<bean class="converters.StringToCanyonConverter" />
+		<bean class="converters.CanyonToStringConverter" />
 
 		<bean class="converters.StringToActivityConverter" />
 		<bean class="converters.ActivityToStringConverter" />
 
-		<bean class="converters.StringToFolderConverter" />
-		<bean class="converters.FolderToStringConverter" />
+		<bean class="converters.StringToCustomerConverter" />
+		<bean class="converters.CustomerToStringConverter" />
 
-		<bean class="converters.StringToMessageConverter" />
-		<bean class="converters.MessageToStringConverter" />
+		<bean class="converters.StringToOrganiserConverter" />
+		<bean class="converters.OrganiserToStringConverter" />
 
 		<bean class="converters.StringToActorConverter" />
 		<bean class="converters.ActorToStringConverter" />
@@ -34,38 +41,14 @@
 		<bean class="converters.StringToAdministratorConverter" />
 		<bean class="converters.AdministratorToStringConverter" />
 
-		<bean class="converters.StringToManagerConverter" />
-		<bean class="converters.ManagerToStringConverter" />
-
-		<bean class="converters.StringToDailyPlanConverter" />
-		<bean class="converters.DailyPlanToStringConverter" />
 
 		<bean class="converters.StringToCommentConverter" />
 		<bean class="converters.CommentToStringConverter" />
 
-		<bean class="converters.StringToSlotConverter" />
-		<bean class="converters.SlotToStringConverter" />
-
-		<bean class="converters.StringToTypeConverter" />
-		<bean class="converters.TypeToStringConverter" />
 
 		<bean class="converters.StringToCommentableConverter" />
 		<bean class="converters.CommentableToStringConverter" />
 
-		<bean class="converters.StringToCampaignConverter" />
-		<bean class="converters.CampaignToStringConverter" />
-
-		<bean class="converters.StringToBannerConverter" />
-		<bean class="converters.BannerToStringConverter" />
-
-		<bean class="converters.StringToCreditCardConverter" />
-		<bean class="converters.CreditCardToStringConverter" />
-
-		<bean class="converters.StringToChargeRecordConverter" />
-		<bean class="converters.ChargeRecordToStringConverter" />
-
-		<bean class="converters.StringToTaxConverter" />
-		<bean class="converters.TaxToStringConverter" />
 
 	</util:list>
 

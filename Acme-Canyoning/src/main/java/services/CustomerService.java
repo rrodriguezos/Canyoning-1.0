@@ -15,6 +15,7 @@ import security.LoginService;
 import security.UserAccount;
 import domain.Comment;
 import domain.Customer;
+import domain.Request;
 import forms.CustomerRegisterForm;
 
 @Service
@@ -39,6 +40,7 @@ public class CustomerService {
 		UserAccount useraccount;
 		Customer result;
 		Collection<Comment> comments;
+		Collection<Request> requests;
 
 		Authority aut = new Authority();
 
@@ -50,8 +52,10 @@ public class CustomerService {
 		useraccount.addAuthority(aut);
 		result.setUserAccount(useraccount);
 
+		requests = new LinkedList<Request>();
 		comments = new LinkedList<Comment>();
 		result.setComments(comments);
+		result.setRequests(requests);
 
 		return result;
 	}
@@ -73,12 +77,9 @@ public class CustomerService {
 	}
 
 	public void save(Customer customer) {
-		Boolean create;
-		create = false;
+
 		if (customer.getId() == 0) {
 			Md5PasswordEncoder encoder;
-
-			create = true;
 			encoder = new Md5PasswordEncoder();
 
 			customer.getUserAccount().setPassword(

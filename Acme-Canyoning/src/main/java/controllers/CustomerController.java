@@ -188,21 +188,21 @@ public class CustomerController extends AbstractController {
 	// Ancillary methods
 	// --------------------------------------------------------
 
-	protected ModelAndView createEditModelAndView(CustomerRegisterForm userForm) {
+	protected ModelAndView createEditModelAndView(CustomerRegisterForm customerForm) {
 		ModelAndView result;
 
-		result = createEditModelAndView(userForm, null);
+		result = createEditModelAndView(customerForm, null);
 
 		return result;
 	}
 
 	protected ModelAndView createEditModelAndView(
-			CustomerRegisterForm userForm, String message) {
+			CustomerRegisterForm customerForm, String message) {
 		ModelAndView result;
 
-		result = new ModelAndView("user/register");
+		result = new ModelAndView("customer/register");
 
-		result.addObject("user", userForm);
+		result.addObject("customer", customerForm);
 		result.addObject("message2", message);
 		return result;
 	}

@@ -3,22 +3,18 @@ package converters;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.converter.Converter;
-import org.springframework.stereotype.Component;
-import org.springframework.transaction.annotation.Transactional;
 
-import repositories.OrganiserRepository;
-import domain.Organiser;
+import repositories.OrganiserCommentRepository;
+import domain.OrganiserComment;
 
-@Component
-@Transactional
-public class StringToOrganiserConverter implements Converter<String, Organiser> {
-
+public class StringToOrganiserCommentConverter implements
+		Converter<String, OrganiserComment> {
 	@Autowired
-	OrganiserRepository organiserRepository;
+	OrganiserCommentRepository organiserCommentRepository;
 
 	@Override
-	public Organiser convert(String text) {
-		Organiser result;
+	public OrganiserComment convert(String text) {
+		OrganiserComment result;
 		int id;
 
 		try {
@@ -26,7 +22,7 @@ public class StringToOrganiserConverter implements Converter<String, Organiser> 
 				result = null;
 			} else {
 				id = Integer.valueOf(text);
-				result = organiserRepository.findOne(id);
+				result = organiserCommentRepository.findOne(id);
 			}
 		} catch (Throwable oops) {
 			throw new IllegalArgumentException(oops);
@@ -34,4 +30,5 @@ public class StringToOrganiserConverter implements Converter<String, Organiser> 
 
 		return result;
 	}
+
 }

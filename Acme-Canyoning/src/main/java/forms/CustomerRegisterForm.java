@@ -2,14 +2,14 @@ package forms;
 
 import javax.persistence.Column;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.SafeHtml;
-import org.hibernate.validator.constraints.ScriptAssert;
 import org.hibernate.validator.constraints.SafeHtml.WhiteListType;
+import org.hibernate.validator.constraints.ScriptAssert;
+
 @ScriptAssert(lang = "javascript", script = "_this.password.equals(_this.confirmPassword)")
 public class CustomerRegisterForm {
 
@@ -31,7 +31,7 @@ public class CustomerRegisterForm {
 
 	// Getters and Setters........
 
-	@SafeHtml(whitelistType=WhiteListType.NONE)
+	@SafeHtml(whitelistType = WhiteListType.NONE)
 	@NotBlank
 	@Size(min = 5, max = 32)
 	public String getPassword() {
@@ -41,8 +41,8 @@ public class CustomerRegisterForm {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
-	@SafeHtml(whitelistType=WhiteListType.NONE)
+
+	@SafeHtml(whitelistType = WhiteListType.NONE)
 	@NotBlank
 	@Size(min = 5, max = 32)
 	public String getConfirmPassword() {
@@ -52,18 +52,17 @@ public class CustomerRegisterForm {
 	public void setConfirmPassword(String confirmPassword) {
 		this.confirmPassword = confirmPassword;
 	}
-	
 
 	@SafeHtml(whitelistType = WhiteListType.NONE)
-	public String getPasswordPast(){
+	public String getPasswordPast() {
 		return passwordPast;
 	}
-	
-	public void setPasswordPast(String passwordPast){
+
+	public void setPasswordPast(String passwordPast) {
 		this.passwordPast = passwordPast;
 	}
-	
-	@SafeHtml(whitelistType=WhiteListType.NONE)
+
+	@SafeHtml(whitelistType = WhiteListType.NONE)
 	@NotBlank
 	@Size(min = 5, max = 32)
 	@Column(unique = true)
@@ -74,18 +73,17 @@ public class CustomerRegisterForm {
 	public void setUsername(String username) {
 		this.username = username;
 	}
-	
 
-	@SafeHtml(whitelistType=WhiteListType.NONE)
+	@SafeHtml(whitelistType = WhiteListType.NONE)
 	public String getPhone() {
 		return phone;
 	}
-	
+
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-	
-	@SafeHtml(whitelistType=WhiteListType.NONE)
+
+	@SafeHtml(whitelistType = WhiteListType.NONE)
 	@NotBlank
 	@Email
 	public String getEmail() {
@@ -95,7 +93,7 @@ public class CustomerRegisterForm {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
+
 	public Integer getId() {
 		return id;
 	}
@@ -103,8 +101,7 @@ public class CustomerRegisterForm {
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	
-	
+
 	@NotNull
 	public Boolean getAccept() {
 		return accept;
