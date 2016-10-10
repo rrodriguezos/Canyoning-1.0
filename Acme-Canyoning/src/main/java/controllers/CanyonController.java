@@ -12,7 +12,6 @@ import org.springframework.web.servlet.ModelAndView;
 import services.AdministratorService;
 import services.CanyonService;
 import services.CommentService;
-import domain.Administrator;
 import domain.Canyon;
 import domain.Comment;
 
@@ -57,7 +56,6 @@ public class CanyonController extends AbstractController {
 		ModelAndView result;
 		Canyon canyon;
 		Collection<Comment> comments;
-		Administrator administrator;
 
 		comments = commentService.findCommentsByCommentableId(canyonId);
 
@@ -74,14 +72,14 @@ public class CanyonController extends AbstractController {
 
 	// Listing by navigate from Activity
 	// ---------------------------------------------------
-	@RequestMapping(value = "/navigateByActivity", method = RequestMethod.GET)
+	@RequestMapping(value = "/listByActivity", method = RequestMethod.GET)
 	public ModelAndView navigateByActivity(@RequestParam int activityId) {
 		ModelAndView result;
 		Canyon canyon = canyonService.canyonByActivity(activityId);
 
 		result = new ModelAndView("canyon/listAll");
 		result.addObject("canyon", canyon);
-		result.addObject("requestURI", "canyon/navigateByActivity.do");
+		result.addObject("requestURI", "canyon/listByActivity.do");
 		return result;
 	}
 }

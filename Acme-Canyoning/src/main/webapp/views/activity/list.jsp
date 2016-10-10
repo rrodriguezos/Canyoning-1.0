@@ -25,21 +25,28 @@
 	<spring:message code="activity.description" var="description" />
 	<display:column property="description" title="${description}" />
 	
+	<spring:message code="activity.numberSeats" var="numberSeats" />
+	<display:column property="numberSeats" title="${numberSeats}" />
+	
+	<spring:message code="activity.moment" var="moment" />
+	<display:column property="moment" title="${moment}"
+		sortable="true" format="{0, date, dd/MM/yyyy HH:mm}" />
+	
 	<spring:message code="activity.display" var="display" />
 	<display:column title="${display}">
 			<input type="button" value="<spring:message code="activity.display" />" 
 					onclick="javascript: window.location.assign('activity/display.do?activityId=${row.id}')" />
 	</display:column>
 	
-	<spring:message code="activity.activitytype" var="activitytypeHeader" />
-	<display:column title="${activitytypeHeader}">
-			<input type="button" value="<spring:message code="activity.activitytype" />" 
-					onclick="javascript: window.location.assign('activitytype/listByActivity.do?activityId=${row.id}')" />
+	<spring:message code="activity.canyon" var="canyonHeader" />
+	<display:column title="${canyonHeader}">
+			<input type="button" value="<spring:message code="activity.canyon" />" 
+					onclick="javascript: window.location.assign('canyon/listByActivity.do?activityId=${row.id}')" />
 	</display:column>
 	
 </display:table>
 
-<security:authorize access="hasRole('USER')">
+<security:authorize access="hasRole('ORGANISER')">
 <input type="button" name="create" value="<spring:message code="activity.create" />"
-	 onclick="javascript: window.location.assign('activity/user/create.do')" />
+	 onclick="javascript: window.location.assign('activity/organiser/create.do')" />
 </security:authorize>

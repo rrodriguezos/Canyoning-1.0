@@ -45,32 +45,21 @@
 		<security:intercept-url pattern="/user/list.do" access="permitAll" />
 		<security:intercept-url pattern="/user/display.do" access="permitAll" />
 		
-		<security:intercept-url pattern="/trip/display.do" access="permitAll" /> 
-		<security:intercept-url pattern="/trip/list.do" access="permitAll" /> 
+		<security:intercept-url pattern="/canyon/display.do" access="permitAll" /> 
+		<security:intercept-url pattern="/canyon/list.do" access="permitAll" /> 
 		<security:intercept-url pattern="/search/buscar.do" access="permitAll" />
 		<security:intercept-url pattern="/search/buscando.do" access="permitAll" />
-		<security:intercept-url pattern="/dailyPlan/list.do" access="permitAll" /> 
-		<security:intercept-url pattern="/dailyPlan/display.do" access="permitAll" />
-			
-		<security:intercept-url pattern="/slot/list.do" access="permitAll" />
-		<security:intercept-url pattern="/slot/display.do" access="permitAll" />
-		
-		<security:intercept-url pattern="/activity/list.do" access="permitAll" />
+		<security:intercept-url pattern="/activity/list.do" access="permitAll" /> 
 		<security:intercept-url pattern="/activity/display.do" access="permitAll" />
+		<security:intercept-url pattern="/activity/listByCanyon.do" access="permitAll" />
+			
 		
 		<security:intercept-url pattern="/comment/display.do" access="permitAll" />
 		<security:intercept-url pattern="/activity/navigateByActivitytype.do" access="permitAll" /> 
-  		<security:intercept-url pattern="/slot/navigateByActivity.do" access="permitAll" /> 
- 		<security:intercept-url pattern="/dailyPlan/navigateBySlot.do" access="permitAll" /> 
-  		<security:intercept-url pattern="/trip/navigateByDailyPlan.do" access="permitAll" /> 
-  		<security:intercept-url pattern="/activitytype/activitytypes.do" access="permitAll" /> 
-  		<security:intercept-url pattern="/activity/listBySlot.do" access="permitAll" />
-  		<security:intercept-url pattern="/activitytype/listByActivity.do" access="permitAll" /> 
+  		<security:intercept-url pattern="/canyon/listByActivity.do" access="permitAll" /> 
+
   		
-  		
-  		
-  		
-		
+
 
 		<security:intercept-url pattern="/administrator/administrator/create.do" access="hasRole('ADMINISTRATOR')" /> 
 		<security:intercept-url pattern="/administrator/administrator/list.do" access="hasRole('ADMINISTRATOR')" /> 
@@ -101,13 +90,9 @@
 		<security:intercept-url pattern="/chargerecord/manager/**" access="hasRole('MANAGER')" />
 		
 		
-		<security:intercept-url pattern="/trip/user/mylist.do" access="hasRole('USER')" /> 
-		<security:intercept-url pattern="/trip/user/edit.do" access="hasRole('USER')" />
-		<security:intercept-url pattern="/trip/user/create.do" access="hasRole('USER')" />
-		<security:intercept-url pattern="/trip/user/copyPaste.do" access="hasRole('USER')" />
-		<security:intercept-url pattern="/trip/user/joinTrip.do" access="hasRole('USER')" />
-		<security:intercept-url pattern="/trip/user/disjoinTrip.do" access="hasRole('USER')" />
-		<security:intercept-url pattern="/trip/user/subscribed.do" access="hasRole('USER')" />
+		<security:intercept-url pattern="/canyon/administrator/mylist.do" access="hasRole('ADMINISTRATOR')" /> 
+		<security:intercept-url pattern="/canyon/administrator/edit.do" access="hasRole('ADMINISTRATOR')" />
+		<security:intercept-url pattern="/canyon/administrator/create.do" access="hasRole('ADMINISTRATOR')" />
 		
 		<security:intercept-url pattern="/activity/user/create.do" access="hasRole('USER')" />
 		<security:intercept-url pattern="/activity/user/edit.do" access="hasRole('USER')" />

@@ -1,8 +1,6 @@
 package controllers;
 
 import java.util.Collection;
-import java.util.Date;
-import java.util.LinkedList;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,11 +10,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import services.ActivityService;
+import services.AdministratorService;
 import services.CanyonService;
-import services.OrganiserService;
+import services.CommentService;
 import domain.Activity;
+import domain.Administrator;
 import domain.Canyon;
-import domain.Organiser;
+import domain.Comment;
 
 @Controller
 @RequestMapping("/activity")
@@ -28,8 +28,9 @@ public class ActivityController extends AbstractController {
 	@Autowired
 	private CanyonService canyonService;
 	@Autowired
-	private OrganiserService organiserService;
-
+	private AdministratorService administratorService;
+	@Autowired
+	private CommentService commentService;
 
 	// Constructors -----------------------------------------------------------
 	public ActivityController() {
@@ -39,45 +40,68 @@ public class ActivityController extends AbstractController {
 	// List
 	// ---------------------------------------------------------------------------
 	@RequestMapping(value = "/list")
-	public ModelAndView list(@RequestParam int canyonId) {
+	public ModelAndView list() {
 
 		ModelAndView result;
 		Collection<Activity> activities;
-		Canyon canyon;
-		Organiser organiser;
-		Boolean myActivity;
-		activities = activityService.activitiesByCanyon(canyonId);
+
+		activities = activityService.findAll();
+
 		result = new ModelAndView("activity/list");
 		result.addObject("activities", activities);
-		result.addObject("canyonId", canyonId);
-		myActivity = false;
-		try {
-			organiser = organiserService.findByPrincipal();
-			canyon = canyonService.findOne(canyonId);
-
-			myActivity = organiser.equals(canyon.getAdministrator());
-
-		} catch (Throwable oops) {
-
-		}
-		result.addObject("myactivity", myActivity);
+		result.addObject("requestUri", "/activity/list.do");
 
 		return result;
 	}
-
 
 	// Display --------------------------------------------------------
 	@RequestMapping(value = "/display", method = RequestMethod.GET)
 	public ModelAndView display(int activityId) {
 		ModelAndView result;
 		Activity activity;
+		Collection<Comment> comments;
+
+		comments = commentService.findCommentsByCommentableId(activityId);
 
 		activity = activityService.findOne(activityId);
+		comments = commentService.findCommentsByCommentableId(activityId);
 
 		result = new ModelAndView("activity/display");
 		result.addObject("activity", activity);
 
+		result.addObject("comments", comments);
 		return result;
 	}
+	// List
+		// ---------------------------------------------------------------------------
+		@RequestMapping(value = "/listByCanyon")
+		public ModelAndView listByCanyon(@RequestParam int canyonId) {
+
+			ModelAndView result;
+			Collection<Activity> activities;
+			Canyon canyon;
+			Administrator administrator;
+			Boolean mycanyon;
+			activities = activityService.activitiesByCanyon(canyonId);
+			result = new ModelAndView("activity/list");
+			result.addObject("activities", activities);
+			result.addObject("canyonId", canyonId);
+			mycanyon = false;
+			try {
+				administrator = administratorService.findByPrincipal();
+				canyon = canyonService.findOne(canyonId);
+
+				mycanyon = administrator.equals(canyon.getAdministrator());
+
+			} catch (Throwable oops) {
+
+			}
+			result.addObject("myactivity", mycanyon);
+	
+
+			return result;
+		}
+	
+	
 
 }

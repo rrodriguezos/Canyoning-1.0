@@ -18,13 +18,13 @@
 <%@taglib prefix="acme" tagdir="/WEB-INF/tags"%>
 
 
-<acme:jstlOut code="canyon.name" value="${canyon.title }"/>
+<acme:jstlOut code="canyon.name" value="${canyon.name }"/>
 <acme:jstlOut code="canyon.description" value="${canyon.description }"/>
 <acme:jstlOut code="canyon.difficultyLevel" value="${canyon.difficultyLevel }"/>
 <acme:jstlOut code="canyon.route" value="${canyon.route }"/>
-<acme:jstlOut code="canyon.latitude" value="${gpsCoordinates.latitude }"/>
-<acme:jstlOut code="canyon.longitude" value="${gpsCoordinates.longitude }"/>
-<acme:jstlOut code="canyon.altitude" value="${gpsCoordinates.altitude }"/>
+<acme:jstlOut code="canyon.latitude" value="${canyon.gpsCoordinates.latitude }"/>
+<acme:jstlOut code="canyon.longitude" value="${canyon.gpsCoordinates.longitude }"/>
+<acme:jstlOut code="canyon.altitude" value="${canyon.gpsCoordinates.altitude }"/>
 
 
 <b><spring:message code="canyon.pictures" />: </b>
@@ -46,8 +46,7 @@
 	
 	<spring:message code="comment.actor" var="actor" />
 	<display:column title="${actor}">
-		<jstl:out value="${row.getActor().getName()}"/>
-		<jstl:out value="${row.getActor().getSurname() }"/>
+		<jstl:out value="${row.getActor().getEmail()}"/>
 	</display:column>
 
 	<spring:message code="comment.display" var="display" />

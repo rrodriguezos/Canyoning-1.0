@@ -23,6 +23,7 @@
 		<value>/views/profile/messages</value>		
 		<value>/views/activity/messages</value>
 		<value>/views/comment/messages</value>
+		<value>/views/canyon/messages</value>
 
 	</util:list>
 

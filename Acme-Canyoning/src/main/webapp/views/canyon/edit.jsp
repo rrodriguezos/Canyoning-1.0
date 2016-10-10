@@ -19,39 +19,42 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@taglib prefix="acme" tagdir="/WEB-INF/tags"%>
 
-<security:authorize access="hasRole('USER')">
+<security:authorize access="hasRole('ADMINISTRATOR')">
 
-	<form:form action="trip/user/edit.do" modelAttribute="trip">
+	<form:form action="canyon/administrator/edit.do" modelAttribute="canyon">
 		<form:hidden path="id" />
 		<form:hidden path="version" />
-		<form:hidden path="user" />
-		<form:hidden path="dailyPlans" />
+		<form:hidden path="administrator" />
+		<form:hidden path="activities" />
 		<form:hidden path="comments" />
-		<form:hidden path="users" />
 
 
-		<acme:textbox code="trip.title" path="title" />
+		<acme:textbox code="canyon.name" path="name" />
 
-		<acme:date code="trip.startDate" path="startDate" readonly="false" />
+		<acme:date code="canyon.difficultyLevel" path="difficultyLevel"/>
 
-		<acme:date code="trip.endDate" path="endDate" readonly="false" />
+		<acme:date code="canyon.route" path="route" />
 
-		<acme:textbox code="trip.description" path="description" />
-
-		<acme:textbox code="trip.photos" path="photos" />
+		<acme:textbox code="canyon.description" path="description" />
 		
-		<jstl:if test="${trip.id == 0}">
+		<acme:textbox code="canyon.latitude" path="latitude"/>
+		<acme:textbox code="canyon.longitude" path="longitude"/>
+		<acme:textbox code="canyon.altitude" path="altitude"/>
+
+		<acme:textbox code="canyon.pictures" path="pictures" />
+		
+		<jstl:if test="${canyon.id == 0}">
 		<input type="submit" name="save"
-			value="<spring:message code="trip.save" />" />
+			value="<spring:message code="canyon.save" />" />
 		</jstl:if>
 		
-		<jstl:if test="${trip.id != 0}">
+		<jstl:if test="${canyon.id != 0}">
 			<input type="submit" name="save"
-			value="<spring:message code="trip.save" />" onclick="return confirm('<spring:message code="trip.confirm.delete.dailyPlans" />')" />
-			<input type="submit" name="delete" value="<spring:message code="trip.delete"/>" onclick="return confirm('<spring:message code="trip.confirm.delete" />')"/>
+			value="<spring:message code="canyon.save" />" onclick="return confirm('<spring:message code="canyon.confirm.delete.activities" />')" />
+			<input type="submit" name="delete" value="<spring:message code="canyon.delete"/>" onclick="return confirm('<spring:message code="canyon.confirm.delete" />')"/>
 		</jstl:if>
 		
-		<acme:cancel url="trip/user/mylist.do" code="trip.cancel" />
+		<acme:cancel url="canyon/administrator/mylist.do" code="canyon.cancel" />
 
 	</form:form>
 

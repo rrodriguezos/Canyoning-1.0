@@ -59,7 +59,7 @@
 	<display:column title="${activitiesHeader}">
 		<input type="button"
 			value="<spring:message code="canyon.activities" />"
-			onclick="javascript: window.location.assign('activities/list.do?canyonId=${row.id}')" />
+			onclick="javascript: window.location.assign('activity/listByCanyon.do?canyonId=${row.id}')" />
 	</display:column>
 
 

@@ -15,31 +15,27 @@
        "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
       
 <tiles-definitions>
-	<definition name="trip/list" extends="master.page">
-		<put-attribute name="title" value="Catálogo de Viajes" />
-		<put-attribute name="body" value="/views/trip/list.jsp" />
-	</definition>
-	<definition name="trip/user/mylist" extends="master.page">
-		<put-attribute name="title" value="Mis Viajes" />
-		<put-attribute name="body" value="/views/trip/list.jsp" />
+	<definition name="canyon/list" extends="master.page">
+		<put-attribute name="title" value="Catálogo de Desfiladeros" />
+		<put-attribute name="body" value="/views/canyon/list.jsp" />
 	</definition>
 	
-	<definition name="trip/user/subscribed" extends="master.page">
-  <put-attribute name="title" value="Viajes a los que estoy unido" /> 
-  <put-attribute name="body" value="/views/trip/list.jsp" /> 
-  </definition>
-	
-	<definition name="trip/user/edit" extends="master.page">	
-		<put-attribute name="title" value="Crear nuevo Viaje" />
-		<put-attribute name="body" value="/views/trip/edit.jsp" />
+	<definition name="canyon/administrator/mylist" extends="master.page">
+		<put-attribute name="title" value="Mis Desfiladeros" />
+		<put-attribute name="body" value="/views/canyon/list.jsp" />
 	</definition>
 	
-	<definition name="trip/display" extends="master.page">	
-		<put-attribute name="title" value="Detalles del Viaje" />
-		<put-attribute name="body" value="/views/trip/display.jsp" />
+	<definition name="canyon/desfiladeros/edit" extends="master.page">	
+		<put-attribute name="title" value="Crear nuevo Desfiladero" />
+		<put-attribute name="body" value="/views/canyon/edit.jsp" />
 	</definition>
-	<definition name="trip/listAll" extends="master.page">
-		<put-attribute name="title" value="Viaje" />
-		<put-attribute name="body" value="/views/trip/listAll.jsp" />
+	
+	<definition name="canyon/display" extends="master.page">	
+		<put-attribute name="title" value="Detalles del Desfiladero" />
+		<put-attribute name="body" value="/views/canyon/display.jsp" />
+	</definition>
+	<definition name="canyon/listAll" extends="master.page">
+		<put-attribute name="title" value="Desfiladero" />
+		<put-attribute name="body" value="/views/canyon/listAll.jsp" />
 	</definition>
 </tiles-definitions>

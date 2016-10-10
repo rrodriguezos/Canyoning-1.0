@@ -24,25 +24,19 @@
 	<form:form action="activity/user/edit.do" modelAttribute="activity">
 		<form:hidden path="id" />
 		<form:hidden path="version" />
-		<form:hidden path="appropriated" />
-		<form:hidden path="user" />
-		<form:hidden path="slots" />
+		<form:hidden path="organiser" />
+		<form:hidden path="canyos" />
 		<form:hidden path="comments" />
-		<form:hidden path="manager" />
+
 
 		<acme:textbox code="activity.title" path="title" />
 
 		<acme:textbox code="activity.description" path="description" />
 
-		<acme:textarea code="activity.photos" path="photos" />
+		<acme:textarea code="activity.numberSeats" path="numberSeats" />
+		
+		<acme:date code="activity.moment" path="moment" readonly="false" />
 
-		<spring:message code="activity.activitytype" />
-		<form:select path="activityType">
-			<form:options items="${activitytypes}" itemLabel="name"
-				itemValue="id" />
-		</form:select>
-		<form:errors cssClass="error" path="activityType" />
-		<br>
 
 		<input type="submit" name="save"
 			value="<spring:message code="activity.save" />" />

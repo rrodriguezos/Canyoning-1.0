@@ -17,28 +17,42 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
-<display:table name="trip" id="row" requestURI="${requestURI}"
+<display:table name="canyon" id="row" requestURI="${requestURI}"
 		pagesize="5" class="displaytag" keepStatus="true">
 	
-	<spring:message code="trip.title" var="titleHeader" />
-	<display:column property="title" title="${titleHeader}" />
-	
-	<spring:message code="trip.startDate" var="startDateHeader" />
-	<display:column property="startDate" title="${startDateHeader}"
-		format="{0,date,dd/MM/yyyy HH:mm}" sortable="true" />
-	
-	<spring:message code="trip.endDate" var="endDateHeader" />
-	<display:column property="endDate" title="${endDateHeader}"
-		format="{0,date,dd/MM/yyyy HH:mm}" sortable="true" />
-		
-	<spring:message code="trip.description" var="descriptionHeader" />
+		<spring:message code="canyon.name" var="nameHeader" />
+	<display:column property="name" title="${nameHeader}" />
+
+	<spring:message code="canyon.description" var="descriptionHeader" />
 	<display:column property="description" title="${descriptionHeader}" />
-	
-	<spring:message code="trip.display" var="display" />
+
+	<spring:message code="canyon.difficultyLevel"
+		var="difficultyLevelHeader" />
+	<display:column property="difficultyLevel"
+		title="${difficultyLevelHeader}" />
+
+	<spring:message code="canyon.route" var="routeHeader" />
+	<display:column property="route" title="${routeHeader}" />
+
+	<spring:message code="canyon.latitude" var="latitude" />
+	<display:column property="gpsCoordinates.latitude" title="${latitude}"
+		sortable="true" />
+
+	<spring:message code="canyon.longitude" var="longitude" />
+	<display:column property="gpsCoordinates.longitude"
+		title="${longitude}" sortable="true" />
+
+
+	<spring:message code="canyon.altitude" var="altitude" />
+	<display:column property="gpsCoordinates.altitude" title="${altitude}"
+		sortable="true" />
+		
+		<spring:message code="canyon.display" var="display" />
 	<display:column title="${display}">
-			<input type="button" value="<spring:message code="trip.display" />" 
-					onclick="javascript: window.location.assign('trip/display.do?tripId=${row.id}')" />
+		<input type="button" value="<spring:message code="canyon.display" />"
+			onclick="javascript: window.location.assign('canyon/display.do?canyonId=${row.id}')" />
 	</display:column>
+
 	
 
 </display:table>
