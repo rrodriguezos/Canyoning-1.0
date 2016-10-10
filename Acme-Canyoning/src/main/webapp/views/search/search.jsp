@@ -14,20 +14,21 @@
 
 
 <div>
-	<form:form action="search/buscar.do"  modelAttribute="searchForm" keepStatus="false"> 
+	<form:form action="search/buscar.do" modelAttribute="searchForm"
+		keepStatus="false">
 		<acme:textbox code="search.introduce" path="text" />
 		<input type="submit" name="search"
 			value="<spring:message code="search.search" />" />
 	</form:form>
-	<jstl:if test="${trips!=null}">
+	<jstl:if test="${activities!=null}">
 		<h2>
 			<spring:message code="search.explanation" />
 			<jstl:out value="'${searchForm.text}'"></jstl:out>
 			<spring:message code="search.explanation.dos" />
 		</h2>
-		<display:table name="trips" id="paco" requestURI="${requestUri}"
+		<display:table name="activities" id="paco" requestURI="${requestUri}"
 			pagesize="5" class="displaytag" keepStatus="false">
-			
+
 
 			<spring:message code="search.title" var="title" />
 			<display:column property="title" title="${title}" sortable="true" />
@@ -36,21 +37,14 @@
 			<display:column property="description" title="${description}"
 				sortable="true" />
 
-			<spring:message code="search.startDate" var="startDate" />
-			<display:column property="startDate" title="${startDate}"
-				sortable="true" format="{0, date, dd/MM/yyyy HH:mm}" />
-
-			<spring:message code="search.endDate" var="endDate" />
-			<display:column property="endDate" title="${endDate}" sortable="true"
+			<spring:message code="search.moment" var="moment" />
+			<display:column property="moment" title="${moment}" sortable="true"
 				format="{0, date, dd/MM/yyyy HH:mm}" />
 
+			<spring:message code="search.numberSeats" var="numberSeats" />
+			<display:column property="numberSeats" title="${numberSeats}" />
 
-			<spring:message code="search.photos" var="photos" />
-			<display:column title="${photos}" sortable="true">
-				<jstl:forEach var="photo" items="${paco.photos}">
-					<img height="150px" src="<jstl:out value="${photo}" />">
-				</jstl:forEach>
-			</display:column>
+
 		</display:table>
 	</jstl:if>
 

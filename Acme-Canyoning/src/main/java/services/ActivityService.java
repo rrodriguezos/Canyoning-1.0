@@ -28,7 +28,7 @@ public class ActivityService {
 	// Supporting Services ------------------
 	@Autowired
 	private OrganiserService organiserService;
-	
+
 	@Autowired
 	private RequestService requestService;
 
@@ -106,41 +106,36 @@ public class ActivityService {
 		result = activityRepository.activityByCanyon(canyonId);
 		return result;
 	}
-	
-//	public Integer numberSeatsAvailable(int activityId) {
-//		Integer result = null;
-//		Activity activity;
-//		Collection<Request> requests = null;
-//		Integer allSeats;
-//
-//		//pillo las request de esta actividad que estén aceptadas las numero y las resto al numero de asientos existentes en la actividad
-//		Collection<Request> requestAccepted = requestService.requestAcceptedByActivity(activityId);
-//		activity = findOne(activityId);
-//		allSeats = activity.getNumberSeats();
-//		
-//		for(Request r :  activity.getRequests())
-//		{
-//			if(r.getRequestState().toString()=="ACCEPTED");
-//			allSeats--;			
-//		
-//		}
-//		
-//		return result;
-//	}
 
-//	public Collection<Activity> findActivityByKeyword(String text) {
-//		Collection<Activity> result;
-//		result = activityRepository.findActivityByKeyword(text);
-//		Collection<Activity> result1;
-//		result1 = activityRepository.findActivityByCanyonKeyword(text);
-//		
-//
-//		for (Activity t : result1) {
-//			if (!result.contains(t)) {
-//				result.add(t);
-//			}
-//		}
-//		return result;
-//	}
+	// public Integer numberSeatsAvailable(int activityId) {
+	// Integer result = null;
+	// Activity activity;
+	// Collection<Request> requests = null;
+	// Integer allSeats;
+	//
+	// //pillo las request de esta actividad que estén aceptadas las numero y
+	// las resto al numero de asientos existentes en la actividad
+	// Collection<Request> requestAccepted =
+	// requestService.requestAcceptedByActivity(activityId);
+	// activity = findOne(activityId);
+	// allSeats = activity.getNumberSeats();
+	//
+	// for(Request r : activity.getRequests())
+	// {
+	// if(r.getRequestState().toString()=="ACCEPTED");
+	// allSeats--;
+	//
+	// }
+	//
+	// return result;
+	// }
 
+	public Collection<Activity> findActivityByKeyword(String text) {
+		Collection<Activity> result;
+
+		result = activityRepository.findActivityByKeyword(text);
+
+		return result;
+
+	}
 }
