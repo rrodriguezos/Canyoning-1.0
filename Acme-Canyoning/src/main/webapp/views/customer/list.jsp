@@ -21,11 +21,13 @@
 	<spring:message	code="customer.phone"  var="phone"/>
 	<display:column property="phone" title="${phone}" sortable="true" />
 	
-
-    <display:column>
-      <a href="comment/list.do?id=<jstl:out value="${row.customerComment.id}"/>">
-        <spring:message code="customer.comment" />
-      </a>
-    </display:column>
+    
+    <security:authorize access="isAuthenticated()">
+	<spring:message code="customer.comment" var="commentHeader" />
+	<display:column title="${commentHeader}">
+			<input type="button" value="<spring:message code="customer.comment" />" 
+					onclick="javascript: window.location.assign('comment/list.do?id=${row.customerComment.id}')" />
+	</display:column>
+	</security:authorize>
 	
 	</display:table>

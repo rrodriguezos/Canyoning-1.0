@@ -21,13 +21,13 @@
 
 
 
-<acme:jstlOut code="activity.title" value="${activity.title }"/>
-	<acme:jstlOut code="activity.description"
-		value="${activity.description }" />
-	<acme:jstlOut code="activity.numberSeats"
-		value="${activity.numberSeats }" />
-	
-	<acme:jstlOut code="activity.moment" value="${activity.moment }" />
+<acme:jstlOut code="activity.title" value="${activity.title }" />
+<acme:jstlOut code="activity.description"
+	value="${activity.description }" />
+<acme:jstlOut code="activity.numberSeats"
+	value="${activity.numberSeats }" />
+
+<acme:jstlOut code="activity.moment" value="${activity.moment }" />
 
 
 
@@ -40,7 +40,7 @@
 
 	<spring:message code="comment.title" var="title" />
 	<display:column title="${title}">
-	<jstl:out value="${row.getTitle() }" />
+		<jstl:out value="${row.getTitle() }" />
 	</display:column>
 
 	<spring:message code="comment.actor" var="actor" />
@@ -56,10 +56,6 @@
 
 </display:table>
 
-<security:authorize access="isAuthenticated()">	
-		<input type="button" value="<spring:message code="comment.create" />"
-			onclick="javascript: window.location.assign('comment/actor/edit.do?commentableId=${activity.id}')" />
-</security:authorize>
 
 <input type="button" name="cancel"
 	value="<spring:message code="activity.cancel"/>"

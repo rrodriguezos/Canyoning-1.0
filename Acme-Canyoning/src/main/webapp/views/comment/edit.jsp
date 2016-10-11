@@ -8,31 +8,27 @@
  * http://www.tdg-seville.info/License.html
  --%>
 
-<%@page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
 
-<%@taglib prefix="jstl"	uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="jstl" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
+<%@taglib prefix="security"
+	uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
-<%@taglib prefix="acme" tagdir="/WEB-INF/tags" %>
+<%@taglib prefix="acme" tagdir="/WEB-INF/tags"%>
 
-<form:form action="${actionUri }" modelAttribute="comment">
-	<form:hidden path="id"/>
-	<form:hidden path="version" />
-	<form:hidden path="actor"/>
-	<form:hidden path="commentable"/>
-	<form:hidden path="moment"/>
-	
-	<acme:textbox code="comment.title" path="title"/>
-	
-	<acme:textarea code="comment.body" path="body"/>
-	
-	<acme:textbox code="comment.stars" path="stars" />	
-	
-	
-	<input type="submit" name="save" value="<spring:message code="comment.save" />" />
-	
-	<input type="button" name="cancel" value="<spring:message code="comment.cancel" />" onclick="javascript: window.history.back()" />
-	
+<form:form action="${actionURI}" modelAttribute="commentForm">
+
+	<acme:textbox code="comment.title" path="title" />
+
+	<acme:textarea code="comment.body" path="body" />
+
+	<acme:textbox code="comment.stars" path="stars" />
+
+
+	<acme:submit name="save" code="comment.save" />
+	<acme:cancel url="${cancelURL}" code="comment.cancel" />
+
 </form:form>

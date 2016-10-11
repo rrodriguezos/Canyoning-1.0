@@ -33,7 +33,7 @@ public class Comment extends DomainEntity {
 	private String title;
 	private String body;
 	private Date moment;
-	private Integer stars;
+	private int stars;
 
 	@SafeHtml(whitelistType = WhiteListType.NONE)
 	@NotBlank
@@ -69,11 +69,11 @@ public class Comment extends DomainEntity {
 
 	@Range(min = 0, max = 10)
 	@NotNull
-	public Integer getStars() {
+	public int getStars() {
 		return stars;
 	}
 
-	public void setStars(Integer stars) {
+	public void setStars(int stars) {
 		this.stars = stars;
 	}
 

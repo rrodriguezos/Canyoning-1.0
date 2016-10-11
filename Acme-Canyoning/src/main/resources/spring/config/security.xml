@@ -54,7 +54,7 @@
 		<security:intercept-url pattern="/activity/listByCanyon.do" access="permitAll" />
 			
 		
-		<security:intercept-url pattern="/comment/display.do" access="permitAll" />
+		
 		<security:intercept-url pattern="/activity/navigateByActivitytype.do" access="permitAll" /> 
   		<security:intercept-url pattern="/canyon/listByActivity.do" access="permitAll" /> 
 
@@ -80,30 +80,24 @@
 		<security:intercept-url pattern="/comment/administrator/appropriated.do" access="hasRole('ADMINISTRATOR')" /> 
 		<security:intercept-url pattern="/activity/administrator/appropriated.do" access="hasRole('ADMINISTRATOR')" /> 
 		
-		<security:intercept-url pattern="/activitytype/manager/create.do" access="hasRole('MANAGER')" /> 
-		<security:intercept-url pattern="/activitytype/manager/edit.do" access="hasRole('MANAGER')" /> 
-		<security:intercept-url pattern="/activitytype/manager/list.do" access="hasRole('MANAGER')" />
-		
-		<security:intercept-url pattern="/activity/manager/appropriated.do" access="hasRole('MANAGER')" /> 
-		<security:intercept-url pattern="/campaign/manager/**" access="hasRole('MANAGER')" />
-		<security:intercept-url pattern="/creditcard/manager/**" access="hasRole('MANAGER')" />
-		<security:intercept-url pattern="/chargerecord/manager/**" access="hasRole('MANAGER')" />
 		
 		
 		<security:intercept-url pattern="/canyon/administrator/mylist.do" access="hasRole('ADMINISTRATOR')" /> 
 		<security:intercept-url pattern="/canyon/administrator/edit.do" access="hasRole('ADMINISTRATOR')" />
 		<security:intercept-url pattern="/canyon/administrator/create.do" access="hasRole('ADMINISTRATOR')" />
-		
-		<security:intercept-url pattern="/activity/user/create.do" access="hasRole('USER')" />
-		<security:intercept-url pattern="/activity/user/edit.do" access="hasRole('USER')" />
+
+
+		<security:intercept-url pattern="/activity/customer/mylist.do" access="hasRole('CUSTOMER')" /> 
 
 		
 		<security:intercept-url pattern="/customer/register.do" access="isAnonymous()" /> 
-
-		
 		<security:intercept-url pattern="/comment/actor/**" access="isAuthenticated()" />
-		<security:intercept-url pattern="/customer/list/**" access="isAuthenticated()" />
-		<security:intercept-url pattern="/organiser/list/**" access="isAuthenticated()" />
+		<security:intercept-url pattern="/comment/list.do" access="isAuthenticated()" />
+		<security:intercept-url pattern="/comment/edit.do" access="isAuthenticated()" />
+		<security:intercept-url pattern="/comment/create.do" access="isAuthenticated()" />
+		<security:intercept-url pattern="/comment/actor.do" access="isAuthenticated()" />
+		<security:intercept-url pattern="/customer/list.do" access="isAuthenticated()" />
+		<security:intercept-url pattern="/organiser/list.do" access="isAuthenticated()" />
 
 		<security:intercept-url pattern="/folder/actor/**" access="isAuthenticated()" />
 		<security:intercept-url pattern="/folder/**" access="isAuthenticated()" />

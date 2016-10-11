@@ -1,5 +1,6 @@
 package services;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.LinkedList;
 
@@ -51,6 +52,7 @@ public class CustomerService {
 
 		useraccount.addAuthority(aut);
 		result.setUserAccount(useraccount);
+		
 
 		requests = new LinkedList<Request>();
 		comments = new LinkedList<Comment>();
@@ -111,6 +113,8 @@ public class CustomerService {
 		Assert.isTrue(customerForm.getPassword().equals(
 				customerForm.getConfirmPassword()));
 		Assert.isTrue(customerForm.getAccept());
+		res.setComments(new ArrayList<Comment>());
+		res.setRequests(new ArrayList<Request>());
 		res.setPhone(customerForm.getPhone());
 		res.setEmail(customerForm.getEmail());
 		res.getUserAccount().setUsername(customerForm.getUsername());
