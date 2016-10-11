@@ -19,39 +19,20 @@
 <%@taglib prefix="acme" tagdir="/WEB-INF/tags" %>
 
 <h2>
-	<jstl:choose>
-	<jstl:when test="${comment.getAppropriated()==true }">
+
 	<jstl:out value="${comment.getTitle() }" />
-	</jstl:when>
-	<jstl:otherwise>
-		<spring:message code="comment.inAppropriate"/>
-	</jstl:otherwise>
-	</jstl:choose>
+
 </h2>
 
-<acme:jstlOut code="comment.actor" value="${comment.getActor().getName() }"/>
+<acme:jstlOut code="comment.actor" value="${comment.getActor().getEmail() }"/>
 <br>
 <fieldset style="width:50%;">
 <legend><fmt:formatDate value="${comment.getMoment() }" pattern="dd/MM/yyyy HH:mm" /></legend>
-<jstl:choose>
-<jstl:when test="${comment.getAppropriated()==true }">
-<jstl:out value="${comment.getText() }" />
-</jstl:when>
-<jstl:otherwise>
-<spring:message code="comment.inAppropriate"/>
-</jstl:otherwise>
-</jstl:choose>
+
+<jstl:out value="${comment.getBody() }" />
+<jstl:out value="${comment.getStars() }" />
 </fieldset>
 
-<security:authorize access="hasRole('ADMINISTRATOR')">
-	<jstl:if test="${comment.getAppropriated()==true }">
-		<input type="button" value="<spring:message code="comment.isInappropriated" />" 
-			onclick="javascript: window.location.assign('comment/administrator/appropriated.do?commentId=${comment.id}')" />			
-	</jstl:if>
-	<jstl:if test="${comment.getAppropriated()==false }">
-		<input type="button" value="<spring:message code="comment.isAppropriated" />" 
-			onclick="javascript: window.location.assign('comment/administrator/appropriated.do?commentId=${comment.id}')" />			
-	</jstl:if>
-</security:authorize>
+
 
 <input type="button" name="back" value="<spring:message code="comment.cancel"/>" onclick="javascript: window.history.back()" />

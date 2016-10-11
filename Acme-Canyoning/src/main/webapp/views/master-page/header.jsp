@@ -55,8 +55,10 @@
 				</a>
 					<ul>
 						<li class="arrow"></li>
-									<li><a href="actor/list.do"><spring:message
-					code="master.page.auth.actorsList" /></a>
+									<li><a href="customer/list.do"><spring:message
+					code="master.page.auth.customersList" /></a>
+					<li><a href="organiser/list.do"><spring:message
+					code="master.page.auth.organisersList" /></a>
 
 						<security:authorize access="hasRole('CUSTOMER')">
 							<li><a href="activity/customer/mylist.do"><spring:message

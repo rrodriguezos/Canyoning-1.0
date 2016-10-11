@@ -10,6 +10,8 @@
 
 package controllers;
 
+import java.util.Collection;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,21 +43,21 @@ public class CustomerController extends AbstractController {
 		super();
 	}
 
-	// // List
-	// ------------------------------------------------------------------
-	// @RequestMapping(value = "/list", method = RequestMethod.GET)
-	// public ModelAndView list() {
-	// ModelAndView result;
-	// Collection<Customer> customers;
-	//
-	// customers = customerService.findAll();
-	//
-	// result = new ModelAndView("customer/list");
-	// result.addObject("customers", customers);
-	// result.addObject("requestUri", "customer/list.do");
-	//
-	// return result;
-	// }
+	// List -----------------------------------------------------------------
+
+	@RequestMapping(value = "/list", method = RequestMethod.GET)
+	public ModelAndView list() {
+		ModelAndView result;
+		Collection<Customer> customers;
+
+		customers = customerService.findAll();
+
+		result = new ModelAndView("customer/list");
+		result.addObject("customers", customers);
+		result.addObject("requestURI", "customer/list.do");
+
+		return result;
+	}
 
 	// Create ---------------------------------------------------------------
 
@@ -188,7 +190,8 @@ public class CustomerController extends AbstractController {
 	// Ancillary methods
 	// --------------------------------------------------------
 
-	protected ModelAndView createEditModelAndView(CustomerRegisterForm customerForm) {
+	protected ModelAndView createEditModelAndView(
+			CustomerRegisterForm customerForm) {
 		ModelAndView result;
 
 		result = createEditModelAndView(customerForm, null);

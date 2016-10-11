@@ -23,6 +23,7 @@
 
 		<value>/views/activity/tiles.xml</value>
 		<value>/views/customer/tiles.xml</value>
+		<value>/views/organiser/tiles.xml</value>
 
 		<value>/views/search/tiles.xml</value>
 		<value>/views/canyon/tiles.xml</value>

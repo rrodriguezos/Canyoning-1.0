@@ -102,6 +102,8 @@
 
 		
 		<security:intercept-url pattern="/comment/actor/**" access="isAuthenticated()" />
+		<security:intercept-url pattern="/customer/list/**" access="isAuthenticated()" />
+		<security:intercept-url pattern="/organiser/list/**" access="isAuthenticated()" />
 
 		<security:intercept-url pattern="/folder/actor/**" access="isAuthenticated()" />
 		<security:intercept-url pattern="/folder/**" access="isAuthenticated()" />

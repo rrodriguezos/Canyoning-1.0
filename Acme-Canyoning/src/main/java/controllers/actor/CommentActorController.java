@@ -56,7 +56,7 @@ public class CommentActorController extends AbstractController {
 				commentService.save(comment);
 				if (comment.getCommentable() instanceof Canyon) {
 					result = new ModelAndView(
-							"redirect:/trip/display.do?tripId="
+							"redirect:/canyon/display.do?canyonId="
 									+ comment.getCommentable().getId());
 				} else if (comment.getCommentable() instanceof Activity) {
 					result = new ModelAndView(

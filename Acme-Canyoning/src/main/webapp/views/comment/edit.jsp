@@ -23,11 +23,13 @@
 	<form:hidden path="actor"/>
 	<form:hidden path="commentable"/>
 	<form:hidden path="moment"/>
-	<form:hidden path="appropriated"/>
 	
 	<acme:textbox code="comment.title" path="title"/>
 	
-	<acme:textarea code="comment.text" path="text"/>
+	<acme:textarea code="comment.body" path="body"/>
+	
+	<acme:textbox code="comment.stars" path="stars" />	
+	
 	
 	<input type="submit" name="save" value="<spring:message code="comment.save" />" />
 	
