@@ -377,6 +377,7 @@
 		<property name="title" value="Picnic en un precipicio" />
 		<property name="description" value="Nos gusta el riesgo" />
 		<property name="numberSeats" value="4" />
+		<property name="seatsAvailable" value="4" />
 		<property name="organiser" ref="organiser1" />
 		<property name="moment" value="09/11/2017 16:00" />
 		<property name="canyon" ref="canyon1" />
@@ -397,6 +398,7 @@
 		<property name="title" value="Andar por el parque" />
 		<property name="description" value="Echar el día en el parque" />
 		<property name="numberSeats" value="4" />
+		<property name="seatsAvailable" value="3" />
 		<property name="organiser" ref="organiser2" />
 		<property name="moment" value="09/11/2018 16:00" />
 		<property name="canyon" ref="canyon2" />
@@ -418,6 +420,7 @@
 		<property name="description" value="Cena en el campo" />
 		<property name="numberSeats" value="2" />
 		<property name="organiser" ref="organiser3" />
+		<property name="seatsAvailable" value="2" />
 		<property name="moment" value="09/05/2017 14:00" />
 		<property name="canyon" ref="canyon3" />
 		<property name="comments">

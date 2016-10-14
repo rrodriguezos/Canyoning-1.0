@@ -20,7 +20,6 @@
 <%@taglib prefix="acme" tagdir="/WEB-INF/tags"%>
 
 
-
 <acme:jstlOut code="activity.title" value="${activity.title }" />
 <acme:jstlOut code="activity.description"
 	value="${activity.description }" />
@@ -28,7 +27,15 @@
 	value="${activity.numberSeats }" />
 
 <acme:jstlOut code="activity.moment" value="${activity.moment }" />
+<br>
+<div>
+<jstl:if test="${logeado == true and myActivity == false}">
+	
+		<input type="button" value="<spring:message code="activity.registerCustomer" />" 
+			onclick="javascript: window.location.assign('activity/customer/requestActivity.do?activityId=${activity.id}')" />
 
+</jstl:if>
+</div>
 
 
 <h2>
@@ -55,6 +62,7 @@
 	</display:column>
 
 </display:table>
+
 
 
 <input type="button" name="cancel"

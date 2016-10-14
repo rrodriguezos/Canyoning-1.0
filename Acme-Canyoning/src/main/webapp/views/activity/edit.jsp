@@ -19,13 +19,12 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@taglib prefix="acme" tagdir="/WEB-INF/tags"%>
 
-<security:authorize access="hasRole('USER')">
+<security:authorize access="hasRole('ORGANISER')">
 
-	<form:form action="activity/user/edit.do" modelAttribute="activity">
+	<form:form action="activity/organiser/edit.do" modelAttribute="activity">
 		<form:hidden path="id" />
 		<form:hidden path="version" />
 		<form:hidden path="organiser" />
-		<form:hidden path="canyos" />
 		<form:hidden path="comments" />
 
 
@@ -33,14 +32,22 @@
 
 		<acme:textbox code="activity.description" path="description" />
 
-		<acme:textarea code="activity.numberSeats" path="numberSeats" />
+		<acme:textbox code="activity.numberSeats" path="numberSeats" />
 		
 		<acme:date code="activity.moment" path="moment" readonly="false" />
+		
+		<spring:message code="activity.canyon" />
+		<form:select path="canyon">
+			<form:options items="${canyons}" itemLabel="name"
+				itemValue="id" />
+		</form:select>
+		<form:errors cssClass="error" path="canyon" />
+		<br>
 
 
 		<input type="submit" name="save"
 			value="<spring:message code="activity.save" />" />
-		<acme:cancel url="activity/list.do" code="activity.cancel" />
+		<acme:cancel url="activity/mylist.do" code="activity.cancel" />
 
 	</form:form>
 

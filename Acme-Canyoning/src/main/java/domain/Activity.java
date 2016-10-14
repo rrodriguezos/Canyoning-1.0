@@ -14,6 +14,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.Valid;
 import javax.validation.constraints.Future;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotBlank;
@@ -34,8 +35,9 @@ public class Activity extends Commentable {
 	// Attributes -------------------------------------------------
 	private String title;
 	private String description;
-	private Integer numberSeats;
+	private int numberSeats;
 	private Date moment;
+	private int seatsAvailable;
 
 	@NotBlank
 	public String getTitle() {
@@ -55,12 +57,12 @@ public class Activity extends Commentable {
 		this.description = description;
 	}
 
-	@NotNull
-	public Integer getNumberSeats() {
+	@Min(0)
+	public int getNumberSeats() {
 		return numberSeats;
 	}
 
-	public void setNumberSeats(Integer numberSeats) {
+	public void setNumberSeats(int numberSeats) {
 		this.numberSeats = numberSeats;
 	}
 
@@ -74,6 +76,15 @@ public class Activity extends Commentable {
 
 	public void setMoment(Date moment) {
 		this.moment = moment;
+	}
+
+	@Min(0)
+	public int getSeatsAvailable() {
+		return seatsAvailable;
+	}
+
+	public void setSeatsAvailable(int seatsAvailable) {
+		this.seatsAvailable = seatsAvailable;
 	}
 
 	// Relationships ---------------------------------------------------
@@ -105,7 +116,6 @@ public class Activity extends Commentable {
 	private Collection<Request> requests;
 
 	@Valid
-	@NotNull
 	@OneToMany(mappedBy = "activity")
 	public Collection<Request> getRequests() {
 		return requests;

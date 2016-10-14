@@ -144,7 +144,7 @@ public class OrganiserService {
 					organiserForm.getConfirmPassword()));
 
 			res.setPhone(organiserForm.getPhone());
-			res.setEmail(organiserForm.getEmailAddress());
+			res.setEmail(organiserForm.getEmail());
 
 			res.getUserAccount().setUsername(organiserForm.getUsername());
 			res.getUserAccount().setPassword(organiserForm.getPassword());

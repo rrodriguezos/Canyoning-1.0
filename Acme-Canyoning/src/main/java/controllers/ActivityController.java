@@ -13,10 +13,14 @@ import services.ActivityService;
 import services.AdministratorService;
 import services.CanyonService;
 import services.CommentService;
+import services.CustomerService;
+import services.RequestService;
 import domain.Activity;
 import domain.Administrator;
 import domain.Canyon;
 import domain.Comment;
+import domain.Customer;
+import domain.Request;
 
 @Controller
 @RequestMapping("/activity")
@@ -31,6 +35,10 @@ public class ActivityController extends AbstractController {
 	private AdministratorService administratorService;
 	@Autowired
 	private CommentService commentService;
+	@Autowired
+	private CustomerService customerService;
+	@Autowired
+	private RequestService requestService;
 
 	// Constructors -----------------------------------------------------------
 	public ActivityController() {
@@ -58,8 +66,34 @@ public class ActivityController extends AbstractController {
 	@RequestMapping(value = "/display", method = RequestMethod.GET)
 	public ModelAndView display(int activityId) {
 		ModelAndView result;
+		Customer customer;
 		Activity activity;
+		Boolean myActivity;
+		Boolean logeado;
+		activity = activityService.findOne(activityId);
+		myActivity = false;
+		logeado = false;
 		Collection<Comment> comments;
+		Collection<Request> requestCustomer;
+
+
+		try {
+			requestCustomer = requestService.requestByCustomer();
+			customer = customerService.findByPrincipal();
+			if (customer != null) {
+				logeado = true;
+			}
+			for (Request r : requestCustomer) {
+				Activity activityRequest = r.getActivity();
+
+				if (activityRequest.equals(activity)) {
+					myActivity = true;
+				}
+			}
+		} catch (Throwable oops) {
+			myActivity = false;
+			logeado = false;
+		}
 
 		comments = commentService.findCommentsByCommentableId(activityId);
 
@@ -68,40 +102,51 @@ public class ActivityController extends AbstractController {
 
 		result = new ModelAndView("activity/display");
 		result.addObject("activity", activity);
-
+		result.addObject("myActivity", myActivity);
+		result.addObject("logeado", logeado);
 		result.addObject("comments", comments);
 		return result;
 	}
-	// List
+
+	// ListByCanyon
+	// ---------------------------------------------------------------------------
+	@RequestMapping(value = "/listByCanyon")
+	public ModelAndView listByCanyon(@RequestParam int canyonId) {
+
+		ModelAndView result;
+		Collection<Activity> activities;
+		Canyon canyon;
+		Administrator administrator;
+		Boolean mycanyon;
+		activities = activityService.activitiesByCanyon(canyonId);
+		result = new ModelAndView("activity/list");
+		result.addObject("activities", activities);
+		result.addObject("canyonId", canyonId);
+		mycanyon = false;
+		try {
+			administrator = administratorService.findByPrincipal();
+			canyon = canyonService.findOne(canyonId);
+
+			mycanyon = administrator.equals(canyon.getAdministrator());
+
+		} catch (Throwable oops) {
+
+		}
+		result.addObject("myactivity", mycanyon);
+
+		return result;
+	}
+	// ListByRequest
 		// ---------------------------------------------------------------------------
-		@RequestMapping(value = "/listByCanyon")
-		public ModelAndView listByCanyon(@RequestParam int canyonId) {
-
+		@RequestMapping(value = "/listByRequest", method = RequestMethod.GET)
+		public ModelAndView navigateByRequest(@RequestParam int requestId) {
 			ModelAndView result;
-			Collection<Activity> activities;
-			Canyon canyon;
-			Administrator administrator;
-			Boolean mycanyon;
-			activities = activityService.activitiesByCanyon(canyonId);
+			Activity activity = activityService.activityByRequest(requestId);
+
 			result = new ModelAndView("activity/list");
-			result.addObject("activities", activities);
-			result.addObject("canyonId", canyonId);
-			mycanyon = false;
-			try {
-				administrator = administratorService.findByPrincipal();
-				canyon = canyonService.findOne(canyonId);
-
-				mycanyon = administrator.equals(canyon.getAdministrator());
-
-			} catch (Throwable oops) {
-
-			}
-			result.addObject("myactivity", mycanyon);
-	
-
+			result.addObject("activities", activity);
+			result.addObject("requestURI", "activity/listByRequest.do");
 			return result;
 		}
-	
-	
 
 }

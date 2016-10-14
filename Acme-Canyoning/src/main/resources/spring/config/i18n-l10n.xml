@@ -20,6 +20,7 @@
 		<value>/views/search/messages</value>
 		<value>/views/administrator/messages</value>
 		<value>/views/customer/messages</value>
+		<value>/views/request/messages</value>
 		<value>/views/organiser/messages</value>
 		<value>/views/profile/messages</value>		
 		<value>/views/activity/messages</value>

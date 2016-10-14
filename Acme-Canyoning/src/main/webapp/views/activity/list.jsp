@@ -18,6 +18,29 @@
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <display:table name="activities" id="row" pagesize="5" requestURI="${requestUri}" class="displaytag">
+<jstl:if test="${mylist== true}">	
+	<spring:message	code="activity.myactivity"  var="myactivity"/>
+	<br>
+	<br>	
+</jstl:if>
+
+<jstl:if test="${accepted == true}">	
+	<spring:message	code="activity.activitiesAccepted"  var="activitiesAccepted"/>
+	<br>
+	<br>	
+</jstl:if>
+
+<jstl:if test="${reject == true}">	
+	<spring:message	code="activity.activitiesReject"  var="activitiesReject"/>
+	<br>
+	<br>	
+</jstl:if>
+
+<jstl:if test="${pending == true}">	
+	<spring:message	code="activity.activitiesPending"  var="activitiesPending"/>	
+	<br>
+	<br>	
+</jstl:if>
 	
 	<spring:message code="activity.title" var="title" />
 	<display:column property="title" title="${title}" />

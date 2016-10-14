@@ -35,3 +35,8 @@
 	</security:authorize>
 
 </display:table>
+<security:authorize access="hasRole('ADMINISTRATOR')">
+
+<input type="button" name="create" value="<spring:message code="organiser.create" />"
+	 onclick="javascript: window.location.assign('organiser/administrator/create.do')" />
+</security:authorize>

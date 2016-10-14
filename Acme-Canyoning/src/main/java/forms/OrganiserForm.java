@@ -14,10 +14,8 @@ public class OrganiserForm {
 	private String password;
 	private String confirmPassword;
 	private String username;
-	private String name;
-	private String surname;
 	private String phone;
-	private String emailAddress;
+	private String email;
 
 	// Constructors...................
 
@@ -62,28 +60,8 @@ public class OrganiserForm {
 		this.username = username;
 	}
 	
-	@SafeHtml(whitelistType=WhiteListType.NONE)
-	@NotBlank
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
 
 	@SafeHtml(whitelistType=WhiteListType.NONE)
-	@NotBlank
-	public String getSurname() {
-		return surname;
-	}
-
-	public void setSurname(String surname) {
-		this.surname = surname;
-	}
-
-	@SafeHtml(whitelistType=WhiteListType.NONE)
-	@Pattern(regexp="(\\+[0-9]{1,2} ([(][0-9]{0,3}[)] [0-9]{4,9}|[0-9]{4,9})|^$)")
 	public String getPhone() {
 		return phone;
 	}
@@ -94,12 +72,12 @@ public class OrganiserForm {
 	@SafeHtml(whitelistType=WhiteListType.NONE)
 	@NotBlank
 	@Email
-	public String getEmailAddress() {
-		return emailAddress;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setEmailAddress(String emailAddress) {
-		this.emailAddress = emailAddress;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 }

@@ -17,4 +17,8 @@ public interface ActivityRepository extends JpaRepository<Activity, Integer> {
 	@Query("select a from Activity a where a.title like CONCAT('%',?1,'%') or a.description like CONCAT('%',?1,'%') or a.canyon.name like CONCAT('%',?1,'%') or a.canyon.description like CONCAT('%',?1,'%'))")
 	Collection<Activity> findActivityByKeyword(String text);
 
+	@Query("select o.activities from Organiser o where o.id = ?1")
+	Collection<Activity> requestByOrganiser(int id);
+
+
 }

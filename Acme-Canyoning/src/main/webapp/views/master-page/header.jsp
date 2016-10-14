@@ -64,10 +64,24 @@
 							<li><a href="activity/customer/mylist.do"><spring:message
 										code="master.page.customer.activities" /></a></li>
 										
+										<li><a href="activity/customer/mylistAccepted.do"><spring:message
+										code="master.page.customer.activitiesAccepted" /></a></li>
+										
+										<li><a href="activity/customer/mylistReject.do"><spring:message
+										code="master.page.customer.activitiesReject" /></a></li>
+										
+										<li><a href="activity/customer/mylistPending.do"><spring:message
+										code="master.page.customer.activitiesPending" /></a></li>
+										
+										<li><a href="request/customer/list.do"><spring:message
+										code="master.page.customer.requests" /></a></li>
+										
+			
+										
 						</security:authorize>
 
 						<security:authorize access="hasRole('ORGANISER')">
-							<li><a href="activity/organiser/list.do"><spring:message
+							<li><a href="activity/organiser/mylist.do"><spring:message
 										code="master.page.organiser.activities" /></a></li>
 
 							<li><a href="activity/organiser/create.do"><spring:message
@@ -83,6 +97,8 @@
 										code="master.page.manager.canyon" /></a></li>
 										<li><a href="canyon/administrator/create.do"><spring:message
 										code="master.page.organiser.createCanyon" /></a></li>
+										<li><a href="organiser/administrator/list.do"><spring:message
+										code="master.page.administrator.register.organiser" /></a></li>
 	
 						</security:authorize>
 
