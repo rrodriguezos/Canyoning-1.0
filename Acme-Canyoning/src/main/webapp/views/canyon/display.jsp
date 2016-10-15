@@ -25,11 +25,11 @@
 <acme:jstlOut code="canyon.difficultyLevel"
 	value="${canyon.difficultyLevel }" />
 <acme:jstlOut code="canyon.route" value="${canyon.route }" />
-<acme:jstlOut code="canyon.latitude"
+<acme:jstlOut code="canyon.gps.latitude"
 	value="${canyon.gpsCoordinates.latitude }" />
-<acme:jstlOut code="canyon.longitude"
+<acme:jstlOut code="canyon.gps.longitude"
 	value="${canyon.gpsCoordinates.longitude }" />
-<acme:jstlOut code="canyon.altitude"
+<acme:jstlOut code="canyon.gps.altitude"
 	value="${canyon.gpsCoordinates.altitude }" />
 
 
@@ -40,6 +40,13 @@
 		alt="${ canyon.name } picture" />
 </jstl:forEach>
 <br>
+
+<security:authorize access="hasRole('ADMINISTRATOR')">
+	
+	<input type="button" value="<spring:message code="canyon.edit" />" 
+			onclick="javascript: window.location.assign('canyon/administrator/edit.do?canyonId=${canyon.id}')" />
+
+</security:authorize>
 
 <br>
 <h2>

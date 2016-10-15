@@ -93,7 +93,7 @@
 							<li><a href="organiser/administrator/list.do"><spring:message
 										code="master.page.administrator.register.organiser" /></a></li>
 							
-							<li><a href="canyon/administrator/list.do"><spring:message
+							<li><a href="canyon/administrator/mylist.do"><spring:message
 										code="master.page.manager.canyon" /></a></li>
 										<li><a href="canyon/administrator/create.do"><spring:message
 										code="master.page.organiser.createCanyon" /></a></li>

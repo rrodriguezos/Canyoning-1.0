@@ -5,6 +5,7 @@ import java.util.Date;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Index;
 import javax.persistence.ManyToOne;
@@ -116,7 +117,7 @@ public class Activity extends Commentable {
 	private Collection<Request> requests;
 
 	@Valid
-	@OneToMany(mappedBy = "activity")
+	@OneToMany(cascade=CascadeType.ALL,mappedBy = "activity")
 	public Collection<Request> getRequests() {
 		return requests;
 	}

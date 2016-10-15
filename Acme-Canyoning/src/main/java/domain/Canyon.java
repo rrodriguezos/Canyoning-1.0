@@ -4,6 +4,10 @@ import java.util.Collection;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
+import javax.persistence.AttributeOverride;
+import javax.persistence.AttributeOverrides;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.Index;
@@ -89,6 +93,10 @@ public class Canyon extends Commentable {
 
 	@Valid
 	@NotNull
+	@AttributeOverrides({
+			@AttributeOverride(name = "longitude", column = @Column(name = "longitude")),
+			@AttributeOverride(name = "latitude", column = @Column(name = "latitude")),
+			@AttributeOverride(name = "altitude", column = @Column(name = "altitude")) })
 	public GPSCoordinates getGpsCoordinates() {
 		return gpsCoordinates;
 	}
@@ -114,7 +122,7 @@ public class Canyon extends Commentable {
 
 	@Valid
 	@NotNull
-	@OneToMany(mappedBy = "canyon")
+	@OneToMany(cascade=CascadeType.ALL,mappedBy = "canyon")
 	public Collection<Activity> getActivities() {
 		return activities;
 	}

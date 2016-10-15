@@ -36,16 +36,16 @@
 	<spring:message code="canyon.route" var="routeHeader" />
 	<display:column property="route" title="${routeHeader}" />
 
-	<spring:message code="canyon.latitude" var="latitude" />
+	<spring:message code="canyon.gps.latitude" var="latitude" />
 	<display:column property="gpsCoordinates.latitude" title="${latitude}"
 		sortable="true" />
 
-	<spring:message code="canyon.longitude" var="longitude" />
+	<spring:message code="canyon.gps.longitude" var="longitude" />
 	<display:column property="gpsCoordinates.longitude"
 		title="${longitude}" sortable="true" />
 
 
-	<spring:message code="canyon.altitude" var="altitude" />
+	<spring:message code="canyon.gps.altitude" var="altitude" />
 	<display:column property="gpsCoordinates.altitude" title="${altitude}"
 		sortable="true" />
 
@@ -62,12 +62,17 @@
 			onclick="javascript: window.location.assign('activity/listByCanyon.do?canyonId=${row.id}')" />
 	</display:column>
 	<security:authorize access="isAuthenticated()">
-	<spring:message code="canyon.comment" var="commentHeader" />
-	<display:column title="${commentHeader}">
-			<input type="button" value="<spring:message code="canyon.comment" />" 
-					onclick="javascript: window.location.assign('comment/list.do?id=${row.id}')" />
-	</display:column>
+		<spring:message code="canyon.comment" var="commentHeader" />
+		<display:column title="${commentHeader}">
+			<input type="button" value="<spring:message code="canyon.comment" />"
+				onclick="javascript: window.location.assign('comment/list.do?id=${row.id}')" />
+		</display:column>
 	</security:authorize>
-
-
 </display:table>
+
+<security:authorize access="hasRole('ADMINISTRATOR')">
+	<input type="button" name="create"
+		value="<spring:message code="canyon.create" />"
+		onclick="javascript: window.location.assign('canyon/administrator/create.do')" />
+
+</security:authorize>

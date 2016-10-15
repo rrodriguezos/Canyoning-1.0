@@ -25,7 +25,12 @@
 		<put-attribute name="body" value="/views/canyon/list.jsp" />
 	</definition>
 	
-	<definition name="canyon/desfiladeros/edit" extends="master.page">	
+	<definition name="canyon/edit" extends="master.page">	
+		<put-attribute name="title" value="Crear nuevo Desfiladero" />
+		<put-attribute name="body" value="/views/canyon/edit.jsp" />
+	</definition>
+	
+	<definition name="canyon/create" extends="master.page">	
 		<put-attribute name="title" value="Crear nuevo Desfiladero" />
 		<put-attribute name="body" value="/views/canyon/edit.jsp" />
 	</definition>
