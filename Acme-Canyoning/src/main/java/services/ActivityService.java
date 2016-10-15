@@ -1,6 +1,7 @@
 package services;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collection;
 import java.util.Date;
 import java.util.LinkedList;
@@ -12,10 +13,11 @@ import org.springframework.util.Assert;
 
 import repositories.ActivityRepository;
 import security.Authority;
+import security.LoginService;
+import security.UserAccount;
 import domain.Activity;
 import domain.Actor;
 import domain.Comment;
-import domain.Customer;
 import domain.Organiser;
 import domain.Request;
 import domain.Request.RequestState;
@@ -40,6 +42,8 @@ public class ActivityService {
 
 	@Autowired
 	private ActorService actorService;
+	@Autowired
+	private AdministratorService administratorService;
 
 	// COnstructors -------------------------
 	public ActivityService() {
@@ -61,8 +65,7 @@ public class ActivityService {
 
 		comments = new ArrayList<Comment>();
 		result.setComments(comments);
-	
-		
+
 		requests = new ArrayList<Request>();
 		result.setRequests(requests);
 
@@ -247,13 +250,47 @@ public class ActivityService {
 	}
 
 	public Collection<Activity> findActivitiesByOrganiser() {
-			Collection<Activity> result;
-			Organiser organiser;
-			organiser = organiserService.findByPrincipal();
+		Collection<Activity> result;
+		Organiser organiser;
+		organiser = organiserService.findByPrincipal();
 
-			result = activityRepository.requestByOrganiser(organiser.getId());
-			return result;
-		}
+		result = activityRepository.requestByOrganiser(organiser.getId());
+		return result;
 	}
 
+	// Dashboard 1.0
+	//The average number of activities per organiser.
+	public Double averageNumberOfActivitiesByOrganisers() {
+		UserAccount loginNow = LoginService.getPrincipal();
+		administratorService.isAdmin(loginNow);
+		return activityRepository.averageNumberOfActivitiesByOrganisers();
 
+	}
+	
+	//The average number of seats offered in the activities that are going to be organised in the forthcoming three months.
+	public Double averageSeatsOrganisedThreeMonths(){
+		UserAccount loginNow = LoginService.getPrincipal();
+		administratorService.isAdmin(loginNow);
+	    Calendar calendar = Calendar.getInstance();
+	    calendar.setTimeInMillis(System.currentTimeMillis());
+	    calendar.add(Calendar.DAY_OF_MONTH, +90);
+	    Date upToDateCriteria = calendar.getTime();
+		Double seatsAvaliables = activityRepository.seatsAvaliablesNextThreeMonths(upToDateCriteria);
+
+		return seatsAvaliables;
+	}
+	//The activities that offer at least 10% more seats than the average.
+	public Collection<Activity> findWithMoreTenPercentOfSeatsAvg(){
+		UserAccount loginNow = LoginService.getPrincipal();
+		administratorService.isAdmin(loginNow);
+		Collection<Activity> res = activityRepository.findWithMoreTenPercentOfSeatsAvg();
+		return res;
+	}
+	//The activities that offer at least 10% less seats than the average.
+	public Collection<Activity> findWithLessTenPercentOfSeatsAvg(){
+		UserAccount loginNow = LoginService.getPrincipal();
+		administratorService.isAdmin(loginNow);
+		Collection<Activity> res = activityRepository.findWithLessTenPercentOfSeatsAvg();
+		return res;
+	}
+}

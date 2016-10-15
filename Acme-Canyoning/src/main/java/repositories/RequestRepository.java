@@ -29,6 +29,9 @@ public interface RequestRepository extends JpaRepository<Request, Integer> {
 
 	@Query("select c.requests from Customer c where c.id = ?1")
 	Collection<Request> requestByCustomer(int id);
+
+	@Query("select avg(o.requests.size) from Organiser o where o.request.requestState = 'PENDING'")
+	Double averageCustomersInWaitingList();
 	
 
 

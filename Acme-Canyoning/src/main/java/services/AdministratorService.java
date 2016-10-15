@@ -95,4 +95,13 @@ public class AdministratorService {
 				.contains(authority));
 	}
 
+	public void isAdmin(UserAccount account) {
+			Collection<Authority> authorities= account.getAuthorities();
+			Boolean res=false;
+			for(Authority a:authorities){
+				if(a.getAuthority().equals("ADMIN")) res=true;
+			}
+			Assert.isTrue(res);
+		}
+
 }

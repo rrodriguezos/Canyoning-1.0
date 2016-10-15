@@ -128,4 +128,9 @@ public class RequestService {
 
 	}
 
+	public Double averageCustomersInWaitingList() {
+		
+		return requestRepository.averageCustomersInWaitingList();
+	}
+
 }
