@@ -34,7 +34,17 @@
 		<input type="button" value="<spring:message code="activity.registerCustomer" />" 
 			onclick="javascript: window.location.assign('activity/customer/requestActivity.do?activityId=${activity.id}')" />
 
+	
+		
+
 </jstl:if>
+<jstl:if test="${myActivityOrganiser == false}">
+<input type="button" value="<spring:message code="activity.reinstantiate" />" 
+			onclick="javascript: window.location.assign('activity/organiser/reinstantiate.do?activityId=${activity.id}')" />
+
+
+</jstl:if>
+
 </div>
 
 

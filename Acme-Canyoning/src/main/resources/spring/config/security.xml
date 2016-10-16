@@ -87,13 +87,18 @@
 		<security:intercept-url pattern="/activity/customer/mylistReject.do" access="hasRole('CUSTOMER')" /> 
 		<security:intercept-url pattern="/activity/customer/mylistPending.do" access="hasRole('CUSTOMER')" />  
 		<security:intercept-url pattern="/activity/customer/requestActivity.do" access="hasRole('CUSTOMER')" />
-		<security:intercept-url pattern="/activity/listByRequest.do" access="hasRole('CUSTOMER')" />
 		<security:intercept-url pattern="/request/customer/list.do" access="hasRole('CUSTOMER')" />
 		
 		
 		<security:intercept-url pattern="/activity/organiser/mylist.do" access="hasRole('ORGANISER')" />
 		<security:intercept-url pattern="/activity/organiser/create.do" access="hasRole('ORGANISER')" />
 		<security:intercept-url pattern="/activity/organiser/edit.do" access="hasRole('ORGANISER')" />
+				<security:intercept-url pattern="/request/organiser/list.do" access="hasRole('ORGANISER')" />
+				<security:intercept-url pattern="/request/list.do" access="hasRole('ORGANISER')" />
+				<security:intercept-url pattern="/request/organiser/accept.do" access="hasRole('ORGANISER')" />
+				<security:intercept-url pattern="/request/organiser/reject.do" access="hasRole('ORGANISER')" />
+				<security:intercept-url pattern="/activity/listByRequest.do" access="isAuthenticated()" />
+				
 		
 		<security:intercept-url pattern="/customer/register.do" access="isAnonymous()" /> 
 		<security:intercept-url pattern="/comment/actor/**" access="isAuthenticated()" />

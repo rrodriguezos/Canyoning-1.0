@@ -51,6 +51,9 @@
 	<spring:message code="activity.numberSeats" var="numberSeats" />
 	<display:column property="numberSeats" title="${numberSeats}" />
 	
+		<spring:message code="activity.seatsAvailable" var="seatsAvailable" />
+	<display:column property="seatsAvailable" title="${seatsAvailable}" />
+	
 	<spring:message code="activity.moment" var="moment" />
 	<display:column property="moment" title="${moment}"
 		sortable="true" format="{0, date, dd/MM/yyyy HH:mm}" />
@@ -71,6 +74,13 @@
 	<display:column title="${commentHeader}">
 			<input type="button" value="<spring:message code="activity.comment" />" 
 					onclick="javascript: window.location.assign('comment/list.do?id=${row.id}')" />
+	</display:column>
+	</security:authorize>
+	<security:authorize access="hasRole('ORGANISER')">
+	<spring:message code="activity.request" var="requestHeader" />
+	<display:column title="${requestHeader}">
+			<input type="button" value="<spring:message code="activity.request" />" 
+					onclick="javascript: window.location.assign('request/organiser/list.do?activityId=${row.id}')" />
 	</display:column>
 	</security:authorize>
 	

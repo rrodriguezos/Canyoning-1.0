@@ -377,7 +377,7 @@
 		<property name="title" value="Picnic en un precipicio" />
 		<property name="description" value="Nos gusta el riesgo" />
 		<property name="numberSeats" value="4" />
-		<property name="seatsAvailable" value="4" />
+		<property name="seatsAvailable" value="0" />
 		<property name="organiser" ref="organiser1" />
 		<property name="moment" value="09/11/2017 16:00" />
 		<property name="canyon" ref="canyon1" />
@@ -440,6 +440,7 @@
 		<property name="title" value="Cenar fuera" />
 		<property name="description" value="Cena en el campo" />
 		<property name="numberSeats" value="2" />
+		<property name="seatsAvailable" value="2" />
 		<property name="organiser" ref="organiser1" />
 		<property name="moment" value="09/02/2017 18:00" />
 		<property name="canyon" ref="canyon1" />
@@ -458,6 +459,7 @@
 		<property name="title" value="Puenting" />
 		<property name="description" value="Tirarnos desde un puente" />
 		<property name="numberSeats" value="2" />
+		<property name="seatsAvailable" value="2" />
 		<property name="organiser" ref="organiser2" />
 		<property name="moment" value="09/12/2017 09:00" />
 		<property name="canyon" ref="canyon2" />
@@ -475,6 +477,7 @@
 		<property name="title" value="Isla Magica" />
 		<property name="description" value="Todos a Isla Magica" />
 		<property name="numberSeats" value="8" />
+		<property name="seatsAvailable" value="8" />
 		<property name="organiser" ref="organiser3" />
 		<property name="moment" value="09/07/2017 10:00" />
 		<property name="canyon" ref="canyon3" />

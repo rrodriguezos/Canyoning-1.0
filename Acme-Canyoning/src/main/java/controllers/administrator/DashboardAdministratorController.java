@@ -47,7 +47,7 @@ public class DashboardAdministratorController extends AbstractController {
 			// The average number of activities per organiser.
 			Double averageActivitiesPerOrganiser = activityService.averageNumberOfActivitiesByOrganisers();
 			// The average number of customers in the waiting lists.
-			Double averageCustomersInWaitingList = requestService.averageCustomersInWaitingList();
+//			Double averageCustomersInWaitingList = requestService.averageCustomersInWaitingList();
 
 		
 
@@ -61,7 +61,7 @@ public class DashboardAdministratorController extends AbstractController {
 
 			result = new ModelAndView("administrator/dashboard");
 			result.addObject("averageActivitiesPerOrganiser", averageActivitiesPerOrganiser);
-			result.addObject("averageCustomersInWaitingList", averageCustomersInWaitingList);
+//			result.addObject("averageCustomersInWaitingList", averageCustomersInWaitingList);
 
 
 			result.addObject("activity10MoreAverage", activity10MoreAverage);

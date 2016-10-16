@@ -14,12 +14,14 @@ import services.AdministratorService;
 import services.CanyonService;
 import services.CommentService;
 import services.CustomerService;
+import services.OrganiserService;
 import services.RequestService;
 import domain.Activity;
 import domain.Administrator;
 import domain.Canyon;
 import domain.Comment;
 import domain.Customer;
+import domain.Organiser;
 import domain.Request;
 
 @Controller
@@ -39,6 +41,8 @@ public class ActivityController extends AbstractController {
 	private CustomerService customerService;
 	@Autowired
 	private RequestService requestService;
+	@Autowired
+	private OrganiserService organiserService;
 
 	// Constructors -----------------------------------------------------------
 	public ActivityController() {
@@ -67,10 +71,13 @@ public class ActivityController extends AbstractController {
 	public ModelAndView display(int activityId) {
 		ModelAndView result;
 		Customer customer;
+		Organiser organiser;
 		Activity activity;
 		Boolean myActivity;
+		Boolean myActivityOrganiser;
 		Boolean logeado;
 		activity = activityService.findOne(activityId);
+		myActivityOrganiser = false;
 		myActivity = false;
 		logeado = false;
 		Collection<Comment> comments;
@@ -78,10 +85,15 @@ public class ActivityController extends AbstractController {
 
 
 		try {
+			activity = activityService.findOne(activityId);
+			organiser = organiserService.findByPrincipal();
 			requestCustomer = requestService.requestByCustomer();
 			customer = customerService.findByPrincipal();
 			if (customer != null) {
 				logeado = true;
+			}
+			if (activity.getOrganiser().equals(organiser) ) {
+				myActivityOrganiser = true;
 			}
 			for (Request r : requestCustomer) {
 				Activity activityRequest = r.getActivity();
@@ -93,6 +105,7 @@ public class ActivityController extends AbstractController {
 		} catch (Throwable oops) {
 			myActivity = false;
 			logeado = false;
+			myActivityOrganiser = false;
 		}
 
 		comments = commentService.findCommentsByCommentableId(activityId);

@@ -128,9 +128,49 @@ public class RequestService {
 
 	}
 
-	public Double averageCustomersInWaitingList() {
-		
-		return requestRepository.averageCustomersInWaitingList();
+	// public Double averageCustomersInWaitingList() {
+	//
+	// return requestRepository.averageCustomersInWaitingList();
+	// }
+
+	public Collection<Request> requestsPendingByActivity(int activityId) {
+		Collection<Request> result;
+
+		result = requestRepository.requestsPendingByActivity(activityId);
+
+		return result;
+	}
+
+	public Boolean acceptRequest(int requestId) {
+		Request request;
+		Boolean accept;
+		accept = false;
+		Activity activity;
+		request = findOne(requestId);
+		activity = request.getActivity();
+		if (activity.getSeatsAvailable() > 0) {
+			accept = true;
+			request.setRequestState(RequestState.ACCEPTED);
+			request.setMomentAccepted(new Date(
+					System.currentTimeMillis() - 1000));
+			save(request);
+			
+			activityService.restaAsiento(activity);
+		}else{
+			request.setRequestState(RequestState.REJECTED);
+			save(request);
+		}
+		return accept;
+	}
+
+	public boolean rejectRequest(int requestId) {
+		Request request;
+		Boolean accept;
+		accept = false;
+		request = findOne(requestId);
+		request.setRequestState(RequestState.REJECTED);
+		save(request);
+		return accept;
 	}
 
 }

@@ -1,7 +1,6 @@
 package services;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Collection;
 import java.util.Date;
 import java.util.LinkedList;
@@ -90,8 +89,15 @@ public class ActivityService {
 
 	public void save(Activity activity) {
 		Assert.notNull(activity);
-
+		activity.setSeatsAvailable(activity.getNumberSeats());
 		activityRepository.saveAndFlush(activity);
+	}
+
+	public void saveEditSeats(Activity activity) {
+		Assert.notNull(activity);
+		Activity res = activityRepository.findOne(activity.getId());
+		res.setSeatsAvailable(activity.getSeatsAvailable());
+		activityRepository.saveAndFlush(res);
 	}
 
 	public void delete(Activity activity) {
@@ -112,6 +118,21 @@ public class ActivityService {
 
 		Assert.isTrue(actor.getUserAccount().getAuthorities()
 				.contains(authority));
+	}
+	
+	public void reinstantiateMomentActivity(Activity previousActvity, Organiser organiser) {
+		Activity result;
+
+		result = create();
+		result.setTitle(previousActvity.getTitle());
+		result.setDescription(previousActvity.getDescription());
+		result.setCanyon(previousActvity.getCanyon());
+		result.setNumberSeats(previousActvity.getNumberSeats());
+		result.setSeatsAvailable(previousActvity.getNumberSeats());
+		//result.setMoment(previousActvity.getMoment());
+		result.setOrganiser(organiser);
+
+		save(result);
 	}
 
 	public Collection<Activity> activitiesByCanyon(int canyonId) {
@@ -236,7 +257,7 @@ public class ActivityService {
 
 		Assert.isTrue(activity.getSeatsAvailable() > 0);
 		activity.setSeatsAvailable(activity.getSeatsAvailable() - 1);
-		activityRepository.saveAndFlush(activity);
+		saveEditSeats(activity);
 
 	}
 
@@ -259,38 +280,43 @@ public class ActivityService {
 	}
 
 	// Dashboard 1.0
-	//The average number of activities per organiser.
+	// The average number of activities per organiser.
 	public Double averageNumberOfActivitiesByOrganisers() {
 		UserAccount loginNow = LoginService.getPrincipal();
 		administratorService.isAdmin(loginNow);
 		return activityRepository.averageNumberOfActivitiesByOrganisers();
 
 	}
-	
-	//The average number of seats offered in the activities that are going to be organised in the forthcoming three months.
-	public Double averageSeatsOrganisedThreeMonths(){
-		UserAccount loginNow = LoginService.getPrincipal();
-		administratorService.isAdmin(loginNow);
-	    Calendar calendar = Calendar.getInstance();
-	    calendar.setTimeInMillis(System.currentTimeMillis());
-	    calendar.add(Calendar.DAY_OF_MONTH, +90);
-	    Date upToDateCriteria = calendar.getTime();
-		Double seatsAvaliables = activityRepository.seatsAvaliablesNextThreeMonths(upToDateCriteria);
 
-		return seatsAvaliables;
-	}
-	//The activities that offer at least 10% more seats than the average.
-	public Collection<Activity> findWithMoreTenPercentOfSeatsAvg(){
+	// The average number of seats offered in the activities that are going to
+	// be organised in the forthcoming three months.
+	// public Double averageSeatsOrganisedThreeMonths(){
+	// UserAccount loginNow = LoginService.getPrincipal();
+	// administratorService.isAdmin(loginNow);
+	// Calendar calendar = Calendar.getInstance();
+	// calendar.setTimeInMillis(System.currentTimeMillis());
+	// calendar.add(Calendar.DAY_OF_MONTH, +90);
+	// Date upToDateCriteria = calendar.getTime();
+	// Double seatsAvaliables =
+	// activityRepository.seatsAvaliablesNextThreeMonths(upToDateCriteria);
+	//
+	// return seatsAvaliables;
+	// }
+	// The activities that offer at least 10% more seats than the average.
+	public Collection<Activity> findWithMoreTenPercentOfSeatsAvg() {
 		UserAccount loginNow = LoginService.getPrincipal();
 		administratorService.isAdmin(loginNow);
-		Collection<Activity> res = activityRepository.findWithMoreTenPercentOfSeatsAvg();
+		Collection<Activity> res = activityRepository
+				.findWithMoreTenPercentOfSeatsAvg();
 		return res;
 	}
-	//The activities that offer at least 10% less seats than the average.
-	public Collection<Activity> findWithLessTenPercentOfSeatsAvg(){
+
+	// The activities that offer at least 10% less seats than the average.
+	public Collection<Activity> findWithLessTenPercentOfSeatsAvg() {
 		UserAccount loginNow = LoginService.getPrincipal();
 		administratorService.isAdmin(loginNow);
-		Collection<Activity> res = activityRepository.findWithLessTenPercentOfSeatsAvg();
+		Collection<Activity> res = activityRepository
+				.findWithLessTenPercentOfSeatsAvg();
 		return res;
 	}
 }

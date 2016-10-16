@@ -24,7 +24,7 @@
 
 	<display:column titleKey="request.status" sortable="true">
 		<jstl:if test="${row.requestState=='PENDING' }">
-			<spring:message code="request.pending" />
+			<spring:message code="request.pending" />			
 		</jstl:if>
 		<spring:message code="request.momentPending" var="momentPending" />
 		<display:column property="momentPending" title="${momentPending}"
@@ -39,14 +39,43 @@
 		<jstl:if test="${row.requestState=='REJECTED' }">
 			<spring:message code="request.rejected" />
 		</jstl:if>
+		<spring:message code="request.titleActivity" var="title" />
+		<display:column property="activity.title" title="${title}"
+			sortable="true"/>
 		
-			<spring:message code="request.activity" var="activityHeader" />
-	<display:column title="${activityHeader}">
-		<input type="button"
-			value="<spring:message code="request.activity" />"
-			onclick="javascript: window.location.assign('activity/listByRequest.do?requestId=${row.id}')" />
+		<spring:message code="request.seatsAvaliable" var="seatsAvailable" />
+		<display:column property="activity.seatsAvailable" title="${seatsAvailable}"
+			sortable="true"/>
+		
+		<security:authorize access="hasRole('ORGANISER')">
+
+			<spring:message code="request.customer" var="customerHeader" />
+			<display:column property="customer.email" title="${customerHeader}"
+				sortable="true" />
+		</security:authorize>
+		
+		
+		<spring:message code="request.activity" var="activityHeader" />
+		<display:column title="${activityHeader}">
+			<input type="button"
+				value="<spring:message code="request.activity" />"
+				onclick="javascript: window.location.assign('activity/listByRequest.do?requestId=${row.id}')" />
+		</display:column>
+		<jstl:if test="${row.requestState=='PENDING' }">
+		<security:authorize access="hasRole('ORGANISER')">
+		<fieldset>
+		<jstl:if test="${row.activity.seatsAvailable>0 }">
+			<input type="submit" name="accept"
+				value="<spring:message code="request.accept"/>"onclick="javascript: window.location.assign('request/organiser/accept.do?requestId=${row.id}')" />
+				</jstl:if>
+				<br>
+				<input type="submit" name="reject"
+				value="<spring:message code="request.reject"/>"onclick="javascript: window.location.assign('request/organiser/reject.do?requestId=${row.id}')" />
+		
+		</fieldset>
+		</security:authorize>
+</jstl:if>
 	</display:column>
 
-	</display:column>
-
+	
 </display:table>
