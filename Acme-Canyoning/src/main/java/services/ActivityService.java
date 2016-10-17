@@ -130,7 +130,7 @@ public class ActivityService {
 		result.setCanyon(previousActvity.getCanyon());
 		result.setNumberSeats(previousActvity.getNumberSeats());
 		result.setSeatsAvailable(previousActvity.getNumberSeats());
-		// result.setMoment(previousActvity.getMoment());
+		result.setMoment(previousActvity.getMoment());
 		result.setOrganiser(organiser);
 
 		save(result);

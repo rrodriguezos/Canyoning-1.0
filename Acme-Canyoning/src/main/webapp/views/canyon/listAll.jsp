@@ -34,16 +34,16 @@
 	<spring:message code="canyon.route" var="routeHeader" />
 	<display:column property="route" title="${routeHeader}" />
 
-	<spring:message code="canyon.latitude" var="latitude" />
+	<spring:message code="canyon.gps.latitude" var="latitude" />
 	<display:column property="gpsCoordinates.latitude" title="${latitude}"
 		sortable="true" />
 
-	<spring:message code="canyon.longitude" var="longitude" />
+	<spring:message code="canyon.gps.longitude" var="longitude" />
 	<display:column property="gpsCoordinates.longitude"
 		title="${longitude}" sortable="true" />
+S
 
-
-	<spring:message code="canyon.altitude" var="altitude" />
+	<spring:message code="canyon.gps.altitude" var="altitude" />
 	<display:column property="gpsCoordinates.altitude" title="${altitude}"
 		sortable="true" />
 		

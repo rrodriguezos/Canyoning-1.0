@@ -26,6 +26,10 @@
 <acme:jstlOut code="about.message" value="${about.message }" />
 </TD></TR>
 </TABLE>
+	
+	<input type="button" value="<spring:message code="about.edit" />" 
+			onclick="javascript: window.location.assign('about/organiser/edit.do?aboutId=${about.id}')" />
+
 
 
 

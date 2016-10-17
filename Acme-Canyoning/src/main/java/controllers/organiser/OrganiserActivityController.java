@@ -43,12 +43,14 @@ public class OrganiserActivityController extends AbstractController {
 	public ModelAndView list() {
 		ModelAndView result;
 		Collection<Activity> activities;
+		Boolean myActivityOrganiser;
 
 		activities = activityService.findActivitiesByOrganiser();
-
+		myActivityOrganiser = true;
 		result = new ModelAndView("activity/list");
 		result.addObject("requestUri", "/activity/mylist.do");
 		result.addObject("activities", activities);
+		result.addObject("myActivityOrganiser", myActivityOrganiser);
 
 		return result;
 	}
@@ -72,44 +74,43 @@ public class OrganiserActivityController extends AbstractController {
 
 	// Edit
 	// -------------------------------------------------------------------------
-	@RequestMapping(value = "/edit", method = RequestMethod.GET)
-	public ModelAndView edit(@RequestParam int activityId) {
+	@RequestMapping(value = "/reinstantiate", method = RequestMethod.GET)
+	public ModelAndView reinstantiate(@RequestParam int activityId) {
 		ModelAndView result;
 		Activity activity;
-		Collection<Canyon> canyons;
 
 		activity = activityService.findOne(activityId);
-		canyons = canyonService.findAll();
 
-		result = new ModelAndView("activity/edit");
+		result = new ModelAndView("activity/organiser/reinstantiate");
 		result.addObject("activity", activity);
-		result.addObject("canyons", canyons);
 
 		return result;
 	}
 
 	// Save -------------------------------------------------------------------
-	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "save")
+	@RequestMapping(value = "/reinstantiate", method = RequestMethod.POST, params = "reinstantiate")
 	public ModelAndView edit(@Valid Activity activity, BindingResult binding) {
 		ModelAndView result;
 		Collection<Canyon> canyons;
+		Organiser organiser;
 		canyons = canyonService.findAll();
 		if (binding.hasErrors()) {
 			System.out.print(binding.getFieldError());
 			System.out.print(binding.getAllErrors());
 			canyons = canyonService.findAll();
 
-			result = new ModelAndView("activity/edit");
+			result = new ModelAndView("activity/organiser/reinstantiate");
 			result.addObject("activity", activity);
 			result.addObject("canyons", canyons);
 		} else {
 			try {
-				activityService.save(activity);
-				result = new ModelAndView("redirect:/activity/list.do");
+				organiser = organiserService.findByPrincipal();
+				activityService.reinstantiateMomentActivity(activity, organiser);
+				result = new ModelAndView("redirect:/activity/organiser/mylist.do");
 			} catch (Throwable oops) {
 				canyons = canyonService.findAll();
 
-				result = new ModelAndView("activity/edit");
+				result = new ModelAndView("activity/organiser/reinstantiate");
 				result.addObject("activity", activity);
 				result.addObject("canyons", canyons);
 				result.addObject("message2", "activity.commit.error");
@@ -120,32 +121,41 @@ public class OrganiserActivityController extends AbstractController {
 
 	// reinstantiate
 	// Activity---------------------------------------------------------------------
-	@RequestMapping(value = "/reinstantiate", method = RequestMethod.POST, params = "reinstantiate")
-	public ModelAndView reinstantiate(@Valid Activity activity, BindingResult binding) {
+//	@RequestMapping(value = "/reinstantiate", method = RequestMethod.GET)
+//	public ModelAndView reinstantiate(@RequestParam int activityId) {
+//		ModelAndView result;
+//		Activity activity;
+//		Organiser organiser;
+//		
+//		activity = activityService.findOne(activityId);
+//		organiser = organiserService.findByPrincipal();
+//
+//		activityService.reinstantiateMomentActivity(activity, organiser);
+//
+//		result = new ModelAndView("redirect:/activity/organiser/mylist.do");
+//		result.addObject("requestUri", "/activity/organiser/mylist.do");
+//
+//		return result;
+//	}
+
+	// Ancillary methods
+	// --------------------------------------------------------
+
+	protected ModelAndView createEditModelAndView(Activity activity) {
 		ModelAndView result;
-		Organiser organiser;
 
-		if (binding.hasErrors()) {
-			System.out.print(binding.getFieldError());
-			System.out.print(binding.getAllErrors());
+		result = createEditModelAndView(activity, null);
 
-			result = new ModelAndView("activity/reinstantiate");
-			result.addObject("activity", activity);
-
-		} else {
-			try {
-				organiser = organiserService.findByPrincipal();
-				activityService.reinstantiateMomentActivity(activity,organiser);
-				result = new ModelAndView("redirect:/activity/list.do");
-			} catch (Throwable oops) {
-
-				result = new ModelAndView("activity/reinstantiate");
-				result.addObject("activity", activity);
-				result.addObject("message2", "activity.commit.error");
-			}
-		}
 		return result;
 	}
 
+	protected ModelAndView createEditModelAndView(Activity activity, String message) {
+		ModelAndView result;
 
+		result = new ModelAndView("activity/organiser/reinstantiate");
+		result.addObject("activity", activity);
+		result.addObject("message2", message);
+
+		return result;
+	}
 }

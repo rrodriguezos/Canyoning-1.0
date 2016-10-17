@@ -31,10 +31,11 @@
 		<form:hidden path="description" />
 		<form:hidden path="numberSeats" />
 		<form:hidden path="seatsAvailable" />
+		<form:hidden path="canyon" />
 
 		<fieldset>
 
-			<acme:date code="activity.moment" path="moment" readonly="false" />
+			<acme:date code="activity.newMoment" path="moment" readonly="false" />
 
 		</fieldset>
 

@@ -29,21 +29,37 @@
 <acme:jstlOut code="activity.moment" value="${activity.moment }" />
 <br>
 <div>
-<jstl:if test="${logeado == true and myActivity == false}">
-	
-		<input type="button" value="<spring:message code="activity.registerCustomer" />" 
+	<jstl:if test="${logeado == true and myActivity == false}">
+
+		<input type="button"
+			value="<spring:message code="activity.registerCustomer" />"
 			onclick="javascript: window.location.assign('activity/customer/requestActivity.do?activityId=${activity.id}')" />
 
-	
-		
 
-</jstl:if>
-<jstl:if test="${myActivityOrganiser == false}">
-<input type="button" value="<spring:message code="activity.reinstantiate" />" 
+
+
+	</jstl:if>
+	<security:authorize access="hasRole('ORGANISER')">
+		<input type="button"
+			value="<spring:message code="activity.reinstantiate" />"
 			onclick="javascript: window.location.assign('activity/organiser/reinstantiate.do?activityId=${activity.id}')" />
 
 
-</jstl:if>
+
+
+		<jstl:if test="${myActivityOrganiser == true}">
+			<spring:message code="activity.request" var="requestHeader" />
+			<input type="button"
+				value="<spring:message code="activity.request" />"
+				onclick="javascript: window.location.assign('request/organiser/list.do?activityId=${activity.id}')" />
+
+		</jstl:if>
+
+
+	</security:authorize>
+
+
+
 
 </div>
 
@@ -77,4 +93,4 @@
 
 <input type="button" name="cancel"
 	value="<spring:message code="activity.cancel"/>"
-	onclick="javascript: window.location.assign('activity/list.do')" />
+	onclick="javascript: window.history.back()" />

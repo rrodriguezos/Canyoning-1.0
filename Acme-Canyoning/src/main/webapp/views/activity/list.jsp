@@ -76,13 +76,8 @@
 					onclick="javascript: window.location.assign('comment/list.do?id=${row.id}')" />
 	</display:column>
 	</security:authorize>
-	<security:authorize access="hasRole('ORGANISER')">
-	<spring:message code="activity.request" var="requestHeader" />
-	<display:column title="${requestHeader}">
-			<input type="button" value="<spring:message code="activity.request" />" 
-					onclick="javascript: window.location.assign('request/organiser/list.do?activityId=${row.id}')" />
-	</display:column>
-	</security:authorize>
+	
+	
 	
 </display:table>
 

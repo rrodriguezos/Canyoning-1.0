@@ -56,7 +56,6 @@ public class ActivityController extends AbstractController {
 
 		ModelAndView result;
 		Collection<Activity> activities;
-
 		activities = activityService.findAll();
 
 		result = new ModelAndView("activity/list");
@@ -82,19 +81,22 @@ public class ActivityController extends AbstractController {
 		logeado = false;
 		Collection<Comment> comments;
 		Collection<Request> requestCustomer;
-
-
+		try {
+			organiser = organiserService.findByPrincipal();
+			if (activity.getOrganiser().getId() == organiser.getId()) {
+				myActivityOrganiser = true;
+			}
+		} catch (Throwable oops) {
+			myActivityOrganiser = false;
+		}
 		try {
 			activity = activityService.findOne(activityId);
-			organiser = organiserService.findByPrincipal();
 			requestCustomer = requestService.requestByCustomer();
 			customer = customerService.findByPrincipal();
 			if (customer != null) {
 				logeado = true;
 			}
-			if (activity.getOrganiser().equals(organiser) ) {
-				myActivityOrganiser = true;
-			}
+
 			for (Request r : requestCustomer) {
 				Activity activityRequest = r.getActivity();
 
@@ -105,7 +107,6 @@ public class ActivityController extends AbstractController {
 		} catch (Throwable oops) {
 			myActivity = false;
 			logeado = false;
-			myActivityOrganiser = false;
 		}
 
 		comments = commentService.findCommentsByCommentableId(activityId);
@@ -116,6 +117,7 @@ public class ActivityController extends AbstractController {
 		result = new ModelAndView("activity/display");
 		result.addObject("activity", activity);
 		result.addObject("myActivity", myActivity);
+		result.addObject("myActivityOrganiser", myActivityOrganiser);
 		result.addObject("logeado", logeado);
 		result.addObject("comments", comments);
 		return result;
@@ -149,17 +151,18 @@ public class ActivityController extends AbstractController {
 
 		return result;
 	}
-	// ListByRequest
-		// ---------------------------------------------------------------------------
-		@RequestMapping(value = "/listByRequest", method = RequestMethod.GET)
-		public ModelAndView navigateByRequest(@RequestParam int requestId) {
-			ModelAndView result;
-			Activity activity = activityService.activityByRequest(requestId);
 
-			result = new ModelAndView("activity/list");
-			result.addObject("activities", activity);
-			result.addObject("requestURI", "activity/listByRequest.do");
-			return result;
-		}
+	// ListByRequest
+	// ---------------------------------------------------------------------------
+	@RequestMapping(value = "/listByRequest", method = RequestMethod.GET)
+	public ModelAndView navigateByRequest(@RequestParam int requestId) {
+		ModelAndView result;
+		Activity activity = activityService.activityByRequest(requestId);
+
+		result = new ModelAndView("activity/list");
+		result.addObject("activities", activity);
+		result.addObject("requestURI", "activity/listByRequest.do");
+		return result;
+	}
 
 }

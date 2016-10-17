@@ -91,6 +91,7 @@
 		
 		
 		<security:intercept-url pattern="/activity/organiser/mylist.do" access="hasRole('ORGANISER')" />
+				<security:intercept-url pattern="/activity/organiser/reinstantiate.do" access="hasRole('ORGANISER')" />
 		<security:intercept-url pattern="/about/organiser/list.do" access="hasRole('ORGANISER')" />
 		<security:intercept-url pattern="/about/organiser/create.do" access="hasRole('ORGANISER')" />
 		<security:intercept-url pattern="/about/organiser/edit.do" access="hasRole('ORGANISER')" />
@@ -110,6 +111,7 @@
 		<security:intercept-url pattern="/comment/list.do" access="isAuthenticated()" />
 		<security:intercept-url pattern="/comment/edit.do" access="isAuthenticated()" />
 		<security:intercept-url pattern="/comment/create.do" access="isAuthenticated()" />
+		<security:intercept-url pattern="/comment/display.do" access="isAuthenticated()" />
 		<security:intercept-url pattern="/comment/actor.do" access="isAuthenticated()" />
 		<security:intercept-url pattern="/customer/list.do" access="isAuthenticated()" />
 		<security:intercept-url pattern="/organiser/list.do" access="isAuthenticated()" />
