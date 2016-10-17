@@ -86,6 +86,8 @@
 
 							<li><a href="activity/organiser/create.do"><spring:message
 										code="master.page.organiser.createActivity" /></a></li>
+										<li><a href="about/organiser/list.do"><spring:message
+										code="master.page.organiser.about" /></a></li>
 
 						</security:authorize>
 

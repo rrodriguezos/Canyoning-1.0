@@ -35,5 +35,8 @@ public interface ActivityRepository extends JpaRepository<Activity, Integer> {
 	@Query("select a from Activity a where a.numberSeats < 0.2*(select avg(a.numberSeats) from Activity a)")
 	Collection<Activity> findWithLessTenPercentOfSeatsAvg();
 
+	@Query("select a from Activity a where a.organiser.id = ?1")
+	Collection<Activity> findActivitiesByOrganiser(int organiserId);
+
 
 }

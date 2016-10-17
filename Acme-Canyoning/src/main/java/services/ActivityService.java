@@ -119,8 +119,9 @@ public class ActivityService {
 		Assert.isTrue(actor.getUserAccount().getAuthorities()
 				.contains(authority));
 	}
-	
-	public void reinstantiateMomentActivity(Activity previousActvity, Organiser organiser) {
+
+	public void reinstantiateMomentActivity(Activity previousActvity,
+			Organiser organiser) {
 		Activity result;
 
 		result = create();
@@ -129,7 +130,7 @@ public class ActivityService {
 		result.setCanyon(previousActvity.getCanyon());
 		result.setNumberSeats(previousActvity.getNumberSeats());
 		result.setSeatsAvailable(previousActvity.getNumberSeats());
-		//result.setMoment(previousActvity.getMoment());
+		// result.setMoment(previousActvity.getMoment());
 		result.setOrganiser(organiser);
 
 		save(result);
@@ -318,5 +319,13 @@ public class ActivityService {
 		Collection<Activity> res = activityRepository
 				.findWithLessTenPercentOfSeatsAvg();
 		return res;
+	}
+
+	public Collection<Activity> findActivitiesByOrganiser(int organiserId) {
+		Collection<Activity> result;
+
+		result = activityRepository.findActivitiesByOrganiser(organiserId);
+
+		return result;
 	}
 }

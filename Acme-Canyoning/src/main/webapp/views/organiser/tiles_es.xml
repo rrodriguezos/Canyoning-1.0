@@ -19,6 +19,11 @@
 		<put-attribute name="title" value="Crear Organizador" />
 		<put-attribute name="body" value="/views/organiser/create.jsp" />
 	</definition>
+	
+	<definition name="organiser/display" extends="master.page">
+		<put-attribute name="title" value="Detalles del Organizador" />
+		<put-attribute name="body" value="/views/organiser/display.jsp" />
+	</definition>
 
 
 </tiles-definitions>

@@ -17,6 +17,9 @@
 		<bean class="converters.StringToCanyonConverter" />
 		<bean class="converters.CanyonToStringConverter" />
 		
+		<bean class="converters.StringToAboutConverter" />
+		<bean class="converters.AboutToStringConverter" />
+		
 		<bean class="converters.StringToOrganiserCommentConverter" />
 		<bean class="converters.OrganiserCommentToStringConverter" />
 		
