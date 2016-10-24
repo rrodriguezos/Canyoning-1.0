@@ -69,6 +69,13 @@ public class RequestService {
 		return result;
 	}
 
+	public Collection<Request> findAll() {
+		Collection<Request> result;
+		result= requestRepository.findAll();
+		
+		return result;
+	}
+
 	// Other Methods--------------------
 
 	public Collection<Request> requestByCustomer() {
@@ -128,10 +135,7 @@ public class RequestService {
 
 	}
 
-	// public Double averageCustomersInWaitingList() {
-	//
-	// return requestRepository.averageCustomersInWaitingList();
-	// }
+	
 
 	public Collection<Request> requestsPendingByActivity(int activityId) {
 		Collection<Request> result;
@@ -172,5 +176,16 @@ public class RequestService {
 		save(request);
 		return accept;
 	}
+
+	public Collection<Request> allRequestAccepted() {
+		Collection<Request> result;
+
+		result = requestRepository.allRequestAccepted();
+
+		return result;
+	}
+
+
+
 
 }

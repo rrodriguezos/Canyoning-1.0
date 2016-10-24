@@ -1,6 +1,7 @@
 package repositories;
 
 import java.util.Collection;
+import java.util.Date;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -30,11 +31,12 @@ public interface RequestRepository extends JpaRepository<Request, Integer> {
 	@Query("select c.requests from Customer c where c.id = ?1")
 	Collection<Request> requestByCustomer(int id);
 
-//	@Query("select avg(o.activity.requests.size) from Organiser o where o.activity.requests.requestState = 'PENDING'")
-//	Double averageCustomersInWaitingList();
 
 	@Query("select r from Request r where r.activity.id=?1 and r.requestState = 'PENDING' ")
 	Collection<Request> requestsPendingByActivity(int activityId);
+
+	@Query("select r from Request r where r.requestState = 'ACCEPTED'")
+	Collection<Request> allRequestAccepted();
 	
 
 
