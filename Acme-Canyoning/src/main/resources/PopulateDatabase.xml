@@ -139,6 +139,15 @@
 			</list>
 		</property>
 		<property name="organiserComment" ref="organiserComment1" />
+		
+		<property name="pieceEquipments">
+			<list>
+				<ref bean="kayak1" />
+				<ref bean="wetSuit1" />
+				<ref bean="cord1" />
+				<ref bean="kayak2" />
+			</list>
+		</property>
 	</bean>
 
 	<bean class="domain.Organiser" id="organiser2">
@@ -160,6 +169,14 @@
 			</list>
 		</property>
 		<property name="organiserComment" ref="organiserComment2" />
+		<property name="pieceEquipments">
+			<list>
+				<ref bean="wetSuit2" />
+				<ref bean="cord2" />
+				<ref bean="kayak3" />
+				<ref bean="wetSuit3" />
+			</list>
+		</property>
 	</bean>
 
 	<bean class="domain.Organiser" id="organiser3">
@@ -181,6 +198,14 @@
 			</list>
 		</property>
 		<property name="organiserComment" ref="organiserComment3" />
+		<property name="pieceEquipments">
+			<list>
+				<ref bean="cord3" />
+				<ref bean="kayak4" />
+				<ref bean="wetSuit4" />
+				<ref bean="cord4" />
+			</list>
+		</property>
 	</bean>
 
 	<!-- Customers -->
@@ -298,6 +323,41 @@
 		<property value="Este es el acerca de del organiser 3" name="message" />
 		<property name="organiser" ref="organiser3" />
 	</bean>
+	
+	
+	<!-- PieceEquipments -->
+	<bean class="domain.PieceEquipment" id="pieceEquipment1">
+		<property name="name" value="name1" />
+		<property name="difficultyLevel" value="2" />
+		<property name="route"
+			value="https://www.google.es/maps/place/Can%C3%B3n+do+Sil,+27460,+Lugo/@42.4096622,-7.6321641,18z/data=!4m2!3m1!1s0xd30056b4a5bf867:0xc27f74853f84e20c" />
+		<property name="description" value="description1" />
+		<property name="gpsCoordinates" ref="gps1" />
+		<property name="administrator" ref="administrator" />
+		<property name="activities">
+			<list>
+				<ref bean="activity1" />
+				<ref bean="activity4" />
+			</list>
+		</property>
+		<property name="pictures">
+			<list>
+				<value>http://www.turismo.gal/imaxes/mdaw/mday/~edisp/~extract/TG058024~1~staticrendition/tg_carrusel_cabecera_grande.jpg
+				</value>
+				<value>https://upload.wikimedia.org/wikipedia/commons/2/2c/Mirador_de_Cabezoas_Ca%C3%B1on_del_Sil.jpg
+				</value>
+			</list>
+		</property>
+		<property name="comments">
+			<list>
+				<ref bean="comment7" />
+				<ref bean="comment8" />
+			</list>
+		</property>
+	</bean>
+	
+	
+	
 
 	<!-- Canyons -->
 	<bean class="domain.Canyon" id="canyon1">
