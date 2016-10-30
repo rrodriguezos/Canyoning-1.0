@@ -139,13 +139,21 @@
 			</list>
 		</property>
 		<property name="organiserComment" ref="organiserComment1" />
-		
-		<property name="pieceEquipments">
+
+		<property name="kayaks">
 			<list>
 				<ref bean="kayak1" />
-				<ref bean="wetSuit1" />
-				<ref bean="cord1" />
 				<ref bean="kayak2" />
+			</list>
+		</property>
+		<property name="wetsuits">
+			<list>
+				<ref bean="wetsuit1" />
+			</list>
+		</property>
+		<property name="cords">
+			<list>
+				<ref bean="cord1" />
 			</list>
 		</property>
 	</bean>
@@ -169,12 +177,20 @@
 			</list>
 		</property>
 		<property name="organiserComment" ref="organiserComment2" />
-		<property name="pieceEquipments">
+		<property name="kayaks">
 			<list>
-				<ref bean="wetSuit2" />
-				<ref bean="cord2" />
 				<ref bean="kayak3" />
-				<ref bean="wetSuit3" />
+			</list>
+		</property>
+		<property name="wetsuits">
+			<list>
+				<ref bean="wetsuit2" />
+				<ref bean="wetsuit3" />
+			</list>
+		</property>
+		<property name="cords">
+			<list>
+				<ref bean="cord2" />
 			</list>
 		</property>
 	</bean>
@@ -198,15 +214,26 @@
 			</list>
 		</property>
 		<property name="organiserComment" ref="organiserComment3" />
-		<property name="pieceEquipments">
+		<property name="kayaks">
+			<list>
+				<ref bean="kayak4" />
+			</list>
+		</property>
+		<property name="wetsuits">
+			<list>
+				<ref bean="wetsuit4" />
+			</list>
+		</property>
+		<property name="cords">
 			<list>
 				<ref bean="cord3" />
-				<ref bean="kayak4" />
-				<ref bean="wetSuit4" />
 				<ref bean="cord4" />
 			</list>
 		</property>
+
 	</bean>
+
+
 
 	<!-- Customers -->
 
@@ -272,6 +299,9 @@
 		<property name="customerComment" ref="customerComment3" />
 	</bean>
 
+
+
+
 	<!-- GPSCoordinates -->
 	<bean id="gps1" class="domain.GPSCoordinates">
 		<property name="latitude" value="6.01" />
@@ -323,41 +353,9 @@
 		<property value="Este es el acerca de del organiser 3" name="message" />
 		<property name="organiser" ref="organiser3" />
 	</bean>
-	
-	
-	<!-- PieceEquipments -->
-	<bean class="domain.PieceEquipment" id="pieceEquipment1">
-		<property name="name" value="name1" />
-		<property name="difficultyLevel" value="2" />
-		<property name="route"
-			value="https://www.google.es/maps/place/Can%C3%B3n+do+Sil,+27460,+Lugo/@42.4096622,-7.6321641,18z/data=!4m2!3m1!1s0xd30056b4a5bf867:0xc27f74853f84e20c" />
-		<property name="description" value="description1" />
-		<property name="gpsCoordinates" ref="gps1" />
-		<property name="administrator" ref="administrator" />
-		<property name="activities">
-			<list>
-				<ref bean="activity1" />
-				<ref bean="activity4" />
-			</list>
-		</property>
-		<property name="pictures">
-			<list>
-				<value>http://www.turismo.gal/imaxes/mdaw/mday/~edisp/~extract/TG058024~1~staticrendition/tg_carrusel_cabecera_grande.jpg
-				</value>
-				<value>https://upload.wikimedia.org/wikipedia/commons/2/2c/Mirador_de_Cabezoas_Ca%C3%B1on_del_Sil.jpg
-				</value>
-			</list>
-		</property>
-		<property name="comments">
-			<list>
-				<ref bean="comment7" />
-				<ref bean="comment8" />
-			</list>
-		</property>
-	</bean>
-	
-	
-	
+
+
+
 
 	<!-- Canyons -->
 	<bean class="domain.Canyon" id="canyon1">
@@ -546,10 +544,23 @@
 				<ref bean="request1" />
 			</list>
 		</property>
+		<property name="kayaks">
+			<list>
+			</list>
+		</property>
+		<property name="wetsuits">
+			<list>
+			</list>
+		</property>
+		<property name="cords">
+			<list>
+				<ref bean="cord1" />
+			</list>
+		</property>
 	</bean>
 
 	<bean class="domain.Activity" id="activity2">
-		<property name="title" value="Andar por el parque" />
+		<property name="title" value="Nadar en el parque" />
 		<property name="description" value="Echar el día en el parque" />
 		<property name="numberSeats" value="4" />
 		<property name="seatsAvailable" value="2" />
@@ -569,11 +580,24 @@
 				<ref bean="request6" />
 			</list>
 		</property>
+		<property name="kayaks">
+			<list>
+			</list>
+		</property>
+		<property name="wetsuits">
+			<list>
+				<ref bean="wetsuit1" />
+			</list>
+		</property>
+		<property name="cords">
+			<list>
+			</list>
+		</property>
 	</bean>
 
 	<bean class="domain.Activity" id="activity3">
-		<property name="title" value="Cenita con la pareja" />
-		<property name="description" value="Cena en el campo" />
+		<property name="title" value="Descenso con la pareja" />
+		<property name="description" value="Descenso en kayak" />
 		<property name="numberSeats" value="2" />
 		<property name="organiser" ref="organiser3" />
 		<property name="seatsAvailable" value="1" />
@@ -591,11 +615,25 @@
 				<ref bean="request4" />
 			</list>
 		</property>
+		<property name="kayaks">
+			<list>
+				<ref bean="kayak1" />
+				<ref bean="kayak2" />
+			</list>
+		</property>
+		<property name="wetsuits">
+			<list>
+			</list>
+		</property>
+		<property name="cords">
+			<list>
+			</list>
+		</property>
 	</bean>
 
 	<bean class="domain.Activity" id="activity4">
-		<property name="title" value="Cenar fuera" />
-		<property name="description" value="Cena en el campo" />
+		<property name="title" value="Buceo" />
+		<property name="description" value="Buceo debajo del desfiladero" />
 		<property name="numberSeats" value="2" />
 		<property name="seatsAvailable" value="2" />
 		<property name="organiser" ref="organiser1" />
@@ -608,6 +646,20 @@
 		<property name="requests">
 			<list>
 
+			</list>
+		</property>
+		<property name="kayaks">
+			<list>
+			</list>
+		</property>
+		<property name="wetsuits">
+			<list>
+				<ref bean="wetsuit2" />
+				<ref bean="wetsuit3" />
+			</list>
+		</property>
+		<property name="cords">
+			<list>
 			</list>
 		</property>
 	</bean>
@@ -628,6 +680,19 @@
 			<list>
 			</list>
 		</property>
+		<property name="kayaks">
+			<list>
+			</list>
+		</property>
+		<property name="wetsuits">
+			<list>
+			</list>
+		</property>
+		<property name="cords">
+			<list>
+				<ref bean="cord2" />
+			</list>
+		</property>
 	</bean>
 
 	<bean class="domain.Activity" id="activity6">
@@ -643,6 +708,218 @@
 			</list>
 		</property>
 		<property name="requests">
+			<list>
+
+			</list>
+		</property>
+		<property name="kayaks">
+			<list>
+			</list>
+		</property>
+		<property name="wetsuits">
+			<list>
+			</list>
+		</property>
+		<property name="cords">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<!-- Kayaks -->
+
+	<bean class="domain.Kayak" id="kayak1">
+		<property name="name" value="kayak 1" />
+		<property name="description" value="This is  Kayak 1" />
+		<property name="make" value="Sundolphin" />
+		<property name="model"
+			value="http://www.koolrent.com/upload/model/6/15-kayak.jpg" />
+		<property name="numberSeats" value="1" />
+		<property name="length" value="3" />
+		<property name="organiser" ref="organiser1" />
+		<property name="activities">
+			<list>
+				<ref bean="activity3" />
+			</list>
+		</property>
+	</bean>
+
+	<bean class="domain.Kayak" id="kayak2">
+		<property name="name" value="kayak 2" />
+		<property name="description" value="This is  Kayak 2" />
+		<property name="make" value="Sevylor" />
+		<property name="model"
+			value="https://www.decathlon.es/media/836/8362029/big_2dbcd3aec98f4de48227fe59219652af.jpg" />
+		<property name="numberSeats" value="3" />
+		<property name="length" value="5" />
+		<property name="organiser" ref="organiser1" />
+		<property name="activities">
+			<list>
+				<ref bean="activity3" />
+			</list>
+		</property>
+	</bean>
+
+	<bean class="domain.Kayak" id="kayak3">
+		<property name="name" value="kayak 3" />
+		<property name="description" value="This is  Kayak 3" />
+		<property name="make" value="Sevylor" />
+		<property name="model"
+			value="https://www.decathlon.es/media/836/8362028/big_8738b77119ca4995b72dc5bea9a1c264.jpg" />
+		<property name="numberSeats" value="2" />
+		<property name="length" value="3" />
+		<property name="organiser" ref="organiser2" />
+		<property name="activities">
+			<list>
+
+			</list>
+		</property>
+	</bean>
+
+	<bean class="domain.Kayak" id="kayak4">
+		<property name="name" value="kayak 4" />
+		<property name="description" value="This is  Kayak 4" />
+		<property name="make" value="RTM" />
+		<property name="model"
+			value="https://www.decathlon.es/media/824/8249811/big_f2d5e22eb8e946269818a99d60c0a85b.jpg" />
+		<property name="numberSeats" value="2" />
+		<property name="length" value="3" />
+		<property name="organiser" ref="organiser3" />
+		<property name="activities">
+			<list>
+
+			</list>
+		</property>
+	</bean>
+
+	<!-- Wetsuits -->
+
+	<bean class="domain.Wetsuit" id="wetsuit1">
+		<property name="name" value="Wetsuit 1" />
+		<property name="description" value="This is Wetsuit 1" />
+		<property name="make" value="Yazbeck" />
+		<property name="model"
+			value="http://yazbeck.com/wp-content/uploads/2015/09/Carbone-wetsuit-4-van-8-e1441164326374.jpg" />
+		<property name="minimumTemperature" value="14" />
+		<property name="trousers" value="true" />
+		<property name="sizeSleeves" value="LONG" />
+		<property name="organiser" ref="organiser1" />
+		<property name="activities">
+			<list>
+				<ref bean="activity2" />
+			</list>
+		</property>
+	</bean>
+
+	<bean class="domain.Wetsuit" id="wetsuit2">
+		<property name="name" value="Wetsuit 2" />
+		<property name="description" value="This is Wetsuit 2" />
+		<property name="make" value="O'neill" />
+		<property name="model"
+			value="https://www.rei.com/media/1d4ca87a-0c53-4f24-ae69-81c54881d0d6" />
+		<property name="minimumTemperature" value="20" />
+		<property name="trousers" value="true" />
+		<property name="sizeSleeves" value="SHORT" />
+		<property name="organiser" ref="organiser2" />
+		<property name="activities">
+			<list>
+				<ref bean="activity4" />
+			</list>
+		</property>
+	</bean>
+
+	<bean class="domain.Wetsuit" id="wetsuit3">
+		<property name="name" value="Wetsuit 3" />
+		<property name="description" value="This is Wetsuit 3" />
+		<property name="make" value="Ripcurl" />
+		<property name="model"
+			value="https://webcube-general.s3.amazonaws.com/ripcurl/media/ctas/160413-womens-bombshell-400x600.jpg" />
+		<property name="minimumTemperature" value="24" />
+		<property name="trousers" value="false" />
+		<property name="sizeSleeves" value="LONG" />
+		<property name="organiser" ref="organiser2" />
+		<property name="activities">
+			<list>
+				<ref bean="activity4" />
+			</list>
+		</property>
+	</bean>
+
+	<bean class="domain.Wetsuit" id="wetsuit4">
+		<property name="name" value="Wetsuit 4" />
+		<property name="description" value="This is Wetsuit 4" />
+		<property name="make" value="Ripcurl" />
+		<property name="model"
+			value="https://cdn.wetsuitoutlet.co.uk/images/Billabong-Ladies-Salty-Jane-2mm-Flatlock-Wetsuit-Black-Sands-W42G04.jpg" />
+		<property name="minimumTemperature" value="16" />
+		<property name="trousers" value="true" />
+		<property name="sizeSleeves" value="SHORT" />
+		<property name="organiser" ref="organiser3" />
+		<property name="activities">
+			<list>
+
+			</list>
+		</property>
+	</bean>
+
+	<bean class="domain.Cord" id="cord1">
+		<property name="name" value="Cord 1" />
+		<property name="description" value="This is Cord 1" />
+		<property name="make" value="Nite Ize" />
+		<property name="model"
+			value="https://images-na.ssl-images-amazon.com/images/I/91aUzgUs9iL._SL1500_.jpg" />
+		<property name="length" value="15.24" />
+		<property name="maximumWeight" value="200" />
+		<property name="organiser" ref="organiser1" />
+		<property name="activities">
+			<list>
+				<ref bean="activity1" />
+			</list>
+		</property>
+	</bean>
+
+	<bean class="domain.Cord" id="cord2">
+		<property name="name" value="Cord 2" />
+		<property name="description" value="This is Cord 2" />
+		<property name="make" value="Paracord planet" />
+		<property name="model"
+			value="https://images-na.ssl-images-amazon.com/images/I/71fxU0xUlKL._SL1000_.jpg" />
+		<property name="length" value="20" />
+		<property name="maximumWeight" value="250" />
+		<property name="organiser" ref="organiser2" />
+		<property name="activities">
+			<list>
+				<ref bean="activity5" />
+			</list>
+		</property>
+	</bean>
+
+	<bean class="domain.Cord" id="cord3">
+		<property name="name" value="Cord 3" />
+		<property name="description" value="This is Cord 3" />
+		<property name="make" value="Titan Paracord" />
+		<property name="model"
+			value="https://images-na.ssl-images-amazon.com/images/I/A1XSVkCz04L._SL1500_.jpg" />
+		<property name="length" value="30" />
+		<property name="maximumWeight" value="300" />
+		<property name="organiser" ref="organiser3" />
+		<property name="activities">
+			<list>
+
+			</list>
+		</property>
+	</bean>
+
+	<bean class="domain.Cord" id="cord4">
+		<property name="name" value="Cord 4" />
+		<property name="description" value="This is Cord 4" />
+		<property name="make" value="Generic" />
+		<property name="model"
+			value="https://images-na.ssl-images-amazon.com/images/I/61eI5aU5DWL._SL1024_.jpg" />
+		<property name="length" value="20" />
+		<property name="maximumWeight" value="200" />
+		<property name="organiser" ref="organiser3" />
+		<property name="activities">
 			<list>
 
 			</list>
