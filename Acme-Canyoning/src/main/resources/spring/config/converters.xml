@@ -17,6 +17,18 @@
 		<bean class="converters.StringToCanyonConverter" />
 		<bean class="converters.CanyonToStringConverter" />
 		
+		<bean class="converters.StringToKayakConverter" />
+		<bean class="converters.KayakToStringConverter" />
+		
+		<bean class="converters.StringToWetsuitConverter" />
+		<bean class="converters.WetsuitToStringConverter" />
+		
+		<bean class="converters.StringToCordConverter" />
+		<bean class="converters.CordToStringConverter" />
+		
+		<bean class="converters.StringToPieceEquipmentConverter" />
+		<bean class="converters.PieceEquipmentToStringConverter" />
+		
 		<bean class="converters.StringToAboutConverter" />
 		<bean class="converters.AboutToStringConverter" />
 		
