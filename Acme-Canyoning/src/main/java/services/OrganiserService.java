@@ -18,6 +18,7 @@ import domain.Administrator;
 import domain.Comment;
 import domain.Customer;
 import domain.Organiser;
+import domain.PieceEquipment;
 import forms.OrganiserForm;
 
 @Service
@@ -51,6 +52,7 @@ public class OrganiserService {
 		Organiser result;
 		Collection<Comment> comments;
 		Collection<Activity> activities;
+		Collection<PieceEquipment> pieceEquipments;
 
 		Authority aut = new Authority();
 
@@ -64,6 +66,9 @@ public class OrganiserService {
 
 		activities = new LinkedList<Activity>();
 		result.setActivities(activities);
+		
+		pieceEquipments = new LinkedList<PieceEquipment>();
+		result.setPieceEquipments(pieceEquipments);
 
 		comments = new LinkedList<Comment>();
 		result.setComments(comments);

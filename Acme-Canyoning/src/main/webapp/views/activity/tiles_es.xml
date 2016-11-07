@@ -25,6 +25,11 @@
 		<put-attribute name="body" value="/views/activity/edit.jsp" />
 	</definition>
 	
+	<definition name="activity/organiser/edit" extends="master.page">	
+		<put-attribute name="title" value="Editar Actividad" />
+		<put-attribute name="body" value="/views/activity/edit.jsp" />
+	</definition>
+	
 	<definition name="activity/organiser/reinstantiate" extends="master.page">	
 		<put-attribute name="title" value="Reinstanciar Actividad" />
 		<put-attribute name="body" value="/views/activity/reinstantiate.jsp" />

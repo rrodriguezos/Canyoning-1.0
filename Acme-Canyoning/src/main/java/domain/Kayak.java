@@ -1,13 +1,8 @@
 package domain;
 
-import java.util.Collection;
-
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
-import javax.validation.Valid;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
@@ -22,7 +17,7 @@ public class Kayak extends PieceEquipment {
 
 	// Attributes ----------------------------------------------------------
 	private int numberSeats;
-	private double length;
+	private Double length;
 
 	@Min(0)
 	public int getNumberSeats() {
@@ -34,40 +29,14 @@ public class Kayak extends PieceEquipment {
 	}
 
 	@NotNull
-	public double getLength() {
+	public Double getLength() {
 		return length;
 	}
 
-	public void setLength(double length) {
+	public void setLength(Double length) {
 		this.length = length;
 	}
 
 	// Relationships --------------------------------------------------------
-
-	private Collection<Activity> activities;
-
-	@Valid
-	@NotNull
-	@ManyToMany
-	public Collection<Activity> getActivities() {
-		return activities;
-	}
-
-	public void setActivities(Collection<Activity> activities) {
-		this.activities = activities;
-	}
-	
-	private Organiser organiser;
-
-	@Valid
-	@NotNull
-	@ManyToOne(optional = false)
-	public Organiser getOrganiser() {
-		return organiser;
-	}
-
-	public void setOrganiser(Organiser organiser) {
-		this.organiser = organiser;
-	}
 
 }

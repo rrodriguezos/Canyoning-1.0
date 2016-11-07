@@ -1,13 +1,8 @@
 package domain;
 
-import java.util.Collection;
-
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
-import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
 @Entity
@@ -21,53 +16,27 @@ public class Cord extends PieceEquipment {
 
 	// Attributes ----------------------------------------------------------
 
-	private double length;
-	private double maximumWeight;
+	private Double length;
+	private Double maximumWeight;
 
 	@NotNull
-	public double getLength() {
+	public Double getLength() {
 		return length;
 	}
 
-	public void setLength(double length) {
+	public void setLength(Double length) {
 		this.length = length;
 	}
 
 	@NotNull
-	public double getMaximumWeight() {
+	public Double getMaximumWeight() {
 		return maximumWeight;
 	}
 
-	public void setMaximumWeight(double maximumWeight) {
+	public void setMaximumWeight(Double maximumWeight) {
 		this.maximumWeight = maximumWeight;
 	}
 
 	// Relationships --------------------------------------------------------
-
-	private Collection<Activity> activities;
-
-	@Valid
-	@NotNull
-	@ManyToMany
-	public Collection<Activity> getActivities() {
-		return activities;
-	}
-
-	public void setActivities(Collection<Activity> activities) {
-		this.activities = activities;
-	}
-
-	private Organiser organiser;
-
-	@Valid
-	@NotNull
-	@ManyToOne(optional = false)
-	public Organiser getOrganiser() {
-		return organiser;
-	}
-
-	public void setOrganiser(Organiser organiser) {
-		this.organiser = organiser;
-	}
 
 }

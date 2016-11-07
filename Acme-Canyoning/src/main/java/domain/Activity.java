@@ -127,43 +127,17 @@ public class Activity extends Commentable {
 		this.requests = requests;
 	}
 
-	private Collection<Kayak> kayaks;
+	private Collection<PieceEquipment> pieceEquipments;
 
 	@Valid
-	@NotNull
-	@ManyToMany(mappedBy = "activities")
-	public Collection<Kayak> getKayaks() {
-		return kayaks;
+	@ManyToMany
+	public Collection<PieceEquipment> getPieceEquipments() {
+		return pieceEquipments;
 	}
 
-	public void setKayaks(Collection<Kayak> kayaks) {
-		this.kayaks = kayaks;
+	public void setPieceEquipments(Collection<PieceEquipment> pieceEquipments) {
+		this.pieceEquipments = pieceEquipments;
 	}
 
-	private Collection<Wetsuit> wetsuits;
-
-	@Valid
-	@NotNull
-	@ManyToMany(mappedBy = "activities")
-	public Collection<Wetsuit> getWetsuits() {
-		return wetsuits;
-	}
-
-	public void setWetsuits(Collection<Wetsuit> wetsuits) {
-		this.wetsuits = wetsuits;
-	}
-
-	private Collection<Cord> cords;
-
-	@Valid
-	@NotNull
-	@ManyToMany(mappedBy = "activities")
-	public Collection<Cord> getCords() {
-		return cords;
-	}
-
-	public void setCords(Collection<Cord> cords) {
-		this.cords = cords;
-	}
 
 }

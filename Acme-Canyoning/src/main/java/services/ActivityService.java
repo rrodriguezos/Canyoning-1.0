@@ -18,9 +18,14 @@ import security.UserAccount;
 import domain.Activity;
 import domain.Actor;
 import domain.Comment;
+import domain.Cord;
+import domain.Kayak;
 import domain.Organiser;
+import domain.PieceEquipment;
 import domain.Request;
 import domain.Request.RequestState;
+import domain.Wetsuit;
+import forms.ActivityForm;
 
 @Service
 @Transactional
@@ -45,6 +50,7 @@ public class ActivityService {
 	@Autowired
 	private AdministratorService administratorService;
 
+
 	// COnstructors -------------------------
 	public ActivityService() {
 		super();
@@ -57,11 +63,15 @@ public class ActivityService {
 		Organiser organiser;
 		Collection<Comment> comments;
 		Collection<Request> requests;
+		Collection<PieceEquipment> piecequipments;
 
 		result = new Activity();
 
 		organiser = organiserService.findByPrincipal();
 		result.setOrganiser(organiser);
+
+		piecequipments = new ArrayList<PieceEquipment>();
+		result.setPieceEquipments(piecequipments);
 
 		comments = new ArrayList<Comment>();
 		result.setComments(comments);
@@ -82,7 +92,6 @@ public class ActivityService {
 
 	public Activity findOne(int activityId) {
 		Activity result;
-
 		result = activityRepository.findOne(activityId);
 
 		return result;
@@ -91,7 +100,9 @@ public class ActivityService {
 	public void save(Activity activity) {
 		Assert.notNull(activity);
 		activity.setSeatsAvailable(activity.getNumberSeats());
+
 		activityRepository.saveAndFlush(activity);
+
 	}
 
 	public void saveEditSeats(Activity activity) {
@@ -342,4 +353,22 @@ public class ActivityService {
 
 		return result;
 	}
+
+	public Activity recontruct(ActivityForm af) {
+		Activity res = create();
+
+		Organiser organier = organiserService.findByPrincipal();
+		res.setComments(new ArrayList<Comment>());
+		res.setRequests(new ArrayList<Request>());
+		res.setPieceEquipments(new ArrayList<PieceEquipment>());
+		res.setCanyon(af.getCanyon());
+		res.setOrganiser(organier);
+		res.setTitle(af.getTitle());
+		res.setDescription(af.getDescription());
+		res.setPieceEquipments(af.getPieceEquipments());
+		res.setNumberSeats(af.getNumberSeats());
+		res.setMoment(af.getMoment());
+		return res;
+	}
+
 }
