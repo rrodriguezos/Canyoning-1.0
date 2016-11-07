@@ -19,6 +19,8 @@ public class CustomerRegisterForm {
 	private String username;
 	private String phone;
 	private String email;
+	private String name;
+	private String surname;
 	private Boolean accept;
 	private Integer id;
 
@@ -51,6 +53,25 @@ public class CustomerRegisterForm {
 
 	public void setConfirmPassword(String confirmPassword) {
 		this.confirmPassword = confirmPassword;
+	}
+	@SafeHtml(whitelistType=WhiteListType.NONE)
+	@NotBlank
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	@SafeHtml(whitelistType=WhiteListType.NONE)
+	@NotBlank
+	public String getSurname() {
+		return surname;
+	}
+
+	public void setSurname(String surname) {
+		this.surname = surname;
 	}
 
 	@SafeHtml(whitelistType = WhiteListType.NONE)

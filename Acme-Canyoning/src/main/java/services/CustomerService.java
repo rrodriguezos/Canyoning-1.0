@@ -118,6 +118,8 @@ public class CustomerService {
 		Assert.isTrue(customerForm.getAccept());
 		res.setComments(new ArrayList<Comment>());
 		res.setRequests(new ArrayList<Request>());
+		res.setName(customerForm.getName());
+		res.setSurname(customerForm.getSurname());
 		res.setPhone(customerForm.getPhone());
 		res.setEmail(customerForm.getEmail());
 		res.getUserAccount().setUsername(customerForm.getUsername());
@@ -141,6 +143,8 @@ public class CustomerService {
 		customer = findByPrincipal();
 
 		result.setId(customer.getId());
+		result.setName(customer.getName());
+		result.setSurname(customer.getSurname());
 		result.setEmail(customer.getEmail());
 		result.setPhone(customer.getPhone());
 		result.setUsername(customer.getUserAccount().getUsername());

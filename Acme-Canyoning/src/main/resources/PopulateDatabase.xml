@@ -99,6 +99,8 @@
 	<!-- Administrators -->
 
 	<bean class="domain.Administrator" id="administrator">
+	<property value="Chris" name="name" />
+		<property value="Froome" name="surname" />
 		<property value="chrisf@mail.es" name="email" />
 		<property value="+34(732)7216" name="phone" />
 		<property name="userAccount" ref="userAccount1" />
@@ -121,6 +123,8 @@
 	<!-- Organisers -->
 
 	<bean class="domain.Organiser" id="organiser1">
+	<property value="Joan" name="name" />
+		<property value="Purito" name="surname" />
 		<property value="manolo@mail.es" name="email" />
 		<property name="userAccount" ref="userAccount2" />
 		<property name="about" ref="about1" />
@@ -150,6 +154,8 @@
 	</bean>
 
 	<bean class="domain.Organiser" id="organiser2">
+	<property value="Charles" name="name" />
+		<property value="Rodriguez" name="surname" />
 		<property value="charro@gmail.com" name="email" />
 		<property name="userAccount" ref="userAccount3" />
 		<property name="about" ref="about2" />
@@ -179,6 +185,8 @@
 	</bean>
 
 	<bean class="domain.Organiser" id="organiser3">
+	<property value="Álvaro" name="name" />
+		<property value="Morata" name="surname" />
 		<property value="Doming@gmail.com" name="email" />
 		<property name="userAccount" ref="userAccount4" />
 		<property name="about" ref="about3" />
@@ -213,6 +221,8 @@
 	<!-- Customers -->
 
 	<bean class="domain.Customer" id="customer1">
+	<property value="Lucas" name="name" />
+		<property value="Vázquez" name="surname" />
 		<property value="eijude@gmail.com" name="email" />
 		<property name="userAccount" ref="userAccount5" />
 		<property value="+34(788)1888" name="phone" />
@@ -236,6 +246,8 @@
 
 
 	<bean class="domain.Customer" id="customer2">
+	<property value="Ruben" name="name" />
+		<property value="Castro" name="surname" />
 		<property value="antflores@hotmail.com" name="email" />
 		<property name="userAccount" ref="userAccount6" />
 		<property value="+33(722)1888" name="phone" />
@@ -256,6 +268,8 @@
 	</bean>
 
 	<bean class="domain.Customer" id="customer3">
+	<property value="Mudo" name="name" />
+		<property value="Vazquez" name="surname" />
 		<property value="rafitaNadal@gmail.com" name="email" />
 		<property name="userAccount" ref="userAccount7" />
 		<property value="+33(722)1245" name="phone" />

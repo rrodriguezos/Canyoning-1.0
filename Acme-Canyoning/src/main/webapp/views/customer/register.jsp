@@ -50,6 +50,11 @@
 
 		<acme:password code="customer.password" path="password" />
 		<acme:password code="customer.confirmPassword" path="confirmPassword" />
+		
+		<acme:textbox code="customer.name" path="name" />
+
+		<acme:textbox code="customer.surname" path="surname" />
+		
 
 
 		<acme:textbox code="customer.email" path="email" />

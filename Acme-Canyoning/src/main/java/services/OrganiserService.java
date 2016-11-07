@@ -66,7 +66,7 @@ public class OrganiserService {
 
 		activities = new LinkedList<Activity>();
 		result.setActivities(activities);
-		
+
 		pieceEquipments = new LinkedList<PieceEquipment>();
 		result.setPieceEquipments(pieceEquipments);
 
@@ -75,7 +75,7 @@ public class OrganiserService {
 
 		return result;
 	}
-	
+
 	public Collection<Organiser> findAll() {
 
 		Collection<Organiser> result;
@@ -123,43 +123,45 @@ public class OrganiserService {
 		Assert.isTrue(administrator.getUserAccount().getAuthorities()
 				.contains(authority));
 	}
-	
+
 	// other methods
-		// -------------------------------------------------------------------------
+	// -------------------------------------------------------------------------
 
-		public Organiser findByPrincipal() {
-			UserAccount userAccount;
-			Organiser result;
-			int id;
+	public Organiser findByPrincipal() {
+		UserAccount userAccount;
+		Organiser result;
+		int id;
 
-			userAccount = LoginService.getPrincipal();
-			Assert.notNull(userAccount);
-			id = userAccount.getId();
-			result = organiserRepository.findByUserAccountId(id);
-			Assert.notNull(result);
+		userAccount = LoginService.getPrincipal();
+		Assert.notNull(userAccount);
+		id = userAccount.getId();
+		result = organiserRepository.findByUserAccountId(id);
+		Assert.notNull(result);
 
-			return result;
+		return result;
 
-		}
+	}
 
-		public Organiser reconstruct(OrganiserForm organiserForm) {
-			Organiser res;
-			res = create();
-			Assert.isTrue(organiserForm.getPassword().equals(
-					organiserForm.getConfirmPassword()));
+	public Organiser reconstruct(OrganiserForm organiserForm) {
+		Organiser res;
+		res = create();
+		Assert.isTrue(organiserForm.getPassword().equals(
+				organiserForm.getConfirmPassword()));
+		res.setName(organiserForm.getName());
+		res.setSurname(organiserForm.getSurname());
+		res.setPhone(organiserForm.getPhone());
+		res.setEmail(organiserForm.getEmail());
 
-			res.setPhone(organiserForm.getPhone());
-			res.setEmail(organiserForm.getEmail());
+		res.getUserAccount().setUsername(organiserForm.getUsername());
+		res.getUserAccount().setPassword(organiserForm.getPassword());
 
-			res.getUserAccount().setUsername(organiserForm.getUsername());
-			res.getUserAccount().setPassword(organiserForm.getPassword());
+		return res;
+	}
 
-			return res;
-		}
-		public Organiser findByUserAccount(UserAccount userAccount) {
-			Assert.notNull(userAccount);
-			Organiser result;
-			result = organiserRepository.findByUserAccountId(userAccount.getId());
-			return result;
-		}
+	public Organiser findByUserAccount(UserAccount userAccount) {
+		Assert.notNull(userAccount);
+		Organiser result;
+		result = organiserRepository.findByUserAccountId(userAccount.getId());
+		return result;
+	}
 }

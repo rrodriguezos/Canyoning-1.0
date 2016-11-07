@@ -22,6 +22,8 @@ import security.UserAccount;
 @Access(AccessType.PROPERTY)
 public abstract class Actor extends DomainEntity {
 
+	private String name;
+	private String surname;
 	private String phone;
 	private String email;
 
@@ -32,6 +34,24 @@ public abstract class Actor extends DomainEntity {
 	}
 
 	// Getters and Setters........
+	
+	@NotBlank
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	@NotBlank
+	public String getSurname() {
+		return surname;
+	}
+
+	public void setSurname(String surname) {
+		this.surname = surname;
+	}
 
 	
 

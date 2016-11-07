@@ -15,6 +15,8 @@ public class OrganiserForm {
 	private String confirmPassword;
 	private String username;
 	private String phone;
+	private String name;
+	private String surname;
 	private String email;
 
 	// Constructors...................
@@ -34,6 +36,26 @@ public class OrganiserForm {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	
+	@SafeHtml(whitelistType=WhiteListType.NONE)
+	@NotBlank
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	@SafeHtml(whitelistType=WhiteListType.NONE)
+	@NotBlank
+	public String getSurname() {
+		return surname;
+	}
+
+	public void setSurname(String surname) {
+		this.surname = surname;
 	}
 	
 	@SafeHtml(whitelistType=WhiteListType.NONE)

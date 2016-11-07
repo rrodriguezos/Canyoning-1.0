@@ -49,6 +49,11 @@
 
 		<acme:password code="organiser.password" path="password" />
 		<acme:password code="organiser.confirmPassword" path="confirmPassword" />
+		
+		<acme:textbox code="organiser.name" path="name" />
+
+		<acme:textbox code="organiser.surname" path="surname" />
+		
 
 		<acme:textbox code="organiser.email" path="email" />
 
