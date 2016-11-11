@@ -135,7 +135,7 @@ public class ActivityService {
 	public void reinstantiateMomentActivity(Activity previousActvity,
 			Organiser organiser) {
 		Activity result;
-
+		checkPrincipalOrganiser();
 		result = create();
 		result.setTitle(previousActvity.getTitle());
 		result.setDescription(previousActvity.getDescription());

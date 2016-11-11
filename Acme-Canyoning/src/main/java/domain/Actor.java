@@ -36,6 +36,7 @@ public abstract class Actor extends DomainEntity {
 	// Getters and Setters........
 	
 	@NotBlank
+@SafeHtml(whitelistType = WhiteListType.NONE)
 	public String getName() {
 		return name;
 	}
@@ -45,6 +46,7 @@ public abstract class Actor extends DomainEntity {
 	}
 
 	@NotBlank
+@SafeHtml(whitelistType = WhiteListType.NONE)
 	public String getSurname() {
 		return surname;
 	}

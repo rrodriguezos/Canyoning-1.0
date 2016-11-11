@@ -25,8 +25,6 @@ public class CommentService {
 	private CommentableService commentableService;
 	@Autowired
 	private ActorService actorService;
-	@Autowired
-	private AdministratorService administratorService;
 
 	// Constructors --------------------------------
 	public CommentService() {
@@ -60,6 +58,15 @@ public class CommentService {
 		result.setBody(commentForm.getBody());
 		result.setTitle(commentForm.getTitle());
 		return result;
+	}
+
+	public Collection<Comment> findAll() {
+		Collection<Comment> result;
+
+		result = commentRepository.findAll();
+
+		return result;
+
 	}
 
 }

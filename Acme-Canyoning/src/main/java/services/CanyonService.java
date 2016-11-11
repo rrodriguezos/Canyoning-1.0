@@ -83,6 +83,7 @@ public class CanyonService {
 	}
 
 	public void save(Canyon canyon) {
+		checkPrincipal(canyon.getAdministrator());
 		Assert.notNull(canyon);
 
 		canyonRepository.saveAndFlush(canyon);
