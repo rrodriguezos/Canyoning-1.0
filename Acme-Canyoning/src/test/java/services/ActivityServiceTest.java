@@ -18,9 +18,12 @@ import org.springframework.util.Assert;
 import utilities.AbstractTest;
 import domain.Activity;
 import domain.Canyon;
+import domain.Cord;
 import domain.Customer;
+import domain.Kayak;
 import domain.Organiser;
 import domain.Request;
+import domain.Wetsuit;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath:spring/datasource.xml",
@@ -46,6 +49,13 @@ public class ActivityServiceTest extends AbstractTest {
 
 	@Autowired
 	private CustomerService customerService;
+	@Autowired
+	private WetsuitService wetsuitService;
+
+	@Autowired
+	private KayakService kayakService;
+	@Autowired
+	private CordService cordService;
 
 	// ----------------------------------------------------
 	// POSITIVE TEST CASES CREATE
@@ -419,4 +429,84 @@ public class ActivityServiceTest extends AbstractTest {
 		unauthenticate();
 	}
 
+	// 19.2 Describe the pieces of equipment that an activity requires.
+	// Positive
+	@Test
+	public void addPieceEquipmentActivity1() {
+
+		authenticate("organiser1");
+
+		Activity activity = activityService.findOne(41);
+		int numberPEquipmentBefore = activity.getPieceEquipments().size();
+		Kayak kayak;
+		Cord cord;
+		Wetsuit wetsuit;
+
+		kayak = kayakService.findOne(26);
+		cord = cordService.findOne(34);
+		wetsuit = wetsuitService.findOne(30);
+
+		activity.getPieceEquipments().add(kayak);
+		activity.getPieceEquipments().add(cord);
+		activity.getPieceEquipments().add(wetsuit);
+
+		activityService.save(activity);
+		int numberPEquipmentAfter = activity.getPieceEquipments().size();
+		Assert.isTrue(numberPEquipmentAfter == numberPEquipmentBefore + 3);
+		unauthenticate();
+	}
+
+	// Negative
+	// actor que no es organizador
+	@Test(expected = IllegalArgumentException.class)
+	public void addPieceEquipmentActivity2() {
+
+		authenticate("admin");
+
+		Activity activity = activityService.findOne(41);
+		int numberPEquipmentBefore = activity.getPieceEquipments().size();
+		Kayak kayak;
+		Cord cord;
+		Wetsuit wetsuit;
+
+		kayak = kayakService.findOne(26);
+		cord = cordService.findOne(34);
+		wetsuit = wetsuitService.findOne(30);
+
+		activity.getPieceEquipments().add(kayak);
+		activity.getPieceEquipments().add(cord);
+		activity.getPieceEquipments().add(wetsuit);
+
+		activityService.save(activity);
+		int numberPEquipmentAfter = activity.getPieceEquipments().size();
+		Assert.isTrue(numberPEquipmentAfter == numberPEquipmentBefore + 3);
+		unauthenticate();
+	}
+
+	// Negative
+	// Actividad inexistente
+	@Test(expected = NullPointerException.class)
+	public void addPieceEquipmentActivity3() {
+
+		authenticate("organiser1");
+
+		Activity activity = activityService.findOne(887);
+		int numberPEquipmentBefore = activity.getPieceEquipments().size();
+		Kayak kayak;
+		Cord cord;
+		Wetsuit wetsuit;
+
+		kayak = kayakService.findOne(26);
+		cord = cordService.findOne(34);
+		wetsuit = wetsuitService.findOne(40);
+
+		activity.getPieceEquipments().add(kayak);
+		activity.getPieceEquipments().add(cord);
+		activity.getPieceEquipments().add(wetsuit);
+
+		activityService.save(activity);
+		int numberPEquipmentAfter = activity.getPieceEquipments().size();
+		Assert.isTrue(numberPEquipmentAfter == numberPEquipmentBefore + 3);
+		unauthenticate();
+	}
 }
