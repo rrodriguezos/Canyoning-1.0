@@ -18,7 +18,6 @@ import org.springframework.util.Assert;
 import utilities.AbstractTest;
 import domain.Activity;
 import domain.Canyon;
-import domain.Comment;
 import domain.Customer;
 import domain.Organiser;
 import domain.Request;

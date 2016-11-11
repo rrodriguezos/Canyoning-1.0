@@ -1,5 +1,7 @@
 package services;
 
+import java.util.Collection;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -46,15 +48,22 @@ public class AboutService {
 		return about;
 	}
 
+	public Collection<About> findAll() {
+		checkPrincipalOrganiser();
+		Collection<About> about;
+		about = aboutRepository.findAll();
+		return about;
+	}
+
 	public About create() {
 		About result;
 		Organiser organiser;
-		
+
 		organiser = organiserService.findByPrincipal();
 		result = new About();
 		result.setOrganiser(organiser);
 		checkPrincipalOrganiser();
-		
+
 		return result;
 	}
 
@@ -63,9 +72,9 @@ public class AboutService {
 		Organiser organiser;
 		organiser = organiserService.findByPrincipal();
 		checkPrincipalOrganiser();
-		
-		result = aboutRepository.findAboutByOrganiser(organiser.getId());		
-		
+
+		result = aboutRepository.findAboutByOrganiser(organiser.getId());
+
 		return result;
 	}
 

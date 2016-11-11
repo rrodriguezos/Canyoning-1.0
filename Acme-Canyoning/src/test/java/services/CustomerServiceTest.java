@@ -1,5 +1,7 @@
 package services;
 
+import java.util.Collection;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -92,6 +94,14 @@ public class CustomerServiceTest extends AbstractTest {
 		registerForm.setConfirmPassword("Different Password Test");
 		Customer customer = customerService.reconstruct(registerForm);
 		customerService.save(customer);
+	}
+
+	// Listing requirement 1
+
+	@Test
+	public void testFindOrganisers() {
+		Collection<Customer> customers = customerService.findAll();
+		Assert.isTrue(customers.size() == 3);
 	}
 
 }
