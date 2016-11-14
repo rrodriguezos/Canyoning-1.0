@@ -8,15 +8,17 @@
  * http://www.tdg-seville.info/License.html
  --%>
 
-<%@page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
 
-<%@taglib prefix="jstl"	uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="jstl" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
+<%@taglib prefix="security"
+	uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@taglib prefix="acme" tagdir="/WEB-INF/tags" %>
+<%@taglib prefix="acme" tagdir="/WEB-INF/tags"%>
 
 <h2>
 
@@ -24,15 +26,22 @@
 
 </h2>
 
-<acme:jstlOut code="comment.actor" value="${comment.getActor().getEmail() }"/>
+<acme:jstlOut code="comment.actor"
+	value="${comment.getActor().getName() }" />
 <br>
-<fieldset style="width:50%;">
-<legend><fmt:formatDate value="${comment.getMoment() }" pattern="dd/MM/yyyy HH:mm" /></legend>
+<fieldset style="width: 50%;">
+	<legend>
+		<fmt:formatDate value="${comment.getMoment() }"
+			pattern="dd/MM/yyyy HH:mm" />
+	</legend>
 
-<jstl:out value="${comment.getBody() }" />
-<jstl:out value="${comment.getStars() }" />
+	<jstl:out value="${comment.getBody() }" />
 </fieldset>
+<br>
+<acme:jstlOut code="comment.stars" value="${comment.stars }" />
+<br>
 
 
-
-<input type="button" name="back" value="<spring:message code="comment.cancel"/>" onclick="javascript: window.history.back()" />
+<input type="button" name="back"
+	value="<spring:message code="comment.cancel"/>"
+	onclick="javascript: window.history.back()" />

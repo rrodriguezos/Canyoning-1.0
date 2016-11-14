@@ -42,6 +42,7 @@
 
 		<security:intercept-url pattern="/welcome/index.do" access="permitAll" />
 		<security:intercept-url pattern="/welcome/conditions.do" access="permitAll" /> 
+		<security:intercept-url pattern="/comment/display.do" access="permitAll" /> 
 		
 		<security:intercept-url pattern="/canyon/display.do" access="permitAll" /> 
 		<security:intercept-url pattern="/canyon/list.do" access="permitAll" /> 
@@ -116,7 +117,6 @@
 		<security:intercept-url pattern="/comment/list.do" access="isAuthenticated()" />
 		<security:intercept-url pattern="/comment/edit.do" access="isAuthenticated()" />
 		<security:intercept-url pattern="/comment/create.do" access="isAuthenticated()" />
-		<security:intercept-url pattern="/comment/display.do" access="isAuthenticated()" />
 		<security:intercept-url pattern="/comment/actor.do" access="isAuthenticated()" />
 		<security:intercept-url pattern="/customer/list.do" access="isAuthenticated()" />
 		<security:intercept-url pattern="/organiser/list.do" access="isAuthenticated()" />

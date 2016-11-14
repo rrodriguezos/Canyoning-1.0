@@ -18,13 +18,10 @@ import security.UserAccount;
 import domain.Activity;
 import domain.Actor;
 import domain.Comment;
-import domain.Cord;
-import domain.Kayak;
 import domain.Organiser;
 import domain.PieceEquipment;
 import domain.Request;
 import domain.Request.RequestState;
-import domain.Wetsuit;
 import forms.ActivityForm;
 
 @Service
@@ -49,7 +46,6 @@ public class ActivityService {
 	private ActorService actorService;
 	@Autowired
 	private AdministratorService administratorService;
-
 
 	// COnstructors -------------------------
 	public ActivityService() {

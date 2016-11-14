@@ -28,7 +28,7 @@
 				sortable="true" />
 
 			<spring:message code="comment.actor" var="actorHeader" />
-			<display:column property="actor.email" title="${actorHeader}"
+			<display:column property="actor.name" title="${actorHeader}"
 				sortable="true" />
 
 

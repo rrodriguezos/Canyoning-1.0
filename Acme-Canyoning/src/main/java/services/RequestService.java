@@ -23,8 +23,6 @@ public class RequestService {
 	private RequestRepository requestRepository;
 
 	// Supporting Services ------------------
-	@Autowired
-	private OrganiserService organiserService;
 
 	@Autowired
 	private CustomerService customerService;
@@ -71,8 +69,8 @@ public class RequestService {
 
 	public Collection<Request> findAll() {
 		Collection<Request> result;
-		result= requestRepository.findAll();
-		
+		result = requestRepository.findAll();
+
 		return result;
 	}
 
@@ -135,8 +133,6 @@ public class RequestService {
 
 	}
 
-	
-
 	public Collection<Request> requestsPendingByActivity(int activityId) {
 		Collection<Request> result;
 
@@ -158,9 +154,9 @@ public class RequestService {
 			request.setMomentAccepted(new Date(
 					System.currentTimeMillis() - 1000));
 			save(request);
-			
+
 			activityService.restaAsiento(activity);
-		}else{
+		} else {
 			request.setRequestState(RequestState.REJECTED);
 			save(request);
 		}
@@ -184,8 +180,5 @@ public class RequestService {
 
 		return result;
 	}
-
-
-
 
 }
