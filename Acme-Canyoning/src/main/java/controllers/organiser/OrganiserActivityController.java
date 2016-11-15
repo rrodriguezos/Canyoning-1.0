@@ -126,7 +126,7 @@ public class OrganiserActivityController extends AbstractController {
 				result = new ModelAndView("activity/edit");
 				result.addObject("canyons", canyons);
 				result.addObject("pieceEquipments", pieceEquipments);
-				result.addObject("message2", "activity.commit.error");
+				result.addObject("message", "activity.commit.error");
 			}
 		}
 		return result;
@@ -176,7 +176,7 @@ public class OrganiserActivityController extends AbstractController {
 				result = new ModelAndView("activity/organiser/reinstantiate");
 				result.addObject("activity", activity);
 				result.addObject("canyons", canyons);
-				result.addObject("message2", "activity.commit.error");
+				result.addObject("message", "activity.commit.error");
 			}
 		}
 		return result;
@@ -218,7 +218,7 @@ public class OrganiserActivityController extends AbstractController {
 
 		result = new ModelAndView("activity/organiser/reinstantiate");
 		result.addObject("activity", activity);
-		result.addObject("message2", message);
+		result.addObject("message", message);
 
 		return result;
 	}

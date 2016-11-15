@@ -17,7 +17,8 @@
 		<value>/views/misc/tiles.xml</value>
 		<value>/views/security/tiles.xml</value>
 		<value>/views/welcome/tiles.xml</value>
-		<value>/views/cord/tiles.xml</value>	
+		<value>/views/cord/tiles.xml</value>
+		<value>/views/story/tiles.xml</value>
 		<value>/views/kayak/tiles.xml</value>
 		<value>/views/wetsuit/tiles.xml</value>
 		<value>/views/about/tiles.xml</value>

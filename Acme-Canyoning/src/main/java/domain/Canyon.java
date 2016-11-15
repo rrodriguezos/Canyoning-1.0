@@ -108,6 +108,7 @@ public class Canyon extends Commentable {
 	// Relationships ---------------------------------------------------
 	private Administrator administrator;
 	private Collection<Activity> activities;
+	private Collection<Story> stories;
 
 	@Valid
 	@NotNull
@@ -122,13 +123,24 @@ public class Canyon extends Commentable {
 
 	@Valid
 	@NotNull
-	@OneToMany(cascade=CascadeType.ALL,mappedBy = "canyon")
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "canyon")
 	public Collection<Activity> getActivities() {
 		return activities;
 	}
 
 	public void setActivities(Collection<Activity> activities) {
 		this.activities = activities;
+	}
+
+	@Valid
+	@NotNull
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "canyon")
+	public Collection<Story> getStories() {
+		return stories;
+	}
+
+	public void setStories(Collection<Story> stories) {
+		this.stories = stories;
 	}
 
 }

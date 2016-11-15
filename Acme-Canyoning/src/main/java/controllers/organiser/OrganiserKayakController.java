@@ -132,7 +132,7 @@ public class OrganiserKayakController extends AbstractController {
 
 		result = new ModelAndView("kayak/organiser/edit");
 		result.addObject("kayak", kayak);
-		result.addObject("message2", message);
+		result.addObject("message", message);
 
 		return result;
 	}

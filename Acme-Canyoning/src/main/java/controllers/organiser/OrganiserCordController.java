@@ -132,7 +132,7 @@ public class OrganiserCordController extends AbstractController {
 
 		result = new ModelAndView("cord/organiser/edit");
 		result.addObject("cord", cord);
-		result.addObject("message2", message);
+		result.addObject("message", message);
 
 		return result;
 	}

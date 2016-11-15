@@ -69,11 +69,9 @@
 		<security:intercept-url pattern="/organiser/administrator/list.do" access="hasRole('ADMINISTRATOR')" /> 
 		<security:intercept-url pattern="/organiser/administrator/display.do" access="hasRole('ADMINISTRATOR')" /> 
 		
-		<security:intercept-url pattern="/activitytype/administrator/create.do" access="hasRole('ADMINISTRATOR')" /> 
-		<security:intercept-url pattern="/activitytype/administrator/edit.do" access="hasRole('ADMINISTRATOR')" /> 
-		<security:intercept-url pattern="/activitytype/administrator/list.do" access="hasRole('ADMINISTRATOR')" /> 
 		
-		<security:intercept-url pattern="/dashboard/administrator/list.do" access="hasRole('ADMINISTRATOR')" /> 
+		<security:intercept-url pattern="/dashboard/administrator/list.do" access="hasRole('ADMINISTRATOR')" />
+		 
 	
 		
 		
@@ -81,6 +79,13 @@
 		<security:intercept-url pattern="/canyon/administrator/mylist.do" access="hasRole('ADMINISTRATOR')" /> 
 		<security:intercept-url pattern="/canyon/administrator/edit.do" access="hasRole('ADMINISTRATOR')" />
 		<security:intercept-url pattern="/canyon/administrator/create.do" access="hasRole('ADMINISTRATOR')" />
+				<security:intercept-url pattern="/story/administrator/create.do" access="hasRole('ADMINISTRATOR')" />
+		<security:intercept-url pattern="/story/administrator/edit.do" access="hasRole('ADMINISTRATOR')" />
+		<security:intercept-url pattern="/canyon/listByStory.do" access="permitAll" />
+		<security:intercept-url pattern="/story/listByCanyon.do" access="permitAll" />
+		<security:intercept-url pattern="/story/display.do" access="permitAll" />  
+		<security:intercept-url pattern="/story/list.do" access="hasRole('ADMINISTRATOR')" />
+						<security:intercept-url pattern="/story/administrator/mylist.do" access="hasRole('ADMINISTRATOR')" />
 
 
 		<security:intercept-url pattern="/activity/customer/mylist.do" access="hasRole('CUSTOMER')" />

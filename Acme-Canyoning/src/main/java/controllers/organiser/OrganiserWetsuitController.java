@@ -135,7 +135,7 @@ public class OrganiserWetsuitController extends AbstractController {
 
 		result = new ModelAndView("wetsuit/organiser/edit");
 		result.addObject("wetsuit", wetsuit);
-		result.addObject("message2", message);
+		result.addObject("message", message);
 
 		return result;
 	}

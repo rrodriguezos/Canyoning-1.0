@@ -313,8 +313,8 @@ public class ActivityServiceTest extends AbstractTest {
 		Activity activity;
 		Request request;
 
-		activity = activityService.findOne(47);
-		request = requestService.findOne(48);
+		activity = activityService.findOne(49);
+		request = requestService.findOne(50);
 
 		activityService.acceptRequestByActivity(activity, request);
 

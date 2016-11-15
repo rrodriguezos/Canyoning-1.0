@@ -21,6 +21,7 @@
 		<value>/views/administrator/messages</value>
 		<value>/views/customer/messages</value>
 		<value>/views/cord/messages</value>		
+		<value>/views/story/messages</value>		
 		<value>/views/kayak/messages</value>
 		<value>/views/wetsuit/messages</value>
 		<value>/views/about/messages</value>
