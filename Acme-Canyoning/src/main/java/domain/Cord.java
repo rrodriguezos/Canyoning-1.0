@@ -3,6 +3,7 @@ package domain;
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
 @Entity
@@ -20,6 +21,7 @@ public class Cord extends PieceEquipment {
 	private Double maximumWeight;
 
 	@NotNull
+	@Min(0)
 	public Double getLength() {
 		return length;
 	}
@@ -29,6 +31,7 @@ public class Cord extends PieceEquipment {
 	}
 
 	@NotNull
+	@Min(0)
 	public Double getMaximumWeight() {
 		return maximumWeight;
 	}

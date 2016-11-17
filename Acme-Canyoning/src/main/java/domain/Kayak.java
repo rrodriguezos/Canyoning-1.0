@@ -29,6 +29,7 @@ public class Kayak extends PieceEquipment {
 	}
 
 	@NotNull
+	@Min(0)
 	public Double getLength() {
 		return length;
 	}

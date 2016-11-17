@@ -3,6 +3,7 @@ package domain;
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
@@ -18,8 +19,8 @@ public class Wetsuit extends PieceEquipment {
 	}
 
 	// Attributes ----------------------------------------------------------
-	// añadir nota de que los grados vienen en celsius
-	private double minimumTemperature;
+
+	private Double minimumTemperature;
 	private boolean trousers;
 	private String sizeSleeves;
 
@@ -28,11 +29,12 @@ public class Wetsuit extends PieceEquipment {
 	public static final String SHORT = "SHORT";
 
 	@NotNull
-	public double getMinimumTemperature() {
+	@Min(0)
+	public Double getMinimumTemperature() {
 		return minimumTemperature;
 	}
 
-	public void setMinimumTemperature(double minimumTemperature) {
+	public void setMinimumTemperature(Double minimumTemperature) {
 		this.minimumTemperature = minimumTemperature;
 	}
 
@@ -45,8 +47,6 @@ public class Wetsuit extends PieceEquipment {
 		this.trousers = trousers;
 	}
 
-	// Añadir nota al UML y conceptual en la que decir que solo puede ser larga
-	// o corta (long or short) EL PATTERN
 	@NotBlank
 	@Pattern(regexp = "^" + LONG + "|" + SHORT + "$")
 	public String getSizeSleeves() {
