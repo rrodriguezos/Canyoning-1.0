@@ -60,6 +60,7 @@ public class Activity extends Commentable {
 	}
 
 	@Min(0)
+	@NotNull
 	public int getNumberSeats() {
 		return numberSeats;
 	}
@@ -138,6 +139,5 @@ public class Activity extends Commentable {
 	public void setPieceEquipments(Collection<PieceEquipment> pieceEquipments) {
 		this.pieceEquipments = pieceEquipments;
 	}
-
 
 }

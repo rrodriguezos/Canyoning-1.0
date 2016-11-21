@@ -42,6 +42,7 @@ public class ActivityForm {
 	}
 
 	@Min(0)
+	@NotNull
 	public int getNumberSeats() {
 		return numberSeats;
 	}

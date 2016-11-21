@@ -113,7 +113,7 @@ public class OrganiserActivityController extends AbstractController {
 		if (binding.hasErrors()) {
 			canyons = canyonService.findAll();
 
-			result = createEditModelAndViewForm(af);
+			result = createEditModelAndViewForm(af,"activity.commit.error");
 			result.addObject("canyons", canyons);
 		} else {
 			try {
