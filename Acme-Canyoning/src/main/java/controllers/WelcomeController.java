@@ -74,8 +74,8 @@ public class WelcomeController extends AbstractController {
 				}
 			}
 		}
-		name = actor == null ? name : actor.getUserAccount().getUsername() + " "
-				+ actor.getEmail();
+		name = actor == null ? name : actor.getName() + " "
+				+ actor.getSurname();
 		name = name.equals("") ? name : ", " + name;
 
 		formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm");

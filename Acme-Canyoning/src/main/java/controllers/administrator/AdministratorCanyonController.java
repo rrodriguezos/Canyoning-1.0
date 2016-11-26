@@ -80,9 +80,6 @@ public class AdministratorCanyonController extends AbstractController {
 		ModelAndView result;
 
 		if (binding.hasErrors()) {
-			System.out.print(binding.getFieldError());
-			System.out.print(binding.getAllErrors());
-
 			result = new ModelAndView("canyon/edit");
 			result.addObject("canyon", canyon);
 		} else {
@@ -99,45 +96,47 @@ public class AdministratorCanyonController extends AbstractController {
 		}
 		return result;
 	}
-	
+
 	// Delete --------------------------------------------------------------
-		@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "delete")
-		public ModelAndView delete(@Valid Canyon canyon, BindingResult binding) {
-			ModelAndView result;
+	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "delete")
+	public ModelAndView delete(@Valid Canyon canyon, BindingResult binding) {
+		ModelAndView result;
 
-			if (binding.hasErrors()) {
-				result = createEditModelAndView(canyon, binding.toString());
-			} else {
-				try {
-					canyonService.delete(canyon);
-					result = new ModelAndView("redirect:/canyon/administrator/mylist.do");
-					result.addObject("requestUri", "/canyon/administrator/mylist.do");
-				} catch (Throwable oops) {
-					result = createEditModelAndView(canyon, "canyon.commit.error");
-				}
+		if (binding.hasErrors()) {
+			result = createEditModelAndView(canyon, binding.toString());
+		} else {
+			try {
+				canyonService.delete(canyon);
+				result = new ModelAndView(
+						"redirect:/canyon/administrator/mylist.do");
+				result.addObject("requestUri",
+						"/canyon/administrator/mylist.do");
+			} catch (Throwable oops) {
+				result = createEditModelAndView(canyon, "canyon.commit.error");
 			}
-			return result;
 		}
-		
-		// Ancillary methods
-		// --------------------------------------------------------
+		return result;
+	}
 
-		protected ModelAndView createEditModelAndView(Canyon canyon) {
-			ModelAndView result;
+	// Ancillary methods
+	// --------------------------------------------------------
 
-			result = createEditModelAndView(canyon, null);
+	protected ModelAndView createEditModelAndView(Canyon canyon) {
+		ModelAndView result;
 
-			return result;
-		}
+		result = createEditModelAndView(canyon, null);
 
-		protected ModelAndView createEditModelAndView(Canyon canyon, String message) {
-			ModelAndView result;
+		return result;
+	}
 
-			result = new ModelAndView("canyon/edit");
-			result.addObject("canyon", canyon);
-			result.addObject("message", message);
+	protected ModelAndView createEditModelAndView(Canyon canyon, String message) {
+		ModelAndView result;
 
-			return result;
-		}
+		result = new ModelAndView("canyon/edit");
+		result.addObject("canyon", canyon);
+		result.addObject("message", message);
+
+		return result;
+	}
 
 }
