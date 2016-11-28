@@ -17,6 +17,8 @@ import security.LoginService;
 import security.UserAccount;
 import domain.Comment;
 import domain.Customer;
+import domain.CustomerComment;
+import domain.OrganiserComment;
 import domain.Request;
 import forms.CustomerRegisterForm;
 
@@ -31,7 +33,7 @@ public class CustomerService {
 	// Supporting Services -------------------------
 	@Autowired
 	private UserAccountService userAccountService;
-	
+
 	@Autowired
 	private RequestService requestService;
 
@@ -46,6 +48,8 @@ public class CustomerService {
 		Customer result;
 		Collection<Comment> comments;
 		Collection<Request> requests;
+		CustomerComment customerComment = new CustomerComment();
+		Collection<Comment> commentsCustomerComment = new LinkedList<Comment>();
 
 		Authority aut = new Authority();
 
@@ -53,6 +57,9 @@ public class CustomerService {
 		useraccount = userAccountService.create();
 
 		result = new Customer();
+		customerComment.setComments(commentsCustomerComment);
+		customerComment.setCustomer(result);
+		result.setCustomerComment(customerComment);
 
 		useraccount.addAuthority(aut);
 		result.setUserAccount(useraccount);
@@ -218,22 +225,22 @@ public class CustomerService {
 		Double sumDays = 0.0;
 		int numberRequest;
 		Collection<Request> allRequestsAccepted;
-		
+
 		allRequestsAccepted = requestService.allRequestAccepted();
 		numberRequest = allRequestsAccepted.size();
-		for(Request r : allRequestsAccepted){
+		for (Request r : allRequestsAccepted) {
 			Date accepted;
 			Date pending;
 			long substract;
-			pending	= r.getMomentPending();
+			pending = r.getMomentPending();
 			accepted = r.getMomentAccepted();
-			substract = accepted.getTime()- pending.getTime();
-			long difd=substract / (24 * 60 * 60 * 1000);
-			sumDays = (double)difd + sumDays;		
-			
+			substract = accepted.getTime() - pending.getTime();
+			long difd = substract / (24 * 60 * 60 * 1000);
+			sumDays = (double) difd + sumDays;
+
 		}
 		result = (double) (sumDays / numberRequest);
-		result = Math.round( result * 10.0 ) / 10.0;
+		result = Math.round(result * 10.0) / 10.0;
 		return result;
 	}
 
@@ -246,33 +253,31 @@ public class CustomerService {
 		Double dentroSqrt;
 		Collection<Double> points = new LinkedList<Double>();
 		Collection<Request> allRequestsAccepted;
-		
+
 		allRequestsAccepted = requestService.allRequestAccepted();
-		for(Request r : allRequestsAccepted){
+		for (Request r : allRequestsAccepted) {
 			Date accepted;
 			Date pending;
 			long substract;
-			pending	= r.getMomentPending();
+			pending = r.getMomentPending();
 			accepted = r.getMomentAccepted();
-			substract = accepted.getTime()- pending.getTime();
-			long difd=substract / (24 * 60 * 60 * 1000);
-			points.add((double)difd);
-			
+			substract = accepted.getTime() - pending.getTime();
+			long difd = substract / (24 * 60 * 60 * 1000);
+			points.add((double) difd);
+
 		}
-		
-		media =averageTimeRemainWaitingList();
 
+		media = averageTimeRemainWaitingList();
 
-		for(Double pos : points){
-			sumMedia = (pos-media);
+		for (Double pos : points) {
+			sumMedia = (pos - media);
 			Math.abs(sumMedia);
 			alCuadrado = Math.pow(sumMedia, 2);
 			numerador = alCuadrado + numerador;
 		}
-		dentroSqrt=numerador / points.size();
+		dentroSqrt = numerador / points.size();
 		result = Math.sqrt(dentroSqrt);
-	
-		
+
 		return result;
 	}
 
